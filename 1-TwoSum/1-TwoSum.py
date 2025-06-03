@@ -1,4 +1,4 @@
-# Last updated: 6/3/2025, 2:27:44 PM
+# Last updated: 6/3/2025, 2:29:00 PM
 class Solution(object):
     def twoSum(self, nums, target):
         values = {}
@@ -6,7 +6,7 @@ class Solution(object):
             values[nums[i]] = i
         for i in range(len(nums)):
             complement = target - nums[i]
-            if complement in values and values.get(complement) != i:
+            if complement in values and values[complement] != i:
                 return [i, values.get(complement)]
         return []
 
