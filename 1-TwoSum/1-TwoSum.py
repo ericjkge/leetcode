@@ -1,13 +1,13 @@
-# Last updated: 5/30/2025, 12:08:36 PM
+# Last updated: 6/3/2025, 2:27:44 PM
 class Solution(object):
     def twoSum(self, nums, target):
-        hashmap = {}
+        values = {}
         for i in range(len(nums)):
-            hashmap[nums[i]] = i
+            values[nums[i]] = i
         for i in range(len(nums)):
             complement = target - nums[i]
-            if complement in hashmap and hashmap[complement] != i:
-                return [i, hashmap[complement]]
+            if complement in values and values.get(complement) != i:
+                return [i, values.get(complement)]
         return []
 
         """
