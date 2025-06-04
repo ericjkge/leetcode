@@ -1,4 +1,4 @@
-# Last updated: 6/4/2025, 2:26:13 PM
+# Last updated: 6/4/2025, 2:28:36 PM
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -7,9 +7,7 @@
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         slow = fast = head
-        while fast.next and fast.next.next:
+        while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        if fast.next:
-            return slow.next
         return slow
