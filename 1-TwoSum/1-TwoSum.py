@@ -1,4 +1,4 @@
-# Last updated: 6/5/2025, 2:35:38 PM
+# Last updated: 6/5/2025, 3:26:08 PM
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -9,11 +9,10 @@ class Solution(object):
 
         mapping = defaultdict()
         for i in range(len(nums)):
-            mapping[nums[i]] = i
-        
-        for i in range(len(nums)):
             complement = target - nums[i]
-            if complement in mapping and mapping[complement] != i:
+            if complement in mapping:
                 return i, mapping[complement]
+            mapping[nums[i]] = i
+
         return -1
         
