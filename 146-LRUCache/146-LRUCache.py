@@ -1,38 +1,35 @@
-# Last updated: 6/6/2025, 11:56:43 AM
-class Node:
+# Last updated: 6/6/2025, 12:17:20 PM
+class Node():
     def __init__(self, key, val):
-        self.key, self.val = key, val
-        self.prev = self.next = None
-        
+        self.key = key
+        self.val = val
+        self.next = self.prev = None
+
 class LRUCache:
 
     def __init__(self, capacity: int):
         self.capacity = capacity
         self.cache = {}
-
-        # Left is LRU, right is most
         self.left, self.right = Node(0, 0), Node(0, 0)
         self.left.next = self.right
         self.right.prev = self.left
 
-    # Insert node at right
-    def insert(self, node):
+    def add(self, node):
         prev = self.right.prev
         prev.next = node
         self.right.prev = node
         node.next = self.right
         node.prev = prev
 
-    # Remove node from left
     def remove(self, node):
-        prev, nxt = node.prev, node.next
+        nxt, prev = node.next, node.prev
         prev.next = nxt
         nxt.prev = prev
-    
+
     def get(self, key: int) -> int:
         if key in self.cache:
             self.remove(self.cache[key])
-            self.insert(self.cache[key])
+            self.add(self.cache[key])
             return self.cache[key].val
         return -1
 
@@ -40,12 +37,13 @@ class LRUCache:
         if key in self.cache:
             self.remove(self.cache[key])
         self.cache[key] = Node(key, value)
-        self.insert(self.cache[key])
+        self.add(self.cache[key])
+        
         if len(self.cache) > self.capacity:
             lru = self.left.next
             self.remove(lru)
             del self.cache[lru.key]
-
+        
 
 
 # Your LRUCache object will be instantiated and called as such:
