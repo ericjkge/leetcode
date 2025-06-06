@@ -1,6 +1,13 @@
-# Last updated: 6/6/2025, 3:08:24 PM
+# Last updated: 6/6/2025, 3:13:40 PM
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
+        operations = {
+            "+" : lambda a, b: a + b, 
+            "-" : lambda a, b: a - b,
+            "*" : lambda a, b: a * b,
+            "/" : lambda a, b: int(a / b),
+        }
+
         stack = []
         for token in tokens:
             if token.lstrip("-").isdigit():
@@ -8,14 +15,6 @@ class Solution:
             else:
                 b = stack.pop()
                 a = stack.pop()
-                print(a, token, b)
-                if token == "+":
-                    stack.append(a + b)
-                elif token == "-":
-                    stack.append(a - b)
-                elif token == "*":
-                    stack.append(a * b)
-                else:
-                    stack.append(int(a / b))
-                
+                stack.append(operations[token](a, b))
+
         return stack.pop()
