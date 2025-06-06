@@ -1,21 +1,17 @@
-# Last updated: 6/6/2025, 9:07:56 AM
+# Last updated: 6/6/2025, 9:11:49 AM
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if s == "":
-            return 0
-
-        n = len(s)
-        seen = {s[0]:1}
-        print(seen)
-        left = right = 0
-        ans = 1
-
-        while right < n - 1:
-            right += 1
-            seen[s[right]] = seen.get(s[right], 0) + 1
-            while seen[s[right]] > 1:
-                seen[s[left]] = seen.get(s[left], 0) - 1
+        left = right = ans = 0
+        seen = set()
+        while right < len(s):
+            r = s[right]
+            if r not in seen:
+                seen.add(r)
+                ans = max(ans, right - left + 1)
+                right += 1
+            else:
+                seen.remove(s[left])
                 left += 1
-            ans = max(ans, right - left + 1)
-        
         return ans
+        
+        
