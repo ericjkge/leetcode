@@ -1,4 +1,4 @@
-# Last updated: 6/7/2025, 12:21:12 PM
+# Last updated: 6/7/2025, 12:21:17 PM
 class Solution:
     def longestPalindrome(self, s: str) -> int:
         hashmap = defaultdict(int)
