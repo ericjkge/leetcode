@@ -1,4 +1,4 @@
-# Last updated: 6/7/2025, 2:38:51 PM
+# Last updated: 6/7/2025, 2:39:52 PM
 class TimeMap:
 
     def __init__(self):
@@ -15,15 +15,15 @@ class TimeMap:
             return ""
 
         left = 0
-        right = len(self.hashmap[key])
+        right = len(self.hashmap[key]) - 1
         pairs = self.hashmap[key]
-        while left < right:
+        while left <= right:
             mid = (left + right) // 2
-            if pairs[mid][1] > timestamp:
-                right = mid
-            else:
+            if pairs[mid][1] <= timestamp:
                 left = mid + 1
-        return pairs[right - 1][0]
+            else:
+                right = mid - 1
+        return pairs[right][0]
 
 # Your TimeMap object will be instantiated and called as such:
 # obj = TimeMap()
