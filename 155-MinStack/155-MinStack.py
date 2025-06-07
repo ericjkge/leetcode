@@ -1,4 +1,4 @@
-# Last updated: 6/7/2025, 1:23:31 PM
+# Last updated: 6/7/2025, 1:23:34 PM
 class MinStack:
 
     def __init__(self):
