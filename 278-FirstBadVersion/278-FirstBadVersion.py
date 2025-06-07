@@ -1,4 +1,4 @@
-# Last updated: 6/7/2025, 11:26:08 AM
+# Last updated: 6/7/2025, 11:27:55 AM
 # The isBadVersion API is already defined for you.
 # def isBadVersion(version: int) -> bool:
 
