@@ -1,4 +1,4 @@
-# Last updated: 6/8/2025, 6:15:56 PM
+# Last updated: 6/8/2025, 6:15:57 PM
 """
 # Definition for a Node.
 class Node:
