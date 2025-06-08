@@ -1,25 +1,24 @@
-# Last updated: 6/3/2025, 7:20:40 PM
+# Last updated: 6/8/2025, 6:53:31 PM
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         def expand(i, j):
-            left = i
-            right = j
-            while left >= 0 and right < len(s) and s[left] == s[right]:
-                left -= 1
-                right += 1
-            return right - left - 1
-        
+            while i >= 0 and j < len(s) and s[i] == s[j]:
+                i -= 1
+                j += 1
+            return j - i - 1
+
         ans = [0, 0]
 
         for i in range(len(s)):
-            odd_length = expand(i, i)
-            if odd_length > ans[1] - ans[0] + 1:
-                dist = odd_length // 2
+            odd_substring = expand(i, i)
+            if odd_substring > ans[1] - ans[0] + 1:
+                dist = odd_substring // 2
                 ans = [i - dist, i + dist]
-            even_length = expand(i, i + 1)
-            if even_length > ans[1] - ans[0] + 1:
-                dist = even_length // 2 - 1
+            even_substring = expand(i, i + 1)
+            if even_substring > ans[1] - ans[0] + 1:
+                dist = even_substring // 2 - 1
                 ans = [i - dist, i + 1 + dist]
         
         i, j = ans
-        return s[i : j + 1]
+
+        return s[i:j + 1]
