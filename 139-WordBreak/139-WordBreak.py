@@ -1,4 +1,4 @@
-# Last updated: 6/9/2025, 11:27:47 PM
+# Last updated: 6/9/2025, 11:27:56 PM
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         dp = [False] * (len(s) + 1)
