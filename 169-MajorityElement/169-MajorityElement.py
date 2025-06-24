@@ -1,4 +1,4 @@
-# Last updated: 6/24/2025, 6:29:51 PM
+# Last updated: 6/24/2025, 6:29:53 PM
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         if len(nums) == 1:
