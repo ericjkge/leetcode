@@ -1,16 +1,16 @@
-# Last updated: 6/6/2025, 1:27:57 PM
+# Last updated: 6/24/2025, 5:19:24 PM
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        mapping = {")":"(", "}":"{", "]":"["}
+        mapping = {"(":")", "{":"}", "[":"]"}
 
-        for c in s:
-            if c in mapping:
-                if not stack or stack[-1] != mapping[c]:
-                    return False
-                else:
-                    stack.pop()
+        for char in s:
+            if char in mapping.keys():
+                stack.append(char)
             else:
-                stack.append(c)
+                if not stack:
+                    return False
+                elif char != mapping[stack.pop()]:
+                    return False
         
         return not stack
