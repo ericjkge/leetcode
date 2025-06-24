@@ -1,4 +1,4 @@
-# Last updated: 6/24/2025, 6:59:58 PM
+# Last updated: 6/24/2025, 7:00:06 PM
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         candidate = nums[0]
