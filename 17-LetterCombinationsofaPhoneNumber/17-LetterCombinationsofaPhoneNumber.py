@@ -1,4 +1,4 @@
-# Last updated: 6/24/2025, 5:54:27 PM
+# Last updated: 6/24/2025, 6:04:09 PM
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         if digits == "":
@@ -18,7 +18,7 @@ class Solution:
         ans = []
         def backtrack(index, path):
             if len(path) == len(digits):
-                ans.append("".join(path[:]))
+                ans.append("".join(path))
                 return
             
             possible_letters = mapping[digits[index]]
