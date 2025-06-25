@@ -1,4 +1,4 @@
-# Last updated: 6/25/2025, 11:09:28 AM
+# Last updated: 6/25/2025, 11:30:09 AM
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -14,7 +14,7 @@ class Codec:
         :type root: TreeNode
         :rtype: str
         """
-        if not root:
+        if root == None:
             return ""
         ans = ""
         queue = deque([root])
@@ -34,13 +34,12 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        if not data:
+        if data == "":
             return None
         ls = data.split(",")
         root = TreeNode(int(ls[0]))
         queue = deque([root])
         i = 1
-
         while queue and i < len(ls):
             node = queue.popleft()
             if ls[i] != "null":
@@ -52,10 +51,8 @@ class Codec:
                 right = TreeNode(int(ls[i]))
                 node.right = right
                 queue.append(right)
-            i += 1
-
+            i+= 1
         return root
-
 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
