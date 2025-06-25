@@ -1,9 +1,6 @@
-# Last updated: 6/24/2025, 6:04:09 PM
+# Last updated: 6/25/2025, 1:11:45 PM
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        if digits == "":
-            return []
-        
         mapping = {
             "2":"abc",
             "3":"def",
@@ -14,6 +11,9 @@ class Solution:
             "8":"tuv",
             "9":"wxyz"
         }
+
+        if digits == "":
+            return []
 
         ans = []
         def backtrack(index, path):
