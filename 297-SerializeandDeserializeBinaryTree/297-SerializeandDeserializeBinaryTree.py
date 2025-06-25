@@ -1,4 +1,4 @@
-# Last updated: 6/25/2025, 11:09:21 AM
+# Last updated: 6/25/2025, 11:09:25 AM
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -26,7 +26,7 @@ class Codec:
                 queue.append(node.right)
             else:
                 ans += "null,"
-        return ans
+        return ans.rstrip(",null,")
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
