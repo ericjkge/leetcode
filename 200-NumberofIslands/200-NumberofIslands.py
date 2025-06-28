@@ -1,7 +1,7 @@
-# Last updated: 6/28/2025, 6:01:05 PM
+# Last updated: 6/28/2025, 6:02:02 PM
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
         seen = set()
         counter = 0
 
