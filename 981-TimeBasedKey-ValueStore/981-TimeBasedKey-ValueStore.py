@@ -1,22 +1,22 @@
-# Last updated: 6/7/2025, 2:40:22 PM
+# Last updated: 6/28/2025, 6:43:36 PM
 class TimeMap:
 
     def __init__(self):
-        self.hashmap = defaultdict(list)
+        self.dict = defaultdict(list)
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        if not self.hashmap[key]:
-            self.hashmap[key] = [(value, timestamp)]
+        if key in self.dict:
+            self.dict[key].append((value, timestamp))
         else:
-            self.hashmap[key].append((value, timestamp))
+            self.dict[key] = [(value, timestamp)]
 
     def get(self, key: str, timestamp: int) -> str:
-        if not self.hashmap[key] or timestamp < self.hashmap[key][0][1]:
+        if not self.dict[key] or timestamp < self.dict[key][0][1]:
             return ""
-
+        
         left = 0
-        right = len(self.hashmap[key])
-        pairs = self.hashmap[key]
+        right = len(self.dict[key])
+        pairs = self.dict[key]
         while left < right:
             mid = (left + right) // 2
             if pairs[mid][1] > timestamp:
