@@ -1,4 +1,4 @@
-# Last updated: 6/30/2025, 12:13:47 AM
+# Last updated: 6/30/2025, 12:13:56 AM
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         rows = len(board)
