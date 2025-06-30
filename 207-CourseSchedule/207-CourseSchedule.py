@@ -1,9 +1,9 @@
-# Last updated: 6/30/2025, 1:21:00 PM
+# Last updated: 6/30/2025, 1:21:52 PM
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         graph = defaultdict(list)
         in_degree = [0] * numCourses
-        print(in_degree)
+
         for crs, pre in prerequisites:
             graph[pre].append(crs)
             in_degree[crs] += 1
@@ -20,6 +20,3 @@ class Solution:
                     queue.append(crs)
         
         return taken == numCourses
-        
-        print(graph)
-        print(in_degree)
