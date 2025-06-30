@@ -1,4 +1,4 @@
-# Last updated: 6/30/2025, 1:18:12 AM
+# Last updated: 6/30/2025, 1:18:16 AM
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         window = Counter()
