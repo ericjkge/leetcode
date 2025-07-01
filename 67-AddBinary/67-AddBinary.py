@@ -1,4 +1,4 @@
-# Last updated: 7/1/2025, 9:24:47 AM
+# Last updated: 7/1/2025, 9:26:13 AM
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
         i = len(a) - 1
@@ -13,7 +13,7 @@ class Solution:
             if j >= 0:
                 total += int(b[j])
                 j -= 1
-            ans.append(str(total % 2))
             carry = total // 2
+            ans.append(str(total % 2))
 
         return "".join(reversed(ans))
