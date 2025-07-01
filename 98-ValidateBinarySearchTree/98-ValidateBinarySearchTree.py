@@ -1,4 +1,4 @@
-# Last updated: 7/1/2025, 12:56:48 PM
+# Last updated: 7/1/2025, 12:59:11 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -17,8 +17,9 @@ class Solution:
         ans = []
         dfs(root)
 
-        for i in range(len(ans)):
-            if i > 0 and ans[i] <= ans[i - 1]:
+        for i in range(1, len(ans)):
+            if ans[i] > ans[i - 1]:
+                continue
+            else:
                 return False
-        
         return True
