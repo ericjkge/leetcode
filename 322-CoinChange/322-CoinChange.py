@@ -1,4 +1,4 @@
-# Last updated: 6/28/2025, 3:31:54 PM
+# Last updated: 7/1/2025, 12:34:29 AM
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         memo = {}
@@ -13,6 +13,6 @@ class Solution:
 
             memo[i] = min(dp(i - coin) + 1 for coin in coins)
             return memo[i]
-            
+        
         ans = dp(amount)
         return ans if ans != float("inf") else -1
