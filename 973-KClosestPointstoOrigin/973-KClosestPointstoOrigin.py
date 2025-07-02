@@ -1,4 +1,4 @@
-# Last updated: 7/2/2025, 2:21:54 PM
+# Last updated: 7/2/2025, 2:21:59 PM
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         dists = []
