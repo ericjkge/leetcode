@@ -1,13 +1,10 @@
-# Last updated: 7/2/2025, 12:51:30 PM
-import heapq
-from collections import Counter, deque
-
+# Last updated: 7/2/2025, 12:54:58 PM
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
         freq = Counter(tasks)
         max_heap = [-f for f in freq.values()]
         heapq.heapify(max_heap)
-        cooldown = deque()  # (ready_time, -count)
+        cooldown = deque() # ready time, count
         time = 0
 
         while max_heap or cooldown:
@@ -17,8 +14,10 @@ class Solution:
                 count = heapq.heappop(max_heap) + 1
                 if count != 0:
                     cooldown.append((time + n, count))
-
+            
             if cooldown and cooldown[0][0] == time:
-                heapq.heappush(max_heap, cooldown.popleft()[1])
-
+                time, count = cooldown.popleft()
+                heapq.heappush(max_heap, count)
+        
         return time
+    
