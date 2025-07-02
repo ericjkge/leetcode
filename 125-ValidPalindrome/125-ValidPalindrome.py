@@ -1,4 +1,4 @@
-# Last updated: 7/2/2025, 6:00:22 PM
+# Last updated: 7/2/2025, 6:05:41 PM
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         left, right = 0, len(s) - 1
