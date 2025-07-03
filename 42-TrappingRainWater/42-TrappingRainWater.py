@@ -1,4 +1,4 @@
-# Last updated: 6/25/2025, 12:15:50 AM
+# Last updated: 7/3/2025, 3:44:48 PM
 class Solution:
     def trap(self, height: List[int]) -> int:
         left, right = 0, len(height) - 1
@@ -14,3 +14,4 @@ class Solution:
                 mright = max(height[right], mright)
                 water += mright - height[right]
         return water
+
