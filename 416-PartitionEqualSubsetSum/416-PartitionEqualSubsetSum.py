@@ -1,4 +1,4 @@
-# Last updated: 6/29/2025, 3:56:59 PM
+# Last updated: 7/3/2025, 4:53:26 PM
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         total = sum(nums)
@@ -6,10 +6,13 @@ class Solution:
             return False
         
         target = total // 2
-        dp = [False] * (target + 1)
-        dp[0] = True
-        for num in nums:
-            for j in range(target, num - 1, -1):
-                dp[j] = dp[j] or dp[j - num]
-        
-        return dp[target]
+        @cache
+        def dfs(i, curr):
+            if curr == target:
+                return True
+            if curr > target or i == len(nums):
+                return False
+
+            return dfs(i + 1, curr + nums[i]) or dfs(i + 1, curr)
+
+        return dfs(0, 0) 
