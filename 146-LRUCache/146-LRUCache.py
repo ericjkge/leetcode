@@ -1,9 +1,9 @@
-# Last updated: 7/2/2025, 11:21:36 PM
+# Last updated: 7/2/2025, 11:34:55 PM
 class Node:
-    def __init__(self, key, val):
+    def __init__(self, key, value):
         self.key = key
-        self.val = val
-        self.next = self.prev = None
+        self.val = value
+        self.left = self.right = None
 
 class LRUCache:
 
@@ -11,20 +11,18 @@ class LRUCache:
         self.capacity = capacity
         self.cache = {}
         self.left, self.right = Node(0, 0), Node(0, 0)
-        self.left.next = self.right
-        self.right.prev = self.left
+        self.left.next, self.right.prev = self.right, self.left
 
     def add(self, node):
-        prev = self.right.prev
-        self.right.prev = node
-        prev.next = node
-        node.next = self.right
-        node.prev = prev
+        nxt = self.left.next
+        self.left.next = node
+        nxt.prev = node
+        node.prev, node.next = self.left, nxt
 
     def remove(self, node):
-        nxt, prev = node.next, node.prev
-        prev.next = nxt
-        nxt.prev = prev
+        prev = node.prev
+        nxt = node.next
+        prev.next, nxt.prev = nxt, prev
 
     def get(self, key: int) -> int:
         if key in self.cache:
@@ -40,9 +38,10 @@ class LRUCache:
         self.add(self.cache[key])
 
         if len(self.cache) > self.capacity:
-            lru = self.left.next
+            lru = self.right.prev
             self.remove(lru)
             del self.cache[lru.key]
+
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
