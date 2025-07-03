@@ -1,4 +1,4 @@
-# Last updated: 6/5/2025, 3:26:08 PM
+# Last updated: 7/3/2025, 5:03:19 PM
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -6,13 +6,10 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-
-        mapping = defaultdict()
+        hashmap = {}
         for i in range(len(nums)):
             complement = target - nums[i]
-            if complement in mapping:
-                return i, mapping[complement]
-            mapping[nums[i]] = i
-
-        return -1
-        
+            if complement in hashmap:
+                return [i, hashmap[target - nums[i]]]
+            hashmap[nums[i]] = i
+            
