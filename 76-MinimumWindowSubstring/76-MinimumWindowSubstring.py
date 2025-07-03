@@ -1,4 +1,4 @@
-# Last updated: 7/3/2025, 5:34:23 PM
+# Last updated: 7/3/2025, 5:34:28 PM
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         if len(t) > len(s):
