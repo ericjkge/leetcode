@@ -1,4 +1,4 @@
-# Last updated: 7/2/2025, 11:21:32 PM
+# Last updated: 7/2/2025, 11:21:36 PM
 class Node:
     def __init__(self, key, val):
         self.key = key
