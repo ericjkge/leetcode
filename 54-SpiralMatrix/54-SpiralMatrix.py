@@ -1,4 +1,4 @@
-# Last updated: 7/3/2025, 12:03:25 AM
+# Last updated: 7/3/2025, 12:12:24 AM
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         top, bottom = 0, len(matrix)
@@ -13,7 +13,7 @@ class Solution:
                 ans.append(matrix[i][right - 1])
             right -= 1
 
-            if not(left < right and top < bottom):
+            if len(ans) == len(matrix) * len(matrix[0]):
                 break
 
             for i in range(right - 1, left - 1, -1):
