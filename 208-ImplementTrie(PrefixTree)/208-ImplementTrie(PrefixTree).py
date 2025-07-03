@@ -1,4 +1,4 @@
-# Last updated: 6/30/2025, 2:22:30 PM
+# Last updated: 7/3/2025, 1:32:00 AM
 class TrieNode:
     def __init__(self):
         self.children = {}
@@ -16,7 +16,7 @@ class Trie:
                 node.children[c] = TrieNode()
             node = node.children[c]
         node.is_end = True
-
+            
     def search(self, word: str) -> bool:
         node = self.root
         for c in word:
