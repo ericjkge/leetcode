@@ -1,4 +1,4 @@
-# Last updated: 7/2/2025, 11:19:40 PM
+# Last updated: 7/2/2025, 11:20:26 PM
 class Node:
     def __init__(self, key, val):
         self.key = key
@@ -34,7 +34,6 @@ class LRUCache:
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
             self.remove(self.cache[key])
-            del self.cache[key]
         self.cache[key] = Node(key, value)
         self.add(self.cache[key])
 
