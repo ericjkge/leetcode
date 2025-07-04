@@ -1,4 +1,4 @@
-# Last updated: 7/4/2025, 10:21:54 AM
+# Last updated: 7/4/2025, 10:21:58 AM
 class Solution:
     def isPathCrossing(self, path: str) -> bool:
         pos = (0, 0)
@@ -20,5 +20,4 @@ class Solution:
                 return True
             seen.add((nx, ny))
 
-        
         return False
