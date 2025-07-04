@@ -1,13 +1,12 @@
-# Last updated: 7/4/2025, 3:42:47 PM
+# Last updated: 7/4/2025, 3:45:20 PM
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
-        hashmap = defaultdict(int)
-        hashmap[0] = 1 # sum 0 seen once
-        ans = 0
-        prefix = 0
+        count = defaultdict(int)
+        prefix = ans = 0
+        count[0] = 1
         for num in nums:
             prefix += num
-            ans += hashmap[prefix - goal]
-            hashmap[prefix] += 1
+            ans += count[prefix - goal]
+            count[prefix] += 1
         
         return ans
