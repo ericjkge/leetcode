@@ -1,4 +1,4 @@
-# Last updated: 7/3/2025, 10:03:29 PM
+# Last updated: 7/3/2025, 10:03:46 PM
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
         """
@@ -12,4 +12,3 @@ class Solution:
             else:
                 zeros.append(num)
         nums[:] = nonzeros + zeros
-        return nums
