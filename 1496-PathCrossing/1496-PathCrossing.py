@@ -1,9 +1,8 @@
-# Last updated: 7/4/2025, 10:21:58 AM
+# Last updated: 7/4/2025, 10:23:03 AM
 class Solution:
     def isPathCrossing(self, path: str) -> bool:
-        pos = (0, 0)
-        seen = set()
-        seen.add((0, 0))
+        x = y = 0
+        seen = {(0, 0)}
         directions = {
             "N":(0, 1),
             "S":(0, -1),
@@ -12,12 +11,10 @@ class Solution:
         }
 
         for p in path:
-            x, y = pos
             dx, dy = directions[p]
-            nx, ny = x + dx, y + dy
-            pos = (nx, ny)
-            if (nx, ny) in seen:
+            x, y = x + dx, y + dy
+            if (x, y) in seen:
                 return True
-            seen.add((nx, ny))
+            seen.add((x, y))
 
         return False
