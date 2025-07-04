@@ -1,14 +1,12 @@
-# Last updated: 7/3/2025, 10:03:46 PM
+# Last updated: 7/3/2025, 10:15:44 PM
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
-        zeros = []
-        nonzeros = [] 
-        for num in nums:
-            if num != 0:
-                nonzeros.append(num)
-            else:
-                zeros.append(num)
-        nums[:] = nonzeros + zeros
+        tracker = pointer = 0
+        while pointer < len(nums):
+            if nums[pointer] != 0:
+                nums[pointer], nums[tracker] = nums[tracker], nums[pointer]
+                tracker += 1
+            pointer += 1
