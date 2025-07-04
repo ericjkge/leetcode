@@ -1,4 +1,4 @@
-# Last updated: 7/3/2025, 11:04:20 PM
+# Last updated: 7/3/2025, 11:04:32 PM
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
         vowels = set("aeiou")
