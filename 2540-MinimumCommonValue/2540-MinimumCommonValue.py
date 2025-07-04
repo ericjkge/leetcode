@@ -1,4 +1,4 @@
-# Last updated: 7/3/2025, 9:53:08 PM
+# Last updated: 7/3/2025, 9:53:22 PM
 class Solution:
     def getCommon(self, nums1: List[int], nums2: List[int]) -> int:
         p1 = p2 = 0
