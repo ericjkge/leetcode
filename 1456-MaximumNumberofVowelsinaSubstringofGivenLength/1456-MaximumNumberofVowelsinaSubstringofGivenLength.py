@@ -1,7 +1,7 @@
-# Last updated: 7/3/2025, 11:03:29 PM
+# Last updated: 7/3/2025, 11:04:13 PM
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
-        vowels = ["a", "e", "i", "o", "u"]
+        vowels = set("aeiou")
         max_vowels = 0
         left = counter = 0
 
