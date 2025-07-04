@@ -1,13 +1,11 @@
-# Last updated: 7/4/2025, 10:31:13 AM
+# Last updated: 7/4/2025, 10:32:41 AM
 class Solution:
     def sumOfUnique(self, nums: List[int]) -> int:
-        hashmap = defaultdict()
-        for num in nums:
-            hashmap[num] = hashmap.get(num, 0) + 1
+        count = Counter(nums)
+
+        total = 0
+        for num, freq in count.items():
+            if freq == 1:
+                total += num
         
-        unique = []
-        for key in hashmap:
-            if hashmap[key] == 1:
-                unique.append(key)
-        
-        return sum(unique) if unique else 0
+        return total
