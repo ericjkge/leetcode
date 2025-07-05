@@ -1,4 +1,4 @@
-# Last updated: 7/2/2025, 1:54:41 PM
+# Last updated: 7/5/2025, 10:35:30 AM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -10,12 +10,8 @@ class Solution:
         def dfs(node):
             if not node:
                 return (True, 0)
-            
-            left = dfs(node.left)
-            right = dfs(node.right)
-
-            balanced = left[0] and right[0] and abs(left[1] - right[1]) <= 1
-
-            return (balanced, 1 + max(left[1], right[1]))
+            lbalance, lheight = dfs(node.left)
+            rbalance, rheight = dfs(node.right)
+            return (lbalance and rbalance and abs(lheight-rheight) < 2, max(lheight, rheight) + 1)
         
         return dfs(root)[0]
