@@ -1,4 +1,4 @@
-# Last updated: 7/5/2025, 3:26:36 PM
+# Last updated: 7/5/2025, 3:29:38 PM
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -6,10 +6,10 @@
 #         self.next = next
 class Solution:
     def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        dummy = ListNode(0, head)
-        initial = slow = fast = dummy
+        initial = slow = fast = head
+        fast = fast.next
 
-        for _ in range(k):
+        for _ in range(k - 1):
             initial = initial.next
             fast = fast.next
         
@@ -21,4 +21,4 @@ class Solution:
         initial.val = slow.val
         slow.val = temp
 
-        return dummy.next
+        return head
