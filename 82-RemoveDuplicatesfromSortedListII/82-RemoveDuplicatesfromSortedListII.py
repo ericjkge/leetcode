@@ -1,4 +1,4 @@
-# Last updated: 7/5/2025, 3:03:59 PM
+# Last updated: 7/5/2025, 3:10:04 PM
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -6,9 +6,6 @@
 #         self.next = next
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head:
-            return None
-
         dummy = ListNode(0, head)
         slow = dummy
         fast = head
@@ -22,7 +19,5 @@ class Solution:
             else:
                 slow = fast
                 fast = fast.next
-
-
+        
         return dummy.next
-
