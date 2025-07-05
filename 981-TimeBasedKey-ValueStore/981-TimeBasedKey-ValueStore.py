@@ -1,4 +1,4 @@
-# Last updated: 7/5/2025, 11:48:58 AM
+# Last updated: 7/5/2025, 11:54:29 AM
 class TimeMap:
 
     def __init__(self):
@@ -8,14 +8,10 @@ class TimeMap:
         self.dict[key].append((value, timestamp))
 
     def get(self, key: str, timestamp: int) -> str:
-        if key not in self.dict:
+        if key not in self.dict or timestamp < self.dict[key][0][1]:
             return ""
         
         vals = self.dict[key]
-
-        if timestamp < vals[0][1]:
-            return ""
-
         left = 0
         right = len(vals) - 1
 
