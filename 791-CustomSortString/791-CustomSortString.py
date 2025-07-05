@@ -1,4 +1,4 @@
-# Last updated: 7/4/2025, 10:41:46 PM
+# Last updated: 7/4/2025, 10:41:51 PM
 class Solution:
     def customSortString(self, order: str, s: str) -> str:
         priority = {char:index for index, char in enumerate(order)} # index, char
