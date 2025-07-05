@@ -1,4 +1,4 @@
-# Last updated: 7/2/2025, 11:02:32 AM
+# Last updated: 7/4/2025, 11:41:39 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -14,4 +14,3 @@ class Solution:
             return self.lowestCommonAncestor(root.right, p, q)
         else:
             return root
-        
