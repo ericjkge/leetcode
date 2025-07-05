@@ -1,13 +1,15 @@
-# Last updated: 7/4/2025, 10:41:51 PM
+# Last updated: 7/4/2025, 10:49:48 PM
 class Solution:
     def customSortString(self, order: str, s: str) -> str:
-        priority = {char:index for index, char in enumerate(order)} # index, char
-        string = list(s)
+        count = Counter(s)
         ans = []
 
-        for char in priority:
-            while char in string:
-                ans.append(char)
-                string.remove(char)
+        for char in order:
+            if char in count:
+                ans.append(char * count[char])
+                del count[char]
         
-        return "".join(ans + string)
+        for char, freq in count.items():
+            ans.append(char * freq)
+        
+        return "".join(ans)
