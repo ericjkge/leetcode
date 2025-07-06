@@ -1,4 +1,4 @@
-# Last updated: 7/5/2025, 8:55:32 PM
+# Last updated: 7/5/2025, 8:57:03 PM
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -25,7 +25,7 @@ class Solution:
         
         # 3. Scan twin sums
         node = head
-        for _ in range(counter):
+        while prev:
             max_sum = max(max_sum, prev.val + node.val)
             prev = prev.next
             node = node.next
