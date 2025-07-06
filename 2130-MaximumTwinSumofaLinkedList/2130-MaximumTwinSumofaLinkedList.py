@@ -1,4 +1,4 @@
-# Last updated: 7/5/2025, 8:57:03 PM
+# Last updated: 7/5/2025, 8:57:11 PM
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -6,12 +6,11 @@
 #         self.next = next
 class Solution:
     def pairSum(self, head: Optional[ListNode]) -> int:
-        max_sum = counter = 0
+        max_sum = 0
 
         # 1. Find mid
         slow = fast = head
         while fast and fast.next:
-            counter += 1
             slow = slow.next
             fast = fast.next.next
 
