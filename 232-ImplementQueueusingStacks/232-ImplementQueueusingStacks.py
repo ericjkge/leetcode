@@ -1,4 +1,4 @@
-# Last updated: 7/4/2025, 11:34:18 PM
+# Last updated: 7/6/2025, 1:17:39 AM
 class MyQueue:
 
     def __init__(self):
@@ -23,6 +23,8 @@ class MyQueue:
         if not self.stack2:
             while self.stack1:
                 self.stack2.append(self.stack1.pop())
+        
+
 
 # Your MyQueue object will be instantiated and called as such:
 # obj = MyQueue()
