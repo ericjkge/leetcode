@@ -1,10 +1,10 @@
-# Last updated: 7/7/2025, 2:45:07 PM
+# Last updated: 7/7/2025, 2:56:47 PM
 class Solution:
     def sumSubarrayMins(self, arr: List[int]) -> int:
         MOD = 10 ** 9 + 7
         n = len(arr)
 
-        # PLE
+        # PLE (previous less element)
         ple = [0] * n
         stack = []
         for i in range(n):
@@ -13,8 +13,8 @@ class Solution:
                 counter += stack.pop()[1]
             ple[i] = counter
             stack.append((arr[i], counter))
-
-        # NLE
+        
+        # NLE (next less element)
         nle = [0] * n
         stack = []
         for i in range(n - 1, -1, -1):
@@ -26,5 +26,7 @@ class Solution:
         
         ans = 0
         for i in range(n):
-            ans = (ans + ple[i] * nle[i] * arr[i]) % MOD
+            ans = (ans + arr[i] * ple[i] * nle[i]) % MOD
         return ans
+        
+                
