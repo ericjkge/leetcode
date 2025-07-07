@@ -1,10 +1,14 @@
-# Last updated: 7/7/2025, 10:23:48 AM
+# Last updated: 7/7/2025, 10:36:16 AM
 class Solution:
     def finalPrices(self, prices: List[int]) -> List[int]:
-        # remove next smallest value from current
-        for i in range(len(prices)):
-            for j in range(i + 1, len(prices)):
-                if prices[j] <= prices[i]:
-                    prices[i] = prices[i] - prices[j]
-                    break
-        return prices
+        stack = []
+        ans = prices[:]
+
+        for i in range(len(prices) - 1, -1, -1):
+            while stack and stack[-1] > prices[i]:
+                stack.pop()
+            if stack:
+                ans[i] -= stack[-1]
+            stack.append(prices[i])
+        
+        return ans
