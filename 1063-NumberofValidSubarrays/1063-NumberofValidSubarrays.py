@@ -1,4 +1,4 @@
-# Last updated: 7/7/2025, 11:12:07 AM
+# Last updated: 7/7/2025, 11:25:18 AM
 class Solution:
     def validSubarrays(self, nums: List[int]) -> int:
         stack = []
