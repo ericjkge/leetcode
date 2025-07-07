@@ -1,4 +1,4 @@
-# Last updated: 7/7/2025, 3:41:10 PM
+# Last updated: 7/7/2025, 3:55:03 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -7,18 +7,11 @@
 #         self.right = right
 class Solution:
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        leaves1 = []
-        leaves2 = []
-        def dfs(node, stack):
-            if not node:
-                return
-            if not node.left and not node.right:
-                stack.append(node.val)
-                return
-            dfs(node.left, stack)
-            dfs(node.right, stack)
+        def dfs(node):
+            if node:
+                if not node.left and not node.right:
+                    yield node.val
+                yield from dfs(node.left)
+                yield from dfs(node.right)
         
-        dfs(root1, leaves1)
-        dfs(root2, leaves2)
-
-        return leaves1 == leaves2
+        return list(dfs(root1)) == list(dfs(root2))
