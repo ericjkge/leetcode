@@ -1,4 +1,4 @@
-# Last updated: 7/7/2025, 12:47:31 AM
+# Last updated: 7/7/2025, 12:47:44 AM
 class Solution:
     def predictPartyVictory(self, senate: str) -> str:
         r_queue = deque()
@@ -14,7 +14,7 @@ class Solution:
             r = r_queue.popleft()
             d = d_queue.popleft()
             if r < d:
-                r_queue.append(len(senate) + 1 + r)
+                r_queue.append(len(senate) + r)
             else:
                 d_queue.append(len(senate) + d)
     
