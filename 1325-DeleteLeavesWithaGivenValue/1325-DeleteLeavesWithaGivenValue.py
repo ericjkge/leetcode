@@ -1,4 +1,4 @@
-# Last updated: 7/8/2025, 12:09:11 PM
+# Last updated: 7/8/2025, 12:13:27 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -7,21 +7,16 @@
 #         self.right = right
 class Solution:
     def removeLeafNodes(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
-        def dfs(node): # True means keep
-            if not node:
-                return True
+        # node.val == target and not node.left and not node.right
+        def dfs(n):
+            if not n:
+                return None
             
-            if not dfs(node.left):
-                node.left = None
-            
-            if not dfs(node.right):
-                node.right = None
+            n.left = dfs(n.left)
+            n.right = dfs(n.right)
 
-            if not node.left and not node.right and node.val == target:
-                return False
-            return True
-        
-        dfs(root)
-        if not root.left and not root.right and root.val == target:
-            return None
-        return root
+            if n.val == target and not n.left and not n.right:
+                return None
+            
+            return n
+        return dfs(root)
