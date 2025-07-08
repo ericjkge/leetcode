@@ -1,14 +1,12 @@
-# Last updated: 7/7/2025, 10:29:28 PM
+# Last updated: 7/7/2025, 11:04:58 PM
 class Solution:
     def subArrayRanges(self, nums: List[int]) -> int:
-        n = len(nums)
-        answer = 0
-        
-        for left in range(n):
-            min_val, max_val = math.inf, -math.inf
-            for right in range(left, n):
-                max_val = max(max_val, nums[right])
+        ans = 0
+        for left in range(len(nums)):
+            min_val, max_val = float("inf"), -float("inf")
+            for right in range(left, len(nums)):
                 min_val = min(min_val, nums[right])
-                answer += max_val - min_val
-                
-        return answer
+                max_val = max(max_val, nums[right])
+                ans += (max_val - min_val)
+        
+        return ans
