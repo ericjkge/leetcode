@@ -1,4 +1,4 @@
-# Last updated: 7/8/2025, 9:52:24 AM
+# Last updated: 7/8/2025, 9:55:38 AM
 class Solution:
     def pivotIndex(self, nums: List[int]) -> int:
         prefix = []
@@ -17,18 +17,9 @@ class Solution:
                 suffix[i] = suffix[i + 1] + nums[i]
         
         # handle edges
-        if len(nums) == 1:
-            return 0
-     
-
-        if suffix[1] == 0:
-            return 0
-
-        for i in range(1, len(nums) - 1):
-            if prefix[i - 1] == suffix[i + 1]:
+        for i in range(len(nums)):
+            left = prefix[i - 1] if i > 0 else 0
+            right = suffix[i + 1] if i < len(nums) - 1 else 0
+            if left == right:
                 return i
-        
-        if prefix[len(nums) - 2] == 0:
-            return len(nums) - 1
-
         return -1
