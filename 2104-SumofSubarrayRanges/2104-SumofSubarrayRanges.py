@@ -1,4 +1,4 @@
-# Last updated: 7/7/2025, 10:29:23 PM
+# Last updated: 7/7/2025, 10:29:28 PM
 class Solution:
     def subArrayRanges(self, nums: List[int]) -> int:
         n = len(nums)
