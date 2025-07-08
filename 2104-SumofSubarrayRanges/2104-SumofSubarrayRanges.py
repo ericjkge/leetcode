@@ -1,12 +1,22 @@
-# Last updated: 7/7/2025, 11:04:58 PM
+# Last updated: 7/7/2025, 11:12:03 PM
 class Solution:
     def subArrayRanges(self, nums: List[int]) -> int:
-        ans = 0
-        for left in range(len(nums)):
-            min_val, max_val = float("inf"), -float("inf")
-            for right in range(left, len(nums)):
-                min_val = min(min_val, nums[right])
-                max_val = max(max_val, nums[right])
-                ans += (max_val - min_val)
+        n, answer = len(nums), 0
+        stack = []
+
+        for right in range(n + 1):
+            while stack and (right == n or nums[stack[-1]] >= nums[right]):
+                mid = stack.pop()
+                left = -1 if not stack else stack[-1]
+                answer -= nums[mid] * (mid - left) * (right - mid)
+            stack.append(right)
         
-        return ans
+        stack.clear()
+        for right in range(n + 1):
+            while stack and (right == n or nums[stack[-1]] <= nums[right]):
+                mid = stack.pop()
+                left = -1 if not stack else stack[-1]
+                answer += nums[mid] * (mid - left) * (right - mid)
+            stack.append(right)
+        
+        return answer
