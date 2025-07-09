@@ -1,4 +1,4 @@
-# Last updated: 7/9/2025, 4:45:51 PM
+# Last updated: 7/9/2025, 4:46:05 PM
 class Solution:
     def getAncestors(self, n: int, edges: List[List[int]]) -> List[List[int]]:
         ans = []
