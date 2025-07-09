@@ -1,4 +1,4 @@
-# Last updated: 7/9/2025, 4:43:38 PM
+# Last updated: 7/9/2025, 4:45:51 PM
 class Solution:
     def getAncestors(self, n: int, edges: List[List[int]]) -> List[List[int]]:
         ans = []
@@ -9,11 +9,11 @@ class Solution:
         def dfs(node, ancestors):
             for child in graph[node]:
                 if child not in ancestors:
-                    ancestors.append(child)
+                    ancestors.add(child)
                     dfs(child, ancestors)
 
         for i in range(n):
-            ancestors = []
+            ancestors = set()
             dfs(i, ancestors)
             ans.append(sorted(ancestors))
 
