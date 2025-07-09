@@ -1,4 +1,4 @@
-# Last updated: 7/9/2025, 2:40:12 PM
+# Last updated: 7/9/2025, 2:40:16 PM
 class Solution:
     def numEnclaves(self, grid: List[List[int]]) -> int:
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
