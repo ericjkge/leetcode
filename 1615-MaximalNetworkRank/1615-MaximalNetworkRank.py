@@ -1,18 +1,20 @@
-# Last updated: 7/9/2025, 12:34:11 PM
+# Last updated: 7/9/2025, 12:46:00 PM
 class Solution:
     def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
-        graph = defaultdict(list)
-        for a, b in roads:
-            graph[a].append(b)
-            graph[b].append(a)
-        
+        degree = [0] * n
+        connected = set()
         ans = 0
+        for a, b in roads:
+            degree[a] += 1
+            degree[b] += 1
+            connected.add((a, b))
+            connected.add((b, a))
+        
         for i in range(n):
             for j in range(i + 1, n):
-                rank = len(graph[i]) + len(graph[j])
-                if j in graph[i]:
+                rank = degree[i] + degree[j]
+                if (i, j) in connected:
                     rank -= 1
                 ans = max(ans, rank)
-
-        print(graph)
-        return ans
+        
+        return ans 
