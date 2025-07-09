@@ -1,4 +1,4 @@
-# Last updated: 7/8/2025, 10:59:15 PM
+# Last updated: 7/8/2025, 11:03:42 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -10,26 +10,21 @@ class Solution:
         even = True
         queue = deque([root])
         while queue:
-            level = []
+            prev = None
             for _ in range(len(queue)):
+                node = queue.popleft()
                 if even:
-                    node = queue.popleft()
-                    if level and node.val <= level[-1] or node.val % 2 == 0:
+                    if prev and node.val <= prev or node.val % 2 == 0:
                         return False
-                    level.append(node.val)
-                    if node.left:
-                        queue.append(node.left)
-                    if node.right:
-                        queue.append(node.right)
                 else:
-                    node = queue.popleft()
-                    if level and node.val >= level[-1] or node.val % 2 == 1:
+                    if prev and node.val >= prev or node.val % 2 == 1:
                         return False
-                    level.append(node.val)
-                    if node.left:
-                        queue.append(node.left)
-                    if node.right:
-                        queue.append(node.right)
+                
+                prev = node.val
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
             even = not even
 
         return True
