@@ -1,4 +1,4 @@
-# Last updated: 7/9/2025, 12:34:07 PM
+# Last updated: 7/9/2025, 12:34:11 PM
 class Solution:
     def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
         graph = defaultdict(list)
