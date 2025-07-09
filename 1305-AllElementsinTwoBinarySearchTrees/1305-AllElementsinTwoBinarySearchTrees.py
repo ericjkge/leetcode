@@ -1,4 +1,4 @@
-# Last updated: 7/8/2025, 11:19:57 PM
+# Last updated: 7/8/2025, 11:24:30 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -15,22 +15,22 @@ class Solution:
             path.append(node.val)
             dfs(node.right, path)
 
-        tree1 = deque()
-        tree2 = deque()
+        tree1 = []
+        tree2 = []
         dfs(root1, tree1)
         dfs(root2, tree2)
         
         ans = []
-        while tree1 and tree2:
-            if tree1[0] < tree2[0]:
-                ans.append(tree1.popleft())
+        i = j = 0
+        while i < len(tree1) and j < len(tree2):
+            if tree1[i] < tree2[j]:
+                ans.append(tree1[i])
+                i += 1
             else:
-                ans.append(tree2.popleft())
+                ans.append(tree2[j])
+                j += 1
         
-        while tree1:
-            ans.append(tree1.popleft())
-        
-        while tree2:
-            ans.append(tree2.popleft())
+        ans.extend(tree1[i:])
+        ans.extend(tree2[j:])
 
         return ans
