@@ -1,4 +1,4 @@
-# Last updated: 7/9/2025, 1:03:39 AM
+# Last updated: 7/9/2025, 1:03:46 AM
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
         if len(trust) < n - 1:
