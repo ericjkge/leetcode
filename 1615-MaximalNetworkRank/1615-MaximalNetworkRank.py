@@ -1,4 +1,4 @@
-# Last updated: 7/9/2025, 12:46:00 PM
+# Last updated: 7/9/2025, 12:46:03 PM
 class Solution:
     def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
         degree = [0] * n
