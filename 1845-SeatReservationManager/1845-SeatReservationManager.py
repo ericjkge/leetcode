@@ -1,4 +1,4 @@
-# Last updated: 7/9/2025, 10:40:09 PM
+# Last updated: 7/9/2025, 10:40:34 PM
 class SeatManager:
 
     def __init__(self, n: int):
