@@ -1,4 +1,4 @@
-# Last updated: 7/10/2025, 5:01:58 PM
+# Last updated: 7/10/2025, 5:05:50 PM
 class Solution:
     def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
         counter = [0] * n
