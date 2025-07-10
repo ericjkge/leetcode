@@ -1,12 +1,17 @@
-# Last updated: 7/9/2025, 10:40:34 PM
+# Last updated: 7/9/2025, 11:02:17 PM
 class SeatManager:
 
     def __init__(self, n: int):
-        self.heap = [i for i in range(1, n + 1)]
-        heapq.heapify(self.heap)
+        self.marker = 1
+        self.heap = []
 
     def reserve(self) -> int:
-        return heapq.heappop(self.heap)
+        if self.heap:
+            return heapq.heappop(self.heap)
+        
+        seat = self.marker
+        self.marker += 1
+        return seat
 
     def unreserve(self, seatNumber: int) -> None:
         heapq.heappush(self.heap, seatNumber)
