@@ -1,4 +1,4 @@
-# Last updated: 7/10/2025, 4:16:32 PM
+# Last updated: 7/10/2025, 4:16:59 PM
 class Solution:
     def kSmallestPairs(self, nums1: List[int], nums2: List[int], k: int) -> List[List[int]]:
         heap = [(nums1[0] + nums2[0], 0, 0)]
