@@ -1,27 +1,28 @@
-# Last updated: 6/24/2025, 5:05:22 PM
+# Last updated: 7/9/2025, 9:50:01 PM
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
+        rows = len(grid)
+        cols = len(grid[0])
         queue = deque()
         time = fresh = 0
-        directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-        for row in range(len(grid)):
-            for col in range(len(grid[0])):
-                if grid[row][col] == 1:
+        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == 1:
                     fresh += 1
-                elif grid[row][col] == 2:
-                    queue.append([row, col])
-                
+                elif grid[r][c] == 2:
+                    queue.append((r, c))
+        
         while queue and fresh > 0:
             for _ in range(len(queue)):
-                x, y = queue.popleft()
-                for dx, dy in directions:
-                    nx, ny = x + dx, y + dy
-                    if 0 <= nx < len(grid) and 0 <= ny < len(grid[0]) and grid[nx][ny] == 1:
-                        grid[nx][ny] = 2
+                r, c = queue.popleft()
+                for dr, dc in directions:
+                    nr, nc = r + dr, c + dc
+                    if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 1:
+                        grid[nr][nc] = 2
                         fresh -= 1
-                        queue.append([nx, ny])
-                    else:
-                        continue
+                        queue.append((nr, nc))
             time += 1
-
-        return time if fresh == 0 else -1
+        
+        return time if not fresh else -1
