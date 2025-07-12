@@ -1,4 +1,4 @@
-# Last updated: 7/12/2025, 3:27:10 PM
+# Last updated: 7/12/2025, 3:30:45 PM
 class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
         costs.sort()
