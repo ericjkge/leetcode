@@ -1,8 +1,7 @@
-# Last updated: 7/12/2025, 3:25:07 PM
+# Last updated: 7/12/2025, 3:27:10 PM
 class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
-        costs = sorted(costs)
-        print(costs)
+        costs.sort()
         total = counter = 0
         while counter < len(costs) and total + costs[counter] <= coins:
             total += costs[counter]
