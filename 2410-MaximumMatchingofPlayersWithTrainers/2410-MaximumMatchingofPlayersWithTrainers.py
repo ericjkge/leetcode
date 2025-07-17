@@ -1,4 +1,4 @@
-# Last updated: 7/17/2025, 4:59:27 PM
+# Last updated: 7/17/2025, 5:00:16 PM
 class Solution:
     def matchPlayersAndTrainers(self, players: List[int], trainers: List[int]) -> int:
         counter = 0
