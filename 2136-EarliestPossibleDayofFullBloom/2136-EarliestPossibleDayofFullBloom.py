@@ -1,4 +1,4 @@
-# Last updated: 7/18/2025, 3:43:17 PM
+# Last updated: 7/18/2025, 3:43:27 PM
 class Solution:
     def earliestFullBloom(self, plantTime: List[int], growTime: List[int]) -> int:
         time = 0
