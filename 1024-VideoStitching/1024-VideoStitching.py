@@ -1,9 +1,8 @@
-# Last updated: 7/18/2025, 2:29:47 PM
+# Last updated: 7/18/2025, 2:30:36 PM
 class Solution:
     def videoStitching(self, clips: List[List[int]], time: int) -> int:
         counter = 1
         clips.sort()
-        print(clips)
 
         curr_end = zero_counter = 0
 
@@ -17,7 +16,6 @@ class Solution:
             return counter
 
         for start, end in clips:
-            print(counter, start, end)
             if start <= curr_end:
                 next_end = max(next_end, end)
             else:
