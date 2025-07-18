@@ -1,4 +1,4 @@
-# Last updated: 7/18/2025, 10:31:43 PM
+# Last updated: 7/18/2025, 10:31:47 PM
 class Solution:
     def maxDistance(self, nums1: List[int], nums2: List[int]) -> int:
         ans = 0
