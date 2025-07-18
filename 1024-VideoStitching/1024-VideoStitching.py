@@ -1,19 +1,10 @@
-# Last updated: 7/18/2025, 2:30:36 PM
+# Last updated: 7/18/2025, 2:32:52 PM
 class Solution:
     def videoStitching(self, clips: List[List[int]], time: int) -> int:
-        counter = 1
+        counter = 0
         clips.sort()
 
-        curr_end = zero_counter = 0
-
-        while zero_counter < len(clips) and clips[zero_counter][0] == 0:
-            curr_end = max(curr_end, clips[zero_counter][1])
-            zero_counter += 1
-
-        next_end = curr_end
-
-        if curr_end >= time: # Edge case for initial full clip
-            return counter
+        curr_end = next_end = 0
 
         for start, end in clips:
             if start <= curr_end:
