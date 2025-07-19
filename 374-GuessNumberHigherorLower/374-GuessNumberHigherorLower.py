@@ -1,4 +1,4 @@
-# Last updated: 7/18/2025, 9:33:20 PM
+# Last updated: 7/19/2025, 12:54:06 PM
 # The guess API is already defined for you.
 # @param num, your guess
 # @return -1 if num is higher than the picked number
@@ -9,10 +9,12 @@
 class Solution:
     def guessNumber(self, n: int) -> int:
         left, right = 1, n
-        while left < right:
+        while left <= right:
             mid = left + (right - left) // 2
-            if guess(mid) <= 0:
-                right = mid
+            if guess(mid) == 0:
+                return mid
+            if guess(mid) == -1:
+                right = mid - 1
             else:
                 left = mid + 1
-        return left
+        return -1 
