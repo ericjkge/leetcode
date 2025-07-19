@@ -1,17 +1,18 @@
-# Last updated: 7/19/2025, 9:17:21 PM
+# Last updated: 7/19/2025, 9:20:45 PM
 class Solution:
     def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
-        startTimes = []
-        endTimes = []
-        for start, end in flowers:
-            startTimes.append(start)
-            endTimes.append(end + 1)
+        starts = []
+        ends = []
 
-        startTimes.sort()
-        endTimes.sort()
+        for start, end in flowers:
+            starts.append(start)
+            ends.append(end + 1)
+        
+        starts.sort()
+        ends.sort()
         ans = []
 
-        def binarySearch(arr, target): # Goes out by 1
+        def binarySearch(arr, target): # Goes over by 1
             left, right = 0, len(arr)
             while left < right:
                 mid = left + (right - left) // 2
@@ -20,11 +21,8 @@ class Solution:
                 else:
                     right = mid
             return left
-
+        
         for person in people:
-            ans.append(binarySearch(startTimes, person) - binarySearch(endTimes, person))
-
+            ans.append(binarySearch(starts, person) - binarySearch(ends, person))
+        
         return ans
-
-        
-        
