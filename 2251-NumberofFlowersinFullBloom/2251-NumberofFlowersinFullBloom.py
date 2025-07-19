@@ -1,4 +1,4 @@
-# Last updated: 7/19/2025, 9:14:40 PM
+# Last updated: 7/19/2025, 9:14:52 PM
 class Solution:
     def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
         startTimes = []
@@ -9,8 +9,6 @@ class Solution:
 
         startTimes.sort()
         endTimes.sort()
-
-        print(startTimes, endTimes)
 
         ans = []
 
