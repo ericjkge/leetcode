@@ -1,4 +1,4 @@
-# Last updated: 7/19/2025, 9:17:11 PM
+# Last updated: 7/19/2025, 9:17:21 PM
 class Solution:
     def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
         startTimes = []
@@ -11,7 +11,7 @@ class Solution:
         endTimes.sort()
         ans = []
 
-        def binarySearch(arr, target): # goes out by 1
+        def binarySearch(arr, target): # Goes out by 1
             left, right = 0, len(arr)
             while left < right:
                 mid = left + (right - left) // 2
@@ -19,7 +19,7 @@ class Solution:
                     left = mid + 1
                 else:
                     right = mid
-            return left -1
+            return left
 
         for person in people:
             ans.append(binarySearch(startTimes, person) - binarySearch(endTimes, person))
