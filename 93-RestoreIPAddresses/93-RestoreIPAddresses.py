@@ -1,4 +1,4 @@
-# Last updated: 7/20/2025, 11:58:13 PM
+# Last updated: 7/21/2025, 12:00:51 AM
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
         ans = []
@@ -15,7 +15,6 @@ class Solution:
             
             for end in range(start, len(s)):
                 if is_valid(start, end):
-                    print(s[start:end + 1])
                     path.append(s[start:end + 1])
                     backtrack(end + 1, path)
                     path.pop()
