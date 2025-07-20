@@ -1,4 +1,4 @@
-# Last updated: 7/20/2025, 10:27:36 PM
+# Last updated: 7/20/2025, 10:29:07 PM
 class Solution:
     def getHappyString(self, n: int, k: int) -> str:
         ans = []
