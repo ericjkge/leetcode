@@ -1,9 +1,8 @@
-# Last updated: 7/20/2025, 12:08:33 AM
+# Last updated: 7/20/2025, 9:30:58 AM
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         ans = []
         counter = Counter(nums)
-        nums.sort()
 
         def backtrack(path):
             if len(path) == len(nums):
