@@ -1,4 +1,4 @@
-# Last updated: 7/20/2025, 4:17:10 PM
+# Last updated: 7/20/2025, 4:20:46 PM
 class Solution:
     def latestDayToCross(self, row: int, col: int, cells: List[List[int]]) -> int:
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
@@ -26,10 +26,10 @@ class Solution:
             seen = set()
             grid = [[0] * col for _ in range(row)]        
             mid = left + (right - left + 1) // 2
-            for x, y in cells[:mid + 1]:
+            for x, y in cells[:mid]:
                 grid[x - 1][y - 1] = 1
             if canCross(mid):
                 left = mid
             else:
                 right = mid - 1
-        return left + 1
+        return left
