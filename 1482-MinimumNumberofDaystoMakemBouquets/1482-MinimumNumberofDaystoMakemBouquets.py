@@ -1,4 +1,4 @@
-# Last updated: 7/20/2025, 2:29:33 PM
+# Last updated: 7/20/2025, 2:29:42 PM
 class Solution:
     def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
         if len(bloomDay) < m * k:
@@ -16,15 +16,11 @@ class Solution:
                     flowers = 0
             return count >= m
         
-        print(canMake(7))
-
         left, right = 0, max(bloomDay)
         while left < right:
             mid = left + (right - left) // 2
             if canMake(mid):
-                print(f"True {mid}")
                 right = mid
             else:
-                print(f"False {mid}")
                 left = mid + 1
         return left
