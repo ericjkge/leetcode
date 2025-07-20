@@ -1,16 +1,10 @@
-# Last updated: 7/21/2025, 12:23:17 AM
+# Last updated: 7/21/2025, 12:25:30 AM
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         ans = []
 
-        def isPalindrome(word):
-            l, r = 0, len(word) - 1
-            while l < r:
-                if word[l] != word[r]:
-                    return False
-                l += 1
-                r -= 1
-            return True
+        def isPalindrome(s):
+            return s == s[::-1]
 
         def backtrack(start, path):
             if start == len(s):
