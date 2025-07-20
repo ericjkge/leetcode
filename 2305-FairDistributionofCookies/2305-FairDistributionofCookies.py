@@ -1,4 +1,4 @@
-# Last updated: 7/20/2025, 9:28:52 PM
+# Last updated: 7/20/2025, 9:29:35 PM
 class Solution:
     def distributeCookies(self, cookies: List[int], k: int) -> int:
         # Backtracking
