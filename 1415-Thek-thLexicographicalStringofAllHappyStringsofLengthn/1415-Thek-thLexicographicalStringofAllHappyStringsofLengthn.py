@@ -1,8 +1,8 @@
-# Last updated: 7/20/2025, 10:27:16 PM
+# Last updated: 7/20/2025, 10:27:36 PM
 class Solution:
     def getHappyString(self, n: int, k: int) -> str:
         ans = []
-        
+
         def backtrack(path):
             if len(path) == n:
                 ans.append(path[:])
@@ -19,5 +19,4 @@ class Solution:
         if len(ans) < k:
             return ""
 
-        ans.sort()
         return "".join(ans[k - 1])
