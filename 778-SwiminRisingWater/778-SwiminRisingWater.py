@@ -1,4 +1,4 @@
-# Last updated: 7/20/2025, 3:23:48 PM
+# Last updated: 7/20/2025, 3:29:47 PM
 class Solution:
     def swimInWater(self, grid: List[List[int]]) -> int:
         n = len(grid)
@@ -18,12 +18,10 @@ class Solution:
         
         left, right = 0, max(max(row) for row in grid)
         while left < right:
-            print(left, right)
             seen = set()
             mid = left + (right - left) // 2
             if grid[0][0] <= mid and dfs((0, 0), mid):
                 right = mid
             else:
-                print(mid, "False")
                 left = mid + 1
         return left
