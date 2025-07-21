@@ -1,9 +1,9 @@
-# Last updated: 7/21/2025, 4:19:26 PM
+# Last updated: 7/21/2025, 4:25:35 PM
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         memo = {}
 
-        def dp(i, total): # no. of valid assignments using nums[i:] from total
+        def dp(i, total):
             if i == len(nums):
                 return 1 if total == target else 0
             
