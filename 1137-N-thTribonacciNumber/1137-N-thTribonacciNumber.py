@@ -1,14 +1,8 @@
-# Last updated: 7/21/2025, 2:40:01 PM
+# Last updated: 7/21/2025, 2:40:46 PM
 class Solution:
     def tribonacci(self, n: int) -> int:
-        memo = defaultdict(int)
+        memo = {0: 0, 1: 1, 2: 1}
         def dp(n):
-            if n == 0:
-                return 0
-
-            if n == 1 or n == 2:
-                return 1
-
             if n in memo:
                 return memo[n]
             
