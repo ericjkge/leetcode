@@ -1,4 +1,4 @@
-# Last updated: 7/21/2025, 2:40:46 PM
+# Last updated: 7/21/2025, 2:40:50 PM
 class Solution:
     def tribonacci(self, n: int) -> int:
         memo = {0: 0, 1: 1, 2: 1}
