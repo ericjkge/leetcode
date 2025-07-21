@@ -1,37 +1,32 @@
-# Last updated: 7/21/2025, 1:49:43 PM
+# Last updated: 7/21/2025, 1:58:14 PM
 class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
-        rows = len(grid)
-        cols = len(grid[0])
-        obstacles = ans = 0
+        rows, cols = len(grid), len(grid[0])
+        total = 0
+        start = None
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-        start = (0, 0)
 
         for r in range(rows):
             for c in range(cols):
-                if grid[r][c] == -1:
-                    obstacles += 1
+                if grid[r][c] != -1:
+                    total += 1
                 if grid[r][c] == 1:
                     start = (r, c)
         
-        total = rows * cols - obstacles # -1 for start
-
-        def backtrack(used, path):
+        ans = 0
+        def backtrack(r, c, used):
             nonlocal ans
-            if len(path) == total:
+            if len(used) == total:
                 ans += 1
                 return
             
-            r, c = path[-1]
             for dr, dc in directions:
                 nr, nc = r + dr, c + dc
-                if nr >= rows or nr < 0 or nc >= cols or nc < 0 or (nr, nc) in used or (grid[nr][nc] == 2 and len(path) != total - 1) or grid[nr][nc] == -1:
+                if nr >= rows or nr < 0 or nc >= cols or nc < 0 or (nr, nc) in used or (grid[nr][nc] == 2 and len(used) != total - 1) or grid[nr][nc] == -1:
                     continue
-                path.append((nr, nc))
                 used.add((nr, nc))
-                backtrack(used, path)
-                path.pop()
+                backtrack(nr, nc, used)
                 used.remove((nr, nc))
             
-        backtrack({start}, [start])
+        backtrack(start[0], start[1], {start})
         return ans
