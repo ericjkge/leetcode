@@ -1,4 +1,4 @@
-# Last updated: 7/21/2025, 1:58:14 PM
+# Last updated: 7/21/2025, 2:00:12 PM
 class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
         rows, cols = len(grid), len(grid[0])
@@ -22,7 +22,7 @@ class Solution:
             
             for dr, dc in directions:
                 nr, nc = r + dr, c + dc
-                if nr >= rows or nr < 0 or nc >= cols or nc < 0 or (nr, nc) in used or (grid[nr][nc] == 2 and len(used) != total - 1) or grid[nr][nc] == -1:
+                if not (0 <= nr < rows and 0 <= nc < cols) or (nr, nc) in used or (grid[nr][nc] == 2 and len(used) != total - 1) or grid[nr][nc] == -1:
                     continue
                 used.add((nr, nc))
                 backtrack(nr, nc, used)
