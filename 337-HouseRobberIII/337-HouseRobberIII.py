@@ -1,4 +1,4 @@
-# Last updated: 7/22/2025, 4:33:57 PM
+# Last updated: 7/22/2025, 4:34:04 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -7,6 +7,7 @@
 #         self.right = right
 class Solution:
     def rob(self, root: Optional[TreeNode]) -> int:
+        @cache
         def dp(node):
             if not node:
                 return (0, 0)
