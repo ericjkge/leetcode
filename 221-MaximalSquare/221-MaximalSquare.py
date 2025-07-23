@@ -1,11 +1,10 @@
-# Last updated: 7/23/2025, 11:50:58 PM
+# Last updated: 7/23/2025, 11:51:49 PM
 class Solution:
     def maximalSquare(self, matrix: List[List[str]]) -> int:
         rows = len(matrix) - 1
         cols = len(matrix[0]) - 1
         memo = {}
 
-        @cache
         def dp(i, j): # Side length of max square with top left at (i, j)
             if i > rows or j > cols:
                 return 0
