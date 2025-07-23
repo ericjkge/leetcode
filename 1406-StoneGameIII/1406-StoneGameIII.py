@@ -1,10 +1,10 @@
-# Last updated: 7/24/2025, 12:19:15 AM
+# Last updated: 7/24/2025, 12:22:42 AM
 class Solution:
     def stoneGameIII(self, stoneValue: List[int]) -> str:
 
         @cache
         def dp(i): # Max score difference in stoneValue[i:]
-            if i >= len(stoneValue):
+            if i == len(stoneValue):
                 return 0
             
             result = -float("inf")
