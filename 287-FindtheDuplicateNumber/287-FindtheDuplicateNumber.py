@@ -1,4 +1,4 @@
-# Last updated: 7/25/2025, 12:05:37 AM
+# Last updated: 7/25/2025, 12:05:41 AM
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         left, right = 1, len(nums) - 1
