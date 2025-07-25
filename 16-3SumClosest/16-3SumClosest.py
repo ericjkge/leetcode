@@ -1,11 +1,11 @@
-# Last updated: 7/25/2025, 11:06:37 PM
+# Last updated: 7/25/2025, 11:06:45 PM
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         nums.sort()
         diff = float("inf")
         ans = None
         
-        for i in range(len(nums) - 2): # Prevent p1 index out of bounds
+        for i in range(len(nums) - 2):
             goal = target - nums[i]
             p1, p2 = i + 1, len(nums) - 1
             while p1 < p2: 
