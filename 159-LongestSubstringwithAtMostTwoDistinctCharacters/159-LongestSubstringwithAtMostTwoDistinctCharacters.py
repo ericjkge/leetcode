@@ -1,4 +1,4 @@
-# Last updated: 7/28/2025, 6:12:09 PM
+# Last updated: 7/28/2025, 6:12:43 PM
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         hashmap = {}
@@ -12,7 +12,7 @@ class Solution:
                 if hashmap[s[left]] == 0:
                     del hashmap[s[left]]
                 left += 1
-            ans = max(ans, sum(hashmap.values()))
+            ans = max(ans, right - left + 1)
             right += 1
         
         return ans
