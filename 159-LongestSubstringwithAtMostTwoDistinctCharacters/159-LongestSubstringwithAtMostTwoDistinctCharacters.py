@@ -1,4 +1,4 @@
-# Last updated: 7/28/2025, 6:12:43 PM
+# Last updated: 7/28/2025, 6:12:47 PM
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         hashmap = {}
