@@ -1,10 +1,10 @@
-# Last updated: 7/29/2025, 6:25:04 PM
+# Last updated: 7/29/2025, 6:29:32 PM
 class Solution:
 
     def __init__(self, w: List[int]):
         self.prefix = [w[0]]
         for i in range(1, len(w)):
-            self.prefix.append(self.prefix[i - 1] + w[i])
+            self.prefix.append(self.prefix[i - 1] + w[i]) # Target value range is (prefix[i - 1], prefix[i]] for index i
 
     def pickIndex(self) -> int:
         import random
