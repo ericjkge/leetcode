@@ -1,4 +1,4 @@
-# Last updated: 7/30/2025, 5:16:37 PM
+# Last updated: 7/30/2025, 7:24:37 PM
 class ListNode:
     def __init__(self, key=None, val=None):
         self.key = key
@@ -42,5 +42,4 @@ class LRUCache:
             if len(self.cache) > self.capacity:
                 lru = self.right.prev
                 self.remove(lru)
-                if lru.key in self.cache:
-                    del self.cache[lru.key]
+                del self.cache[lru.key]
