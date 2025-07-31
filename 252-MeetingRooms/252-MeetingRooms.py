@@ -1,4 +1,4 @@
-# Last updated: 7/31/2025, 11:22:30 PM
+# Last updated: 7/31/2025, 11:22:33 PM
 class Solution:
     def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
         intervals.sort()
