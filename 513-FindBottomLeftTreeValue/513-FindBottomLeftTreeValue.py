@@ -1,4 +1,4 @@
-# Last updated: 7/26/2025, 10:24:44 AM
+# Last updated: 8/1/2025, 5:14:54 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -7,19 +7,20 @@
 #         self.right = right
 class Solution:
     def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
-        self.ans = 0
         self.max_depth = 0
-
-        def dfs(root, depth):
-            if not root:
+        self.ans = root
+        
+        def dfs(node, depth):
+            if not node:
                 return
             
-            dfs(root.left, depth + 1)
-            dfs(root.right, depth + 1)
-
             if depth > self.max_depth:
                 self.max_depth = depth
-                self.ans = root.val
+                self.ans = node
+            
+            dfs(node.left, depth + 1)
+            dfs(node.right, depth + 1)
         
-        dfs(root, 1)
-        return self.ans
+        dfs(root, 0)
+        return self.ans.val
+        
