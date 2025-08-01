@@ -1,4 +1,4 @@
-# Last updated: 8/1/2025, 4:51:25 PM
+# Last updated: 8/1/2025, 4:51:31 PM
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
         heap = [(matrix[0][0], 0, 0)]
