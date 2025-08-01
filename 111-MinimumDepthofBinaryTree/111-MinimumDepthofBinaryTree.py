@@ -1,4 +1,4 @@
-# Last updated: 8/1/2025, 5:26:26 PM
+# Last updated: 8/1/2025, 5:35:15 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -7,18 +7,20 @@
 #         self.right = right
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+
         self.min_depth = float("inf")
+        queue = deque([(root, 1)])
+        done = False
         
-        def dfs(node, depth):
-            if not node:
-                return
-            
+        while queue:
+            node, depth = queue.popleft()
             if not node.left and not node.right:
-                self.min_depth = min(self.min_depth, depth)
-                return
-            
-            dfs(node.left, depth + 1)
-            dfs(node.right, depth + 1)
-        
-        dfs(root, 1)
-        return self.min_depth if self.min_depth != float("inf") else 0
+                return depth
+            if node.left:
+                queue.append((node.left, depth + 1))
+            if node.right:
+                queue.append((node.right, depth + 1))
+
+        return 0
