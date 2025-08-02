@@ -1,4 +1,4 @@
-# Last updated: 7/1/2025, 12:59:23 PM
+# Last updated: 8/3/2025, 12:15:59 AM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -7,17 +7,18 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        tree = []
         def dfs(node):
-            if node.left:
-                dfs(node.left)
-            ans.append(node.val)
-            if node.right:
-                dfs(node.right)
+            if not node:
+                return
+            
+            dfs(node.left)
+            tree.append(node.val)
+            dfs(node.right)
         
-        ans = []
         dfs(root)
-
-        for i in range(1, len(ans)):
-            if ans[i] <= ans[i - 1]:
+        
+        for i in range(1, len(tree)):
+            if tree[i] <= tree[i - 1]:
                 return False
         return True
