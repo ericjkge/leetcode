@@ -1,4 +1,4 @@
-# Last updated: 8/4/2025, 9:16:18 PM
+# Last updated: 8/4/2025, 9:16:22 PM
 class Solution:
     def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
