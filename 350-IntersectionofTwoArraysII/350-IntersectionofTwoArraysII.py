@@ -1,4 +1,4 @@
-# Last updated: 8/6/2025, 12:49:09 AM
+# Last updated: 8/6/2025, 12:49:14 AM
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
         p1, p2 = 0, 0
