@@ -1,4 +1,4 @@
-# Last updated: 7/3/2025, 3:44:48 PM
+# Last updated: 8/6/2025, 12:35:26 AM
 class Solution:
     def trap(self, height: List[int]) -> int:
         left, right = 0, len(height) - 1
@@ -8,7 +8,8 @@ class Solution:
             if mleft <= mright:
                 left += 1
                 mleft = max(height[left], mleft)
-                water += mleft - height[left]
+                water += mleft - height[left] # Note: do mleft instead of min(mleft, mright) here,
+                # since this way it self-corrects to 0 but min could give negative
             else:
                 right -= 1
                 mright = max(height[right], mright)
