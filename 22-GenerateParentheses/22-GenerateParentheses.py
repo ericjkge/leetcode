@@ -1,19 +1,20 @@
-# Last updated: 5/30/2025, 2:51:11 PM
+# Last updated: 8/6/2025, 9:06:31 PM
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        def backtrack(curr, left, right):
-            if len(curr) == 2 * n:
-                ans.append("".join(curr))
-                return
-            if left < n:
-                curr.append("(")
-                backtrack(curr, left + 1, right)
-                curr.pop()
-            if right < left:
-                curr.append(")")
-                backtrack(curr, left, right + 1)
-                curr.pop()
-            
         ans = []
+
+        def backtrack(path, open, close):
+            if len(path) == 2 * n:
+                ans.append("".join(path))
+                return
+            if open < n:
+                path.append("(")
+                backtrack(path, open + 1, close)
+                path.pop()
+            if close < open:
+                path.append(")")
+                backtrack(path, open, close + 1)
+                path.pop()
+        
         backtrack([], 0, 0)
         return ans
