@@ -1,15 +1,14 @@
-# Last updated: 7/21/2025, 4:42:57 PM
+# Last updated: 8/8/2025, 10:45:07 PM
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        memo = {}
+        @cache
         def dp(i):
-            if i >= len(nums):
+            if i == 0:
+                return nums[i]
+            
+            if i < 0:
                 return 0
             
-            if i in memo:
-                return memo[i]
-            
-            memo[i] = max(dp(i + 1), dp(i + 2) + nums[i])
-            return memo[i]
-        
-        return dp(0)
+            return max(dp(i - 1), dp(i - 2) + nums[i])
+
+        return dp(len(nums) -1)
