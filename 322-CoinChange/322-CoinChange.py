@@ -1,18 +1,15 @@
-# Last updated: 7/1/2025, 9:00:39 AM
+# Last updated: 8/8/2025, 11:23:31 PM
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        memo = {}
-
+        @cache
         def dp(i):
-            if i < 0:
-                return float("inf")
             if i == 0:
                 return 0
-            if i in memo:
-                return memo[i]
+                
+            if i < 0:
+                return float("inf")
 
-            memo[i] = min(dp(i - coin) + 1 for coin in coins)
-            return memo[i]
+            return min(dp(i - c) for c in coins) + 1
         
-        ans = dp(amount) 
+        ans = dp(amount)
         return ans if ans != float("inf") else -1
