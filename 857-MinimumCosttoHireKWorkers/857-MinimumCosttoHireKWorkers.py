@@ -1,4 +1,4 @@
-# Last updated: 8/8/2025, 7:56:40 PM
+# Last updated: 8/8/2025, 7:57:06 PM
 class Solution:
     def mincostToHireWorkers(self, quality: List[int], wage: List[int], k: int) -> float:
         workers = sorted([(w / q, q) for w, q in zip(wage, quality)])
@@ -16,6 +16,5 @@ class Solution:
             
             if len(max_heap) == k:
                 ans = min(ans, total_q * ratio)
-                print(total_q, ratio)
             
         return ans
