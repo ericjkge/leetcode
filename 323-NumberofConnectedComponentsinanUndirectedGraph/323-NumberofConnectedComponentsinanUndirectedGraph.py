@@ -1,4 +1,4 @@
-# Last updated: 8/10/2025, 11:48:42 PM
+# Last updated: 8/10/2025, 11:48:45 PM
 class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
         class UnionFind:
