@@ -1,4 +1,4 @@
-# Last updated: 7/2/2025, 6:29:17 PM
+# Last updated: 8/11/2025, 11:39:08 PM
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         if endWord not in wordList:
@@ -6,29 +6,31 @@ class Solution:
         
         n = len(beginWord)
         patterns = defaultdict(list)
-
+        
         for word in wordList:
             for i in range(n):
-                patterns[word[:i] + "*" + word[i+1:]].append(word) # patterns as keys, words as values
-            
-        def neighbors(word):
-            all_options = []
-            for i in range(n):
-                all_options.append(word[:i] + "*" + word[i+1:])
-            return all_options
+                patterns[word[:i] + "*" + word[i + 1:]].append(word)
         
-        queue = deque([(beginWord, 1)])
-        seen = {beginWord}
-
+        def neighbors(word):
+            options = []
+            for i in range(n):
+                options.append(word[:i] + "*" + word[i + 1:])
+            return options
+        
+        queue = deque([beginWord])
+        seen = set([beginWord])
+        moves = 1
+        
         while queue:
-            word, moves = queue.popleft()
-            if word == endWord:
-                return moves
-            for neighbor in neighbors(word):
-                for word in patterns[neighbor]:
-                    if word not in seen:
-                        seen.add(word)
-                        queue.append((word, moves + 1))
+            for _ in range(len(queue)):
+                word = queue.popleft()
+                if word == endWord:
+                    return moves
+                for neighbor in neighbors(word):
+                    for w in patterns[neighbor]:
+                        if w not in seen:
+                            seen.add(w)
+                            queue.append(w)
+            moves += 1
         
         return 0
-
