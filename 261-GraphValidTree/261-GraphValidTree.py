@@ -1,4 +1,4 @@
-# Last updated: 8/11/2025, 3:49:34 PM
+# Last updated: 8/11/2025, 3:54:23 PM
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
         graph = defaultdict(list)
