@@ -1,4 +1,4 @@
-# Last updated: 6/25/2025, 11:30:09 AM
+# Last updated: 8/11/2025, 7:53:06 PM
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -8,51 +8,43 @@
 
 class Codec:
 
-    def serialize(self, root):
-        """Encodes a tree to a single string.
+    def deserialize(self, data: str) -> TreeNode:
+        if not data:
+            return None
+            
+        ls = data.split(",")
+        nodes = [None if node == "null" else TreeNode(int(node)) for node in ls]
         
-        :type root: TreeNode
-        :rtype: str
-        """
-        if root == None:
+        slow, fast = 0, 1
+        while fast < len(nodes):
+            nodes[slow].left = nodes[fast]
+            fast += 1
+            nodes[slow].right = nodes[fast]
+            fast += 1
+            
+            slow += 1
+            while slow < fast and nodes[slow] == None:
+                slow += 1
+        
+        return nodes[0]
+
+        
+    def serialize(self, root) -> str:
+        if not root:
             return ""
-        ans = ""
         queue = deque([root])
+        
+        res = []
         while queue:
             node = queue.popleft()
-            if node:
-                ans += str(node.val) + ","
-                queue.append(node.left)
-                queue.append(node.right)
-            else:
-                ans += "null,"
-        return ans.rstrip(",null,")
-
-    def deserialize(self, data):
-        """Decodes your encoded data to tree.
+            if not node:
+                res.append("null")
+                continue
+            res.append(str(node.val))
+            queue.append(node.left)
+            queue.append(node.right)
         
-        :type data: str
-        :rtype: TreeNode
-        """
-        if data == "":
-            return None
-        ls = data.split(",")
-        root = TreeNode(int(ls[0]))
-        queue = deque([root])
-        i = 1
-        while queue and i < len(ls):
-            node = queue.popleft()
-            if ls[i] != "null":
-                left = TreeNode(int(ls[i]))
-                node.left = left
-                queue.append(left)
-            i += 1
-            if i < len(ls) and ls[i] != "null":
-                right = TreeNode(int(ls[i]))
-                node.right = right
-                queue.append(right)
-            i+= 1
-        return root
+        return ",".join(res)
 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
