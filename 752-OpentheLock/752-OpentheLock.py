@@ -1,9 +1,11 @@
-# Last updated: 8/12/2025, 12:05:49 AM
+# Last updated: 8/12/2025, 12:06:03 AM
 class Solution:
     def openLock(self, deadends: List[str], target: str) -> int:
         if "0000" in deadends:
             return -1
         
+        deadends = set(deadends)
+
         def neighbors(number):
             options = []
             for i in range(4):
