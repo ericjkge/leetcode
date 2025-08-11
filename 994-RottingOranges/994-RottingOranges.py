@@ -1,12 +1,12 @@
-# Last updated: 7/9/2025, 9:50:59 PM
+# Last updated: 8/12/2025, 12:43:40 AM
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        rows = len(grid)
-        cols = len(grid[0])
-        queue = deque()
-        time = fresh = 0
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-
+        fresh = 0
+        rows, cols = len(grid), len(grid[0])
+        queue = deque()
+        time = 0
+        
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == 1:
@@ -25,4 +25,4 @@ class Solution:
                         queue.append((nr, nc))
             time += 1
         
-        return time if not fresh else -1
+        return time if fresh == 0 else -1
