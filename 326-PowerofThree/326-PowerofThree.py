@@ -1,4 +1,4 @@
-# Last updated: 8/13/2025, 11:49:49 PM
+# Last updated: 8/13/2025, 11:49:55 PM
 class Solution:
     def isPowerOfThree(self, n: int) -> bool:
         while n > 1 and n % 3 == 0:
