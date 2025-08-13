@@ -1,11 +1,8 @@
-# Last updated: 8/8/2025, 10:41:13 PM
+# Last updated: 8/13/2025, 11:53:08 PM
 class Solution:
     def climbStairs(self, n: int) -> int:
-        @cache
-        def dp(i):
-            if i == 0 or i == 1:
-                return 1
-            
-            return dp(i - 1) + dp(i - 2)
+        dp = [1, 1]
+        for i in range(2, n+1):
+            dp.append(dp[i - 1] + dp[i - 2])
         
-        return dp(n)
+        return dp[n]
