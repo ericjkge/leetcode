@@ -1,7 +1,7 @@
-# Last updated: 8/14/2025, 12:14:11 AM
+# Last updated: 8/14/2025, 12:14:40 AM
 class Solution:
     def numSquares(self, n: int) -> int:
-        squares = [i**2 for i in range(1, int(n ** 0.5) + 1)]
+        squares = [i ** 2 for i in range(1, int(n ** 0.5) + 1)]
 
         @cache
         def dp(num):
