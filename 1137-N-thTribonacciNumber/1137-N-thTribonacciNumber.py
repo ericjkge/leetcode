@@ -1,11 +1,8 @@
-# Last updated: 7/21/2025, 2:40:50 PM
+# Last updated: 8/13/2025, 11:56:41 PM
 class Solution:
     def tribonacci(self, n: int) -> int:
-        memo = {0: 0, 1: 1, 2: 1}
-        def dp(n):
-            if n in memo:
-                return memo[n]
-            
-            memo[n] = dp(n - 1) + dp(n - 2) + dp(n - 3)
-            return memo[n]
-        return dp(n)
+        dp = [0, 1, 1]
+        for i in range(3, n + 1):
+            dp.append(dp[i - 1] + dp[i - 2] + dp[i - 3])
+        
+        return dp[n]
