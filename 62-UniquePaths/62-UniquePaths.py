@@ -1,15 +1,10 @@
-# Last updated: 6/30/2025, 12:51:38 AM
+# Last updated: 8/14/2025, 10:39:38 PM
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        memo = {}
+        @cache
         def dp(i, j):
             if i == 0 or j == 0:
                 return 1
-            
-            if (i, j) in memo:
-                return memo[(i, j)]
-            
-            memo[(i, j)] = dp(i - 1, j) + dp(i, j - 1)
-            return memo[(i, j)]
-        
+            return dp(i - 1, j) + dp(i, j - 1)
+
         return dp(m - 1, n - 1)
