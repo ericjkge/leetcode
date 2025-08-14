@@ -1,14 +1,15 @@
-# Last updated: 8/8/2025, 10:45:07 PM
+# Last updated: 8/14/2025, 3:16:26 PM
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        @cache
-        def dp(i):
-            if i == 0:
-                return nums[i]
-            
-            if i < 0:
-                return 0
-            
-            return max(dp(i - 1), dp(i - 2) + nums[i])
+        if not nums:
+            return 0
+        
+        n = len(nums)
+        if n == 1:
+            return nums[0]
 
-        return dp(len(nums) -1)
+        dp = [nums[0], max(nums[0], nums[1])]
+        for i in range(2, n):
+            dp.append(max(dp[i - 2] + nums[i], dp[i - 1]))
+
+        return dp[n - 1]
