@@ -1,26 +1,27 @@
-# Last updated: 7/23/2025, 11:51:49 PM
+# Last updated: 8/14/2025, 11:21:47 PM
 class Solution:
     def maximalSquare(self, matrix: List[List[str]]) -> int:
-        rows = len(matrix) - 1
-        cols = len(matrix[0]) - 1
-        memo = {}
+        m, n = len(matrix), len(matrix[0])
+        self.max = 0
 
-        def dp(i, j): # Side length of max square with top left at (i, j)
-            if i > rows or j > cols:
+        @cache
+        def dp(i, j):
+            if i == m or j == n or matrix[i][j] == "0":
                 return 0
-            
-            if (i, j) in memo:
-                return memo[(i, j)]
 
-            memo[(i, j)] = 0
-            down = dp(i + 1, j)
             right = dp(i, j + 1)
+            down = dp(i + 1, j)
             diag = dp(i + 1, j + 1)
 
-            if matrix[i][j] == "1":
-                memo[(i, j)] = 1 + min(down, right, diag)
-            
-            return memo[(i, j)]
+            side = 1 + min(right, down, diag)
+
+            if side ** 2 > self.max:
+                self.max = side ** 2
+
+            return side
         
-        dp(0, 0)
-        return max(memo.values()) ** 2
+        for i in range(m):
+            for j in range(n):
+                dp(i, j)
+
+        return self.max
