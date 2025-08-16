@@ -1,4 +1,4 @@
-# Last updated: 6/25/2025, 1:11:45 PM
+# Last updated: 8/16/2025, 10:14:02 AM
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         mapping = {
@@ -12,21 +12,19 @@ class Solution:
             "9":"wxyz"
         }
 
-        if digits == "":
+        if not digits:
             return []
 
         ans = []
-        def backtrack(index, path):
-            if len(path) == len(digits):
+        def backtrack(path, index):
+            if index == len(digits):
                 ans.append("".join(path))
                 return
-            
-            possible_letters = mapping[digits[index]]
 
-            for letter in possible_letters:
+            for letter in mapping[digits[index]]:
                 path.append(letter)
-                backtrack(index + 1, path)
+                backtrack(path, index + 1)
                 path.pop()
-
-        backtrack(0, [])
+        
+        backtrack([], 0)
         return ans
