@@ -1,33 +1,34 @@
-# Last updated: 6/30/2025, 12:28:20 AM
+# Last updated: 8/17/2025, 12:29:55 AM
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-        rows = len(board)
-        cols = len(board[0])
-        path = set()
-        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-
-        def backtrack(r, c, i):
-            if i == len(word):
-                return True
-            
-            if (r < 0 or r >= rows or c < 0 or c >= cols or (r, c) in path or board[r][c] != word[i]):
-                return False
+        n = len(word)
+        rows, cols = len(board), len(board[0])
+        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         
-            path.add((r, c))
+        def backtrack(r, c, index):
+            if index == n - 1:
+                return board[r][c] == word[index]
+            if board[r][c] != word[index]:
+                return False
+            
+            original = board[r][c]
+            board[r][c] = "#"
+            
             for dr, dc in directions:
-                if backtrack(r + dr, c + dc, i + 1):
+                nr, nc = r + dr, c + dc
+                if not (0 <= nr < rows and 0 <= nc < cols) or board[nr][nc] == "#":
+                    continue
+                if backtrack(nr, nc, index + 1):
                     return True
-            path.remove((r, c))
-
+            board[r][c] = original
             return False
-
-        for row in range(rows):
-            for col in range(cols):
-                if backtrack(row, col, 0):
+        
+        for r in range(rows):
+            for c in range(cols):
+                if backtrack(r, c, 0):
                     return True
         
         return False
-
 
 # Time: O(n * m * 3^w)
 # Space: O(w)
