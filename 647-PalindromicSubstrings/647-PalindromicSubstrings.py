@@ -1,4 +1,4 @@
-# Last updated: 8/16/2025, 9:00:08 PM
+# Last updated: 8/16/2025, 9:00:12 PM
 class Solution:
     def countSubstrings(self, s: str) -> int:
         n = len(s)
