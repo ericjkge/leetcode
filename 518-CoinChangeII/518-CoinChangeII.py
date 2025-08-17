@@ -1,14 +1,20 @@
-# Last updated: 8/12/2025, 10:22:02 PM
+# Last updated: 8/18/2025, 12:18:13 AM
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
-        @cache
-        def dp(amount, index):
-            if amount < 0 or index == len(coins):
-                return 0
-
-            if amount == 0:
+        n = len(coins)
+        self.ans = 0
+        
+        memo = {}
+        def dp(remain, start):
+            if remain == 0:
                 return 1
+            if remain < 0 or start == n:
+                return 0
             
-            return dp(amount - coins[index], index) + dp(amount, index + 1)
+            if (remain, start) in memo:
+                return memo[(remain, start)]
+            
+            memo[(remain, start)] = dp(remain - coins[start], start) + dp(remain, start + 1)
+            return memo[(remain, start)]
 
         return dp(amount, 0)
