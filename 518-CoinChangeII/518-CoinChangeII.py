@@ -1,20 +1,16 @@
-# Last updated: 8/18/2025, 12:18:13 AM
+# Last updated: 8/18/2025, 12:34:53 AM
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
         n = len(coins)
-        self.ans = 0
-        
-        memo = {}
-        def dp(remain, start):
-            if remain == 0:
-                return 1
-            if remain < 0 or start == n:
-                return 0
-            
-            if (remain, start) in memo:
-                return memo[(remain, start)]
-            
-            memo[(remain, start)] = dp(remain - coins[start], start) + dp(remain, start + 1)
-            return memo[(remain, start)]
+        dp = [[0] * (amount + 1) for _ in range(n + 1)] # dp[i][j] = num. of ways to make i from coins[j:]\
+        for i in range(n):
+            dp[i][0] = 1
 
-        return dp(amount, 0)
+        for i in range(n - 1, -1, -1):
+            for j in range(1, amount + 1):
+                if coins[i] > j:
+                    dp[i][j] = dp[i + 1][j]
+                else:
+                    dp[i][j] = dp[i + 1][j] + dp[i][j - coins[i]]
+            
+        return dp[0][amount]
