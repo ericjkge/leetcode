@@ -1,21 +1,20 @@
-# Last updated: 7/3/2025, 4:58:07 PM
+# Last updated: 8/18/2025, 11:51:28 PM
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         total = sum(nums)
-        if total % 2 == 1:
+        
+        if total % 2 != 0:
             return False
         
-        target = total // 2
+        n = len(nums)
+        half = total // 2
 
-        memo = {}
-        def dfs(i, curr):
-            if curr == target:
+        @cache
+        def dp(i, j):
+            if j == half:
                 return True
-            if curr > target or i == len(nums):
+            if i >= n or j > half:
                 return False
-            if (i, curr) in memo:
-                return memo[(i, curr)]
-            memo[(i, curr)] = dfs(i + 1, curr + nums[i]) or dfs(i + 1, curr) 
-            return memo[(i, curr)]
-
-        return dfs(0, 0) 
+            return dp(i + 1, j) or dp(i + 1, j + nums[i])
+        
+        return dp(0, 0)
