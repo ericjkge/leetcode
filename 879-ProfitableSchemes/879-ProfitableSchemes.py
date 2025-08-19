@@ -1,4 +1,4 @@
-# Last updated: 8/20/2025, 12:40:24 AM
+# Last updated: 8/20/2025, 12:40:33 AM
 class Solution:
     def profitableSchemes(self, n: int, minProfit: int, group: List[int], profit: List[int]) -> int:
         MOD = 10**9 + 7
