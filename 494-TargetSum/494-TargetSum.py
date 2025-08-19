@@ -1,16 +1,15 @@
-# Last updated: 7/21/2025, 4:25:35 PM
+# Last updated: 8/19/2025, 10:43:51 PM
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
-        memo = {}
+        n = len(nums)
 
-        def dp(i, total):
-            if i == len(nums):
-                return 1 if total == target else 0
+        @cache
+        def dp(i, j):
+            if i == 0 and j < 0:
+                return 1
+            if j < 0:
+                return 0
             
-            if (i, total) in memo:
-                return memo[(i, total)]
-            
-            memo[(i, total)] = dp(i + 1, total + nums[i]) + dp(i + 1, total - nums[i])
-            return memo[(i, total)]
+            return dp(i - nums[j], j - 1) + dp(i + nums[j], j - 1)
         
-        return dp(0, 0)
+        return dp(target, n - 1)
