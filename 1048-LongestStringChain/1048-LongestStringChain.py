@@ -1,16 +1,16 @@
-# Last updated: 8/20/2025, 10:16:35 PM
+# Last updated: 8/20/2025, 10:23:58 PM
 class Solution:
     def longestStrChain(self, words: List[str]) -> int:
-        S = set(words)  # O(N)
-        
+        s = set(words) # O(1) look up
+
         @cache
         def dp(w):
             best = 1
-            # delete one char at each position
             for i in range(len(w)):
-                prev = w[:i] + w[i+1:]
-                if prev in S:
+                prev = w[:i] + w[i + 1:]
+                if prev in s:
                     best = max(best, 1 + dp(prev))
             return best
-
-        return max(dp(w) for w in S)
+        
+        return max(dp(w) for w in s)
+        
