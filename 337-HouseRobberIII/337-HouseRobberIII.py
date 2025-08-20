@@ -1,4 +1,4 @@
-# Last updated: 8/21/2025, 12:13:23 AM
+# Last updated: 8/21/2025, 12:14:56 AM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -11,6 +11,7 @@ class Solution:
         def dp(node):
             if not node:
                 return 0, 0
+            
             left = dp(node.left)
             right = dp(node.right)
 
@@ -18,5 +19,5 @@ class Solution:
             skip = max(left) + max(right)
 
             return rob, skip
-
+        
         return max(dp(root))
