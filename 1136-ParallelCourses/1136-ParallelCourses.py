@@ -1,28 +1,26 @@
-# Last updated: 8/21/2025, 7:50:20 PM
+# Last updated: 8/21/2025, 7:54:58 PM
 class Solution:
     def minimumSemesters(self, n: int, relations: List[List[int]]) -> int:
-        queue = deque()
         neighbors = defaultdict(list)
-        indegree = [0] * n
+        indegree = [0] * (n + 1)
+        indegree[0] = -1 # Ignore 0th index (using 1-indexed indegree)
         
         for prev, nxt in relations:
             neighbors[prev].append(nxt)
-            indegree[nxt - 1] += 1 # Switch to 0 indexed
+            indegree[nxt] += 1
         
         # Add all 0 indegrees
-        for i in range(n):
-            if indegree[i] == 0:
-                queue.append(i + 1)
-        
+        queue = deque([i for i in range(n + 1) if indegree[i] == 0])
+
         sems = 0
-        counter =0 
+        counter = 0 
         while queue:
             for _ in range(len(queue)):
                 course = queue.popleft()
                 counter += 1
                 for neighbor in neighbors[course]:
-                    indegree[neighbor - 1] -= 1
-                    if indegree[neighbor - 1] == 0:
+                    indegree[neighbor] -= 1
+                    if indegree[neighbor] == 0:
                         queue.append(neighbor)
             sems += 1
         
