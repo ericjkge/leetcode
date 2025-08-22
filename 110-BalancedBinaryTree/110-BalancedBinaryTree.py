@@ -1,4 +1,4 @@
-# Last updated: 8/1/2025, 10:14:38 PM
+# Last updated: 8/22/2025, 9:27:58 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -9,10 +9,11 @@ class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         def dfs(node):
             if not node:
-                return (0, True) # Depth, is balanced
+                return 0, True
             
-            ldepth, lbalanced = dfs(node.left)
-            rdepth, rbalanced = dfs(node.right)
-            return max(ldepth, rdepth) + 1, (lbalanced and rbalanced and abs(ldepth - rdepth) < 2)
+            lh, lb = dfs(node.left)
+            rh, rb = dfs(node.right)
+            
+            return max(lh, rh) + 1, abs(lh - rh) <= 1 and (lb and rb)
         
         return dfs(root)[1]
