@@ -1,12 +1,14 @@
-# Last updated: 8/16/2025, 10:39:05 PM
+# Last updated: 8/22/2025, 6:36:25 PM
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         n = len(nums)
 
-        dp = [1] * n
-        for i in range(1, n):
-            for j in range(i):
-                if nums[i] > nums[j]:
-                    dp[i] = max(dp[i], dp[j] + 1)
+        @cache
+        def dp(i):
+            best = 1
+            for j in range(i + 1, n):
+                if nums[j] > nums[i]:
+                    best = max(best, 1 + dp(j))
+            return best
 
-        return max(dp)
+        return max(dp(i) for i in range(n))
