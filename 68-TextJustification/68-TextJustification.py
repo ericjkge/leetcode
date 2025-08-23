@@ -1,48 +1,32 @@
-# Last updated: 8/23/2025, 11:00:24 PM
+# Last updated: 8/23/2025, 11:38:26 PM
 class Solution:
     def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
-        n = len(words)
-
-        def justify(array, last, chars):
-            chars = chars - len(array)
-            numSpaces = maxWidth - chars
-            if last:
-                return " ".join(array) + " " * (maxWidth - chars - len(array) + 1)
-            if len(array) == 1:
-                return array[0] + " " * numSpaces
-            else:
-                m = len(array) - 1
-                remainder = 0
-                if m and numSpaces % m != 0:
-                    remainder = numSpaces % m
-                avgSpaces = numSpaces // m
-                res = ""
-                for i in range(0, m):
-                    if remainder:
-                        res += (array[i] + " " * (avgSpaces + 1))
-                        remainder -= 1
-                    else:
-                        res += (array[i] + " " * (avgSpaces))
-                res += array[m]
-                return res
-
         ans = []
-        curr = []
-        chars = 0
-        for i in range(n):
-            if chars + len(words[i]) <= maxWidth:
-                curr.append(words[i])
-                chars += len(words[i]) + 1
-                if i == n - 1:
-                    print(curr, chars)
-                    ans.append(justify(curr, True, chars))
-            else:
-                print(curr, chars)
-                ans.append(justify(curr, False, chars))
-                curr = [words[i]]
-                chars = len(words[i]) + 1
-                if i == n - 1:
-                    print(curr, chars)
-                    ans.append(justify(curr, True, chars))
-        return ans
+        i, n = 0, len(words)
 
+        while i < n:
+            j = i
+            line_len = 0
+            while j < n and line_len + len(words[j]) + (j - i) <= maxWidth:
+                line_len += len(words[j])
+                j += 1
+
+            line_words = words[i:j]
+            gaps = len(line_words) - 1
+            spaces = maxWidth - line_len
+            
+            if j == n or gaps == 0: # last line or single word
+                line = " ".join(line_words)
+                line += " " * (maxWidth - len(line))
+            else:
+                avg, extra = divmod(spaces, gaps)
+                parts = []
+                for k, w in enumerate(line_words[:-1]):
+                    parts.append(w)
+                    parts.append(" " * (avg + (1 if k < extra else 0)))
+                parts.append(line_words[-1])
+                line = "".join(parts)
+            ans.append(line)
+            i = j
+
+        return ans
