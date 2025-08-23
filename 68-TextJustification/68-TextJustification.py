@@ -1,4 +1,4 @@
-# Last updated: 8/23/2025, 11:38:26 PM
+# Last updated: 8/23/2025, 11:38:28 PM
 class Solution:
     def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
         ans = []
