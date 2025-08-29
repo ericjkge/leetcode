@@ -1,4 +1,4 @@
-# Last updated: 7/30/2025, 11:21:47 PM
+# Last updated: 8/29/2025, 5:02:12 PM
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -29,30 +29,32 @@ class Solution:
 
         # Version 2 (time: O(N log k), space: O(1)): Divide and conquer
         
-        def mergeLists(l1, l2):
-            dummy = curr = ListNode()
-            while l1 and l2:
-                if l1.val < l2.val:
-                    curr.next = l1
-                    l1 = l1.next
-                else:
-                    curr.next = l2
-                    l2 = l2.next
-                curr = curr.next
-            
-            curr.next = l1 or l2
-            return dummy.next
-
         if not lists:
             return None
+
+        def merge(p1, p2):
+            dummy = curr = ListNode()
+            while p1 and p2:
+                if p1.val < p2.val:
+                    curr.next = p1
+                    p1 = p1.next
+                else:
+                    curr.next = p2
+                    p2 = p2.next
+                curr = curr.next
+            curr.next = p1 or p2
+            return dummy.next
         
         while len(lists) > 1:
-            mergedLists = []
-            for i in range(0, len(lists), 2):
-                if i + 1 < len(lists):
-                    mergedLists.append(mergeLists(lists[i], lists[i + 1]))
+            merged = []
+            i = 0
+            while i < len(lists):
+                if i == len(lists) - 1:
+                    merged.append(lists[i])
+                    break
                 else:
-                    mergedLists.append(mergeLists(lists[i], None))
-            lists = mergedLists
+                    merged.append(merge(lists[i], lists[i + 1]))
+                    i += 2
+            lists = merged
         
         return lists[0]
