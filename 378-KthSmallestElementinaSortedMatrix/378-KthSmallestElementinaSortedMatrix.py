@@ -1,16 +1,17 @@
-# Last updated: 8/1/2025, 4:51:31 PM
+# Last updated: 8/30/2025, 7:53:43 AM
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
+        n = len(matrix)
         heap = [(matrix[0][0], 0, 0)]
         seen = set((0, 0))
-        
+
         for _ in range(k - 1):
-            val, i, j = heapq.heappop(heap)
-            if i + 1 < len(matrix) and (i + 1, j) not in seen:
-                heapq.heappush(heap, (matrix[i + 1][j], i + 1, j))
+            _, i, j = heapq.heappop(heap)
+            if (i + 1, j) not in seen and i + 1 < n:
                 seen.add((i + 1, j))
-            if j + 1 < len(matrix[0]) and (i, j + 1) not in seen:
-                heapq.heappush(heap, (matrix[i][j + 1], i, j + 1))
+                heapq.heappush(heap, (matrix[i + 1][j], i + 1, j))
+            if (i, j + 1) not in seen and j + 1 < n:
                 seen.add((i, j + 1))
-            
-        return heapq.heappop(heap)[0]
+                heapq.heappush(heap, (matrix[i][j + 1], i, j + 1))
+
+        return heap[0][0]
