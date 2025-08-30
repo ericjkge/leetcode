@@ -1,4 +1,4 @@
-# Last updated: 8/29/2025, 5:12:55 PM
+# Last updated: 8/30/2025, 8:47:19 AM
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -15,15 +15,15 @@ class Solution:
         for i, node in enumerate(lists):
             if node:
                 heapq.heappush(heap, (node.val, i, node))
-        
+            
         dummy = curr = ListNode()
         while heap:
             _, i, node = heapq.heappop(heap)
-            curr.next = node
-            curr = curr.next
             if node.next:
                 heapq.heappush(heap, (node.next.val, i, node.next))
-        
+            curr.next = node
+            curr = curr.next
+
         return dummy.next
 
         # Version 2 (time: O(N log k), space: O(1)): Divide and conquer
