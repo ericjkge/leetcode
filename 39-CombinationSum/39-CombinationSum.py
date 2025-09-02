@@ -1,4 +1,4 @@
-# Last updated: 9/2/2025, 8:37:53 AM
+# Last updated: 9/2/2025, 8:38:07 AM
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         ans = []
@@ -10,6 +10,7 @@ class Solution:
             
             if sum(path) == target:
                 ans.append(path[:])
+                return
             
             for i in range(index, n):
                 path.append(candidates[i])
