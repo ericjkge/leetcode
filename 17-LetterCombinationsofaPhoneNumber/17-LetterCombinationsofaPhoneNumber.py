@@ -1,6 +1,9 @@
-# Last updated: 8/21/2025, 8:44:17 PM
+# Last updated: 9/1/2025, 8:24:45 PM
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return []
+            
         mappings = {
             "2":"abc",
             "3":"def",
@@ -11,22 +14,18 @@ class Solution:
             "8":"tuv",
             "9":"wxyz"
         }
-        
-        n = len(digits)
         ans = []
-        
-        if not digits:
-            return []
-        
+        n = len(digits)
+
         def backtrack(path, index):
             if index == n:
-                ans.append("".join(path[:]))
+                ans.append("".join(path))
                 return
             
-            for letter in mappings[digits[index]]:
-                path.append(letter)
+            for c in mappings[digits[index]]:
+                path.append(c)
                 backtrack(path, index + 1)
                 path.pop()
-        
+
         backtrack([], 0)
         return ans
