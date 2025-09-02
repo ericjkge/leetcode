@@ -1,16 +1,17 @@
-# Last updated: 8/17/2025, 10:48:25 PM
+# Last updated: 9/2/2025, 8:31:04 AM
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         ans = []
-        def backtrack(path, start):
+
+        def backtrack(index, path):
             if len(path) == k:
                 ans.append(path[:])
                 return
             
-            for num in range(start, n + 1):
-                path.append(num)
-                backtrack(path, num + 1)
+            for i in range(index, n + 1):
+                path.append(i)
+                backtrack(i + 1, path)
                 path.pop()
-        
-        backtrack([], 1)
+
+        backtrack(1, [])
         return ans
