@@ -1,4 +1,4 @@
-# Last updated: 8/21/2025, 8:25:44 PM
+# Last updated: 9/1/2025, 8:03:56 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -7,21 +7,25 @@
 #         self.right = right
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+        if not root:
+            return []
+
         ans = []
-        
-        def dfs(node, path, total):
-            if not node:
+
+        def backtrack(node, path, total):
+            if not node.left and not node.right and total == targetSum:
+                ans.append(path[:])
                 return
             
-            total += node.val
-            path.append(node.val)
+            if node.left:
+                path.append(node.left.val)
+                backtrack(node.left, path, total + node.left.val)
+                path.pop()
             
-            if total == targetSum and not node.left and not node.right:
-                ans.append(path[:])
-            else:
-                dfs(node.left, path, total)
-                dfs(node.right, path, total)
-            path.pop()
-
-        dfs(root, [], 0)
+            if node.right:
+                path.append(node.right.val)
+                backtrack(node.right, path, total + node.right.val)
+                path.pop()
+        
+        backtrack(root, [root.val], root.val)
         return ans
