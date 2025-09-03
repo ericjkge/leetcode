@@ -1,15 +1,17 @@
-# Last updated: 8/18/2025, 9:57:24 PM
+# Last updated: 9/3/2025, 10:37:52 AM
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
         @cache
-        def dp(i):
-            if i == target:
-                return 1
-            if i > target:
+        def dp(total):
+            if total > target:
                 return 0
+
+            if total == target:
+                return 1
+            
             ways = 0
             for num in nums:
-                ways += dp(i + num)
+                ways += dp(total + num)
             return ways
-            
+
         return dp(0)
