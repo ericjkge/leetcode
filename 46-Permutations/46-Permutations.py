@@ -1,4 +1,4 @@
-# Last updated: 9/3/2025, 9:54:28 AM
+# Last updated: 9/3/2025, 9:59:16 AM
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         ans = []
@@ -15,7 +15,5 @@ class Solution:
                     backtrack(path)
                     path.pop()
 
-        for num in nums:
-            backtrack([num])
-
+        backtrack([])
         return ans
