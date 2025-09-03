@@ -1,8 +1,9 @@
-# Last updated: 9/3/2025, 9:59:16 AM
+# Last updated: 9/3/2025, 10:07:24 AM
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         ans = []
         n = len(nums)
+        seen = set()
 
         def backtrack(path):
             if len(path) == n:
@@ -10,9 +11,11 @@ class Solution:
                 return
             
             for num in nums:
-                if num not in path:
+                if num not in seen:
+                    seen.add(num)
                     path.append(num)
                     backtrack(path)
+                    seen.remove(num)
                     path.pop()
 
         backtrack([])
