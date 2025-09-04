@@ -1,28 +1,27 @@
-# Last updated: 9/4/2025, 10:42:15 AM
+# Last updated: 9/4/2025, 10:55:14 AM
 class Solution:
     def wordSquares(self, words: List[str]) -> List[List[str]]:
         n = len(words[0])
-        ans = []
-        word_squares = []
+        ans, square = [], []
+
+        prefixes = defaultdict(list)
+        for word in words:
+            for i in range(n + 1): # Include empty prefix
+                prefixes[word[:i]].append(word)
 
         def backtrack(step):
             if step == n: # Start at index 0
-                ans.append(word_squares[:])
+                ans.append(square[:])
                 return
             
-            prefix = "".join([word[step] for word in word_squares]) # Get prefix for current row
-            for candidate in getWords(prefix):
-                word_squares.append(candidate)
+            prefix = "".join([word[step] for word in square]) # Get prefix for current row
+            for candidate in prefixes[prefix]:
+                square.append(candidate)
                 backtrack(step + 1)
-                word_squares.pop()
+                square.pop()
         
-        def getWords(prefix):
-            for word in words:
-                if word.startswith(prefix):
-                    yield word
-
         for word in words:
-            word_squares = [word]
+            square = [word]
             backtrack(1)
 
         return ans
