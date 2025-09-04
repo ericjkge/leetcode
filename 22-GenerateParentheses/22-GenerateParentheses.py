@@ -1,4 +1,4 @@
-# Last updated: 8/6/2025, 9:06:31 PM
+# Last updated: 9/4/2025, 1:17:31 PM
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         ans = []
