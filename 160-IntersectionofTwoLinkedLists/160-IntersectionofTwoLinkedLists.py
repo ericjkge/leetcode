@@ -1,4 +1,4 @@
-# Last updated: 9/5/2025, 8:59:23 AM
+# Last updated: 9/5/2025, 8:59:51 AM
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, x):
@@ -10,13 +10,7 @@ class Solution:
         a, b = headA, headB
 
         while a != b:
-            if not a:
-                a = headB
-            else:
-                a = a.next
-            if not b:
-                b = headA
-            else:
-                b = b.next
-
+            a = a.next if a else headB
+            b = b.next if b else headA
+            
         return a if a!= None else None
