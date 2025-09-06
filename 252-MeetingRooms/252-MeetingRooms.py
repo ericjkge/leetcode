@@ -1,11 +1,12 @@
-# Last updated: 7/31/2025, 11:22:33 PM
+# Last updated: 9/6/2025, 2:18:07 PM
 class Solution:
     def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
         intervals.sort()
-        
-        for i in range(len(intervals)):
-            start, end = intervals[i]
-            if i > 0 and start < intervals[i - 1][1]:
+        prev = -float("inf")
+
+        for start, end in intervals:
+            if start < prev:
                 return False
+            prev = end
         
         return True
