@@ -1,4 +1,4 @@
-# Last updated: 9/6/2025, 2:32:23 PM
+# Last updated: 9/6/2025, 2:32:45 PM
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         events = []
@@ -8,10 +8,10 @@ class Solution:
             events.append((end, -1))
 
         events.sort()
-        rooms, max_rooms = 0, 0
+        rooms, min_rooms = 0, 0
 
         for time, delta in events:
             rooms += delta
-            max_rooms = max(max_rooms, rooms)
+            min_rooms = max(min_rooms, rooms)
         
-        return max_rooms
+        return min_rooms
