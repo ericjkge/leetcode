@@ -1,4 +1,4 @@
-# Last updated: 7/31/2025, 12:53:26 PM
+# Last updated: 9/8/2025, 12:08:21 AM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -8,11 +8,14 @@
 class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         ans = []
+
         def dfs(node):
             if not node:
                 return
+                
             ans.append(node.val)
             dfs(node.left)
             dfs(node.right)
+            
         dfs(root)
         return ans
