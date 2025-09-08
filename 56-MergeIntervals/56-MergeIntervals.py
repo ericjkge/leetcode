@@ -1,4 +1,4 @@
-# Last updated: 7/31/2025, 11:37:24 PM
+# Last updated: 9/7/2025, 8:18:24 PM
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort()
@@ -9,6 +9,5 @@ class Solution:
                 ans[-1][1] = max(ans[-1][1], end)
             else:
                 ans.append([start, end])
-                
+
         return ans
-        
