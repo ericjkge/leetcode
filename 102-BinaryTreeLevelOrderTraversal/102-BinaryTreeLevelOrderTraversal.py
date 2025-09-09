@@ -1,4 +1,4 @@
-# Last updated: 7/8/2025, 3:44:01 PM
+# Last updated: 9/9/2025, 3:36:32 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -9,8 +9,9 @@ class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
-
+            
         ans = []
+
         queue = deque([root])
         while queue:
             level = []
@@ -22,6 +23,5 @@ class Solution:
                 if node.right:
                     queue.append(node.right)
             ans.append(level)
-
+        
         return ans
-            
