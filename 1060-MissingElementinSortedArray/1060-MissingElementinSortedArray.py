@@ -1,15 +1,20 @@
-# Last updated: 8/5/2025, 10:20:59 PM
+# Last updated: 9/9/2025, 3:29:36 PM
 class Solution:
     def missingElement(self, nums: List[int], k: int) -> int:
-        def missing(index):
-            return nums[index] - nums[0] - index
-        
-        left, right = 0, len(nums)
+        def findMissing(i):
+            return nums[i] - nums[0] - i
+
+        left, right = 0, len(nums) - 1
         while left + 1 < right:
             mid = (left + right) // 2
-            if missing(mid) < k:
-                left = mid
-            else:
+            if findMissing(mid) >= k:
                 right = mid
+            else:
+                left = mid
         
-        return nums[left] + k - missing(left)
+        # print(left, right)
+        # print(findMissing(right), k)
+
+        if findMissing(right) < k:
+            return nums[right] + (k - findMissing(right))
+        return nums[left] + (k - findMissing(left))
