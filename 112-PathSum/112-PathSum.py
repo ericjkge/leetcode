@@ -1,4 +1,4 @@
-# Last updated: 8/1/2025, 10:31:19 PM
+# Last updated: 9/9/2025, 7:29:12 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -10,14 +10,12 @@ class Solution:
         def dfs(node, total):
             if not node:
                 return False
+            
             total += node.val
-            if not node.left and not node.right:
-                if total == targetSum:
-                    return True
-                return False
+            
+            if total == targetSum and not node.left and not node.right:
+                return True
             
             return dfs(node.left, total) or dfs(node.right, total)
         
         return dfs(root, 0)
-
-            
