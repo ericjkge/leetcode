@@ -1,4 +1,4 @@
-# Last updated: 9/10/2025, 10:37:45 AM
+# Last updated: 9/10/2025, 10:56:36 AM
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -40,23 +40,22 @@ class Codec:
         """
         if not data:
             return None
-
+        
         ls = data.split(",")
-        nodes = [None if d == "null" else TreeNode(int(d)) for d in ls]
-        slow, fast = 0, 1
+        nodes = [TreeNode(int(d)) if d != "null" else None for d in ls]
 
+        slow, fast = 0, 1
         while fast < len(nodes):
             nodes[slow].left = nodes[fast]
             fast += 1
             nodes[slow].right = nodes[fast]
             fast += 1
-
             slow += 1
+
             while slow < fast and nodes[slow] == None:
                 slow += 1
-
+        
         return nodes[0]
-
 
 
 # Your Codec object will be instantiated and called as such:
