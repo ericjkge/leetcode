@@ -1,4 +1,4 @@
-# Last updated: 8/16/2025, 12:42:30 AM
+# Last updated: 9/10/2025, 11:40:00 AM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -11,10 +11,9 @@ class Solution:
             return None
         
         root = TreeNode(preorder[0])
-        
-        mid = inorder.index(root.val)
-        
-        root.left = self.buildTree(preorder[1:mid + 1], inorder[:mid]) 
-        root.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
-        
+        index = inorder.index(preorder[0])
+
+        root.left = self.buildTree(preorder[1:index + 1], inorder[:index + 1])
+        root.right = self.buildTree(preorder[index + 1:], inorder[index + 1:])
+
         return root
