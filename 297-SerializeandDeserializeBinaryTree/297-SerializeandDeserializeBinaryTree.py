@@ -1,4 +1,4 @@
-# Last updated: 8/11/2025, 7:53:06 PM
+# Last updated: 9/10/2025, 10:37:45 AM
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -8,33 +8,18 @@
 
 class Codec:
 
-    def deserialize(self, data: str) -> TreeNode:
-        if not data:
-            return None
-            
-        ls = data.split(",")
-        nodes = [None if node == "null" else TreeNode(int(node)) for node in ls]
+    def serialize(self, root):
+        """Encodes a tree to a single string.
         
-        slow, fast = 0, 1
-        while fast < len(nodes):
-            nodes[slow].left = nodes[fast]
-            fast += 1
-            nodes[slow].right = nodes[fast]
-            fast += 1
-            
-            slow += 1
-            while slow < fast and nodes[slow] == None:
-                slow += 1
-        
-        return nodes[0]
-
-        
-    def serialize(self, root) -> str:
+        :type root: TreeNode
+        :rtype: str
+        """
         if not root:
             return ""
-        queue = deque([root])
-        
+
         res = []
+        queue = deque([root])
+
         while queue:
             node = queue.popleft()
             if not node:
@@ -43,8 +28,36 @@ class Codec:
             res.append(str(node.val))
             queue.append(node.left)
             queue.append(node.right)
-        
+
         return ",".join(res)
+        
+
+    def deserialize(self, data):
+        """Decodes your encoded data to tree.
+        
+        :type data: str
+        :rtype: TreeNode
+        """
+        if not data:
+            return None
+
+        ls = data.split(",")
+        nodes = [None if d == "null" else TreeNode(int(d)) for d in ls]
+        slow, fast = 0, 1
+
+        while fast < len(nodes):
+            nodes[slow].left = nodes[fast]
+            fast += 1
+            nodes[slow].right = nodes[fast]
+            fast += 1
+
+            slow += 1
+            while slow < fast and nodes[slow] == None:
+                slow += 1
+
+        return nodes[0]
+
+
 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
