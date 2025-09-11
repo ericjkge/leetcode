@@ -1,4 +1,4 @@
-# Last updated: 7/8/2025, 10:07:34 PM
+# Last updated: 9/11/2025, 1:08:24 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -9,11 +9,8 @@ class Solution:
     def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
         if not root:
             return None
-
         if root.val == val:
             return root
-            
-        if root.val > val:
+        elif root.val > val:
             return self.searchBST(root.left, val)
-        else:
-            return self.searchBST(root.right, val)
+        return self.searchBST(root.right, val)
