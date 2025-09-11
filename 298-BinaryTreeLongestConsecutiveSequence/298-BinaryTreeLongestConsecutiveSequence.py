@@ -1,4 +1,4 @@
-# Last updated: 8/2/2025, 11:48:08 PM
+# Last updated: 9/11/2025, 12:34:21 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -8,21 +8,20 @@
 class Solution:
     def longestConsecutive(self, root: Optional[TreeNode]) -> int:
         self.longest = 0
-        
-        def dfs(node, prev, length):
+
+        def dfs(node, prev, path):
             if not node:
                 return
             
-            if node == root or node.val == prev + 1:
-                length += 1
+            if prev == None or node.val == prev + 1:
+                path += 1
+                self.longest = max(self.longest, path)
             else:
-                length = 1
-            
-            if length > self.longest:
-                self.longest = length
-            
-            dfs(node.left, node.val, length)
-            dfs(node.right, node.val, length)
-        
-        dfs(root, 0, 0)
+                path = 1
+
+            dfs(node.left, node.val, path)
+            dfs(node.right, node.val, path)
+            return
+
+        dfs(root, None, 0)
         return self.longest
