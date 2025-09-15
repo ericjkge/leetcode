@@ -1,4 +1,4 @@
-# Last updated: 9/15/2025, 12:46:28 PM
+# Last updated: 9/15/2025, 12:47:12 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -18,8 +18,6 @@ class Solution:
             
             seen.add(node.val)
 
-            if dfs(node.left) or dfs(node.right):
-                return True
-            return False
+            return dfs(node.left) or dfs(node.right)
 
         return dfs(root)
