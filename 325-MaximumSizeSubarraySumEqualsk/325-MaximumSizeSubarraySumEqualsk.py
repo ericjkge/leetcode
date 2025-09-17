@@ -1,14 +1,17 @@
-# Last updated: 7/27/2025, 10:10:04 PM
+# Last updated: 9/17/2025, 12:29:56 AM
 class Solution:
     def maxSubArrayLen(self, nums: List[int], k: int) -> int:
         hashmap = {0: -1}
+        longest = 0
         prefix = 0
-        ans = 0
-        for i, num in enumerate(nums):
-            prefix += num
+
+        for i in range(len(nums)):
+            prefix += nums[i]
             if prefix - k in hashmap:
-                ans = max(ans, i - hashmap[prefix - k])
+                longest = max(longest, i - hashmap[prefix - k])
             if prefix not in hashmap:
                 hashmap[prefix] = i
-        
-        return ans
+            
+        return longest
+
+        # [1, 0, 5, 3, 6]
