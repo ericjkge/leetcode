@@ -1,4 +1,4 @@
-# Last updated: 9/23/2025, 8:45:25 PM
+# Last updated: 9/23/2025, 8:47:26 PM
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
         ans = 0
@@ -11,6 +11,5 @@ class Solution:
                 ans = max(ans, i - hashmap[prefix])
             else:
                 hashmap[prefix] = i
-
+        
         return ans
-    # [0, 1, 2, 3, 4, 5, 4, 3, 2]
