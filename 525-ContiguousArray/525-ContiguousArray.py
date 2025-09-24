@@ -1,21 +1,16 @@
-# Last updated: 5/30/2025, 12:07:50 PM
+# Last updated: 9/23/2025, 8:45:25 PM
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
-        
         ans = 0
-        tracker = {}
-        tracker[0] = -1
-        counter = 0
-        
-        for i in range(len(nums)):
-            if nums[i] == 0:
-                counter += 1
+        prefix = 0
+        hashmap = {0:-1}
+
+        for i, num in enumerate(nums):
+            prefix += 1 if num == 1 else -1
+            if prefix in hashmap:
+                ans = max(ans, i - hashmap[prefix])
             else:
-                counter -= 1
-            
-            if counter in tracker:
-                ans = max(ans, i - tracker[counter])
-            else:
-                tracker[counter] = i
-        
+                hashmap[prefix] = i
+
         return ans
+    # [0, 1, 2, 3, 4, 5, 4, 3, 2]
