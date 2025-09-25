@@ -1,15 +1,15 @@
-# Last updated: 8/29/2025, 11:44:56 PM
+# Last updated: 9/25/2025, 10:00:19 AM
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
         heap = [1]
-        seen = set([1])
         factors = [2, 3, 5]
+        seen = set()
 
-        for _ in range(n):
-            ans = heapq.heappop(heap)
-            for f in factors:
-                if f * ans not in seen:
-                    seen.add(f * ans)
-                    heapq.heappush(heap, f * ans)    
-
-        return ans
+        while len(seen) < n:
+            smallest = heapq.heappop(heap)
+            if smallest not in seen:
+                seen.add(smallest)
+                for factor in factors:
+                    heapq.heappush(heap, factor * smallest)
+                    
+        return max(seen)
