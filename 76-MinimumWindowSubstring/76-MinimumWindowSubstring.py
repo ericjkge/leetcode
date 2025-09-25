@@ -1,4 +1,4 @@
-# Last updated: 9/25/2025, 10:39:23 AM
+# Last updated: 9/25/2025, 10:39:26 AM
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         ans = ""
