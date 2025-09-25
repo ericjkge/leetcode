@@ -1,4 +1,4 @@
-# Last updated: 9/25/2025, 10:02:16 AM
+# Last updated: 9/25/2025, 10:02:20 AM
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
         heap = [1]
