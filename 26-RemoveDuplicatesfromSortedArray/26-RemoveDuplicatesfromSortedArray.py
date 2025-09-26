@@ -1,14 +1,11 @@
-# Last updated: 9/26/2025, 9:55:44 AM
+# Last updated: 9/26/2025, 9:58:42 AM
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        n = len(nums)
         prev = 0
 
-        for nxt in range(n):
-            if nxt and nums[nxt] == nums[nxt - 1]:
-                continue
-            else:
-                nums[prev] = nums[nxt]
+        for nxt in range(1, len(nums)):
+            if nums[nxt] != nums[prev]:
                 prev += 1
+                nums[prev] = nums[nxt]
         
-        return prev
+        return prev + 1
