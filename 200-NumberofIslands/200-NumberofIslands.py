@@ -1,21 +1,21 @@
-# Last updated: 7/3/2025, 12:55:38 AM
+# Last updated: 9/26/2025, 9:44:00 AM
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-        counter = 0
-        seen = set()
+        ans = 0
+        m, n = len(grid), len(grid[0])
+        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
-        def dfs(x, y):
-            for dx, dy in directions:
-                nx, ny = x + dx, y + dy
-                if 0 <= nx < len(grid) and 0 <= ny < len(grid[0]) and (nx, ny) not in seen and grid[nx][ny] == "1":
-                    seen.add((nx, ny))
-                    dfs(nx, ny)
+        def dfs(r, c):
+            grid[r][c] = "0" # "seen set"
+            for dr, dc in directions:
+                nr, nc = r + dr, c + dc
+                if 0 <= nr < m and 0 <= nc < n and grid[nr][nc] == "1":
+                    dfs(nr, nc)
         
-        for i in range(len(grid)):
-            for j in range(len(grid[0])):
-                if (i, j) not in seen and grid[i][j] == "1":
-                    counter += 1
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == "1":
+                    ans += 1
                     dfs(i, j)
-        
-        return counter
+
+        return ans
