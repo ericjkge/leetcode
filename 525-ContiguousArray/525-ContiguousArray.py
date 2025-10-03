@@ -1,12 +1,15 @@
-# Last updated: 9/23/2025, 8:47:26 PM
+# Last updated: 10/3/2025, 9:49:14 AM
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
-        ans = 0
-        prefix = 0
         hashmap = {0:-1}
+        prefix = 0
+        ans = 0
 
         for i, num in enumerate(nums):
-            prefix += 1 if num == 1 else -1
+            if num == 0:
+                prefix -= 1
+            else:
+                prefix += 1
             if prefix in hashmap:
                 ans = max(ans, i - hashmap[prefix])
             else:
