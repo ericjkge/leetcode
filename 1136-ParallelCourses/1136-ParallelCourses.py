@@ -1,27 +1,27 @@
-# Last updated: 8/21/2025, 7:54:58 PM
+# Last updated: 10/16/2025, 12:33:21 AM
 class Solution:
     def minimumSemesters(self, n: int, relations: List[List[int]]) -> int:
-        neighbors = defaultdict(list)
-        indegree = [0] * (n + 1)
-        indegree[0] = -1 # Ignore 0th index (using 1-indexed indegree)
-        
-        for prev, nxt in relations:
-            neighbors[prev].append(nxt)
-            indegree[nxt] += 1
-        
-        # Add all 0 indegrees
-        queue = deque([i for i in range(n + 1) if indegree[i] == 0])
+        graph = defaultdict(list)
+        indegrees = [0 for _ in range(n + 1)]
+        indegrees[0] = -1
+        queue = deque()
 
-        sems = 0
+        for u, v in relations:
+            graph[u].append(v)
+            indegrees[v] += 1
+        
+        queue = deque([i for i in range(n + 1) if indegrees[i] == 0])
+        ans = 0
         counter = 0 
+
         while queue:
             for _ in range(len(queue)):
-                course = queue.popleft()
+                node = queue.popleft()
                 counter += 1
-                for neighbor in neighbors[course]:
-                    indegree[neighbor] -= 1
-                    if indegree[neighbor] == 0:
+                for neighbor in graph[node]:
+                    indegrees[neighbor] -= 1
+                    if indegrees[neighbor] == 0:
                         queue.append(neighbor)
-            sems += 1
-        
-        return sems if counter == n else -1
+            ans += 1
+
+        return ans if counter == n else -1
