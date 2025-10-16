@@ -1,14 +1,15 @@
-# Last updated: 10/12/2025, 10:37:46 AM
+# Last updated: 10/16/2025, 10:53:48 AM
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        jumps = 0
-        curr_end = 0
-        farthest = 0
+        n = len(nums)
 
-        for i in range(len(nums) - 1):
-            farthest = max(farthest, i + nums[i])
-            if i == curr_end:
-                curr_end = farthest
-                jumps += 1
-        
-        return jumps
+        @cache
+        def dp(i):
+            if i >= n - 1:
+                return 0
+            res = float("inf")
+            for j in range(1, nums[i] + 1):
+                res = min(res, 1 + dp(i + j))
+            return res
+
+        return dp(0)
