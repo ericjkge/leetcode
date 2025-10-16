@@ -1,8 +1,13 @@
-# Last updated: 8/14/2025, 12:19:08 AM
+# Last updated: 10/16/2025, 11:09:48 AM
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
-        dp = [0, 0]
-        for i in range(2, len(cost) + 1):
-            dp.append(min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]))
-
-        return dp[len(cost)]
+        n = len(cost)
+        
+        @cache
+        def dp(i):
+            if i >= n:
+                return 0
+            
+            return cost[i] + min(dp(i + 1), dp(i + 2))
+            
+        return min(dp(0), dp(1))
