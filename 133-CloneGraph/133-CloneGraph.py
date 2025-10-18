@@ -1,4 +1,4 @@
-# Last updated: 10/18/2025, 11:18:23 AM
+# Last updated: 10/18/2025, 11:32:13 AM
 """
 # Definition for a Node.
 class Node:
@@ -10,15 +10,21 @@ class Node:
 from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
-        hashmap = {}
+        if not node:
+            return None
+            
+        hashmap = {node:Node(node.val)}
 
-        def dfs(n):
-            if n in hashmap:
-                return hashmap[n]
-            copy = Node(n.val)
-            hashmap[n] = copy
+        queue = deque([node])
+        while queue:
+            n = queue.popleft()
+            print(n.val)
+            c = hashmap[n]
             for neighbor in n.neighbors:
-                copy.neighbors.append(dfs(neighbor))
-            return copy
-
-        return dfs(node) if node else None
+                if neighbor not in hashmap:
+                    copy = Node(neighbor.val)
+                    hashmap[neighbor] = copy
+                    queue.append(neighbor)
+                c.neighbors.append(hashmap[neighbor])
+        
+        return hashmap[node]
