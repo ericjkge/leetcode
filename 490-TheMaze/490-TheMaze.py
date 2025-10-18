@@ -1,4 +1,4 @@
-# Last updated: 10/18/2025, 11:55:54 AM
+# Last updated: 10/18/2025, 11:57:21 AM
 class Solution:
     def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
         m, n = len(maze), len(maze[0])
