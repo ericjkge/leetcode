@@ -1,4 +1,4 @@
-# Last updated: 10/18/2025, 11:32:13 AM
+# Last updated: 10/18/2025, 11:36:05 AM
 """
 # Definition for a Node.
 class Node:
@@ -12,13 +12,12 @@ class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
         if not node:
             return None
-            
+
         hashmap = {node:Node(node.val)}
 
         queue = deque([node])
         while queue:
             n = queue.popleft()
-            print(n.val)
             c = hashmap[n]
             for neighbor in n.neighbors:
                 if neighbor not in hashmap:
