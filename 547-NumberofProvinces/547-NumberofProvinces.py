@@ -1,19 +1,20 @@
-# Last updated: 8/4/2025, 11:26:05 PM
+# Last updated: 10/19/2025, 8:58:07 AM
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        ans = 0
         seen = set()
-        counter = 0
-        
+
         def dfs(i):
-            for j in range(len(isConnected)):
-                if isConnected[i][j] == 1 and j not in seen:
-                    seen.add(j)
-                    dfs(j)
+            for j in range(0, len(isConnected)):
+                if isConnected[i][j]:
+                    if j not in seen:
+                        seen.add(j)
+                        dfs(j)
         
         for i in range(len(isConnected)):
             if i not in seen:
-                counter += 1
                 seen.add(i)
                 dfs(i)
-        
-        return counter
+                ans += 1
+
+        return ans
