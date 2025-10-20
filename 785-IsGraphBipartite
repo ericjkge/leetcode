@@ -1,4 +1,4 @@
-# Last updated: 10/20/2025, 12:44:33 PM
+# Last updated: 10/20/2025, 12:45:23 PM
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
         colors = {}
@@ -6,7 +6,7 @@ class Solution:
         def dfs(node):
             for neighbor in graph[node]:
                 if neighbor not in colors:
-                    colors[neighbor] = int(not colors[node])
+                    colors[neighbor] = not colors[node]
                     if not dfs(neighbor):
                         return False
                 elif colors[neighbor] == colors[node]:
@@ -15,7 +15,7 @@ class Solution:
 
         for i in range(len(graph)):
             if i not in colors:
-                colors[i] = 0
+                colors[i] = False
                 if not dfs(i):
                     return False
         
