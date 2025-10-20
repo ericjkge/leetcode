@@ -1,12 +1,21 @@
-# Last updated: 10/20/2025, 2:13:35 PM
+# Last updated: 10/20/2025, 2:14:14 PM
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        farthest = 0
-        for i, num in enumerate(nums):
-            if i > farthest:
-                return False
-            farthest = max(farthest, i + num)
-        return True
+        goal = len(nums) - 1
+
+        for i in range(len(nums) - 1, -1, -1):
+            if i + nums[i] >= goal:
+                goal = i
+        
+        return goal == 0
+
+
+        # farthest = 0
+        # for i, num in enumerate(nums):
+        #     if i > farthest:
+        #         return False
+        #     farthest = max(farthest, i + num)
+        # return True
 
         # n = len(nums)
 
