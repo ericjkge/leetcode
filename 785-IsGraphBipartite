@@ -1,21 +1,22 @@
-# Last updated: 8/4/2025, 11:12:48 PM
+# Last updated: 10/20/2025, 12:44:33 PM
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
         colors = {}
-        
+
         def dfs(node):
             for neighbor in graph[node]:
                 if neighbor not in colors:
-                    colors[neighbor] = not colors[node]
+                    colors[neighbor] = int(not colors[node])
                     if not dfs(neighbor):
                         return False
                 elif colors[neighbor] == colors[node]:
                     return False
             return True
-        
+
         for i in range(len(graph)):
             if i not in colors:
-                colors[i] = True
+                colors[i] = 0
                 if not dfs(i):
                     return False
+        
         return True
