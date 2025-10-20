@@ -1,9 +1,9 @@
-# Last updated: 10/20/2025, 2:14:14 PM
+# Last updated: 10/20/2025, 2:14:18 PM
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         goal = len(nums) - 1
 
-        for i in range(len(nums) - 1, -1, -1):
+        for i in range(len(nums) - 2, -1, -1):
             if i + nums[i] >= goal:
                 goal = i
         
