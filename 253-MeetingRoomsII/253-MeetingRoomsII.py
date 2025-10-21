@@ -1,4 +1,4 @@
-# Last updated: 10/21/2025, 3:13:50 PM
+# Last updated: 10/21/2025, 3:14:05 PM
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         events = []
