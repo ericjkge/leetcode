@@ -1,4 +1,4 @@
-# Last updated: 10/21/2025, 3:14:05 PM
+# Last updated: 10/21/2025, 3:15:33 PM
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         events = []
@@ -7,13 +7,12 @@ class Solution:
 
         for start, end in intervals:
             if not events:
-                heapq.heappush(events, (end, max_rooms))
+                heapq.heappush(events, (end))
             else:
-                if events[0][0] > start:
+                if events[0] > start:
                     max_rooms += 1
-                    heapq.heappush(events, (end, max_rooms)) 
                 else:
-                    _, room_number = heapq.heappop(events)
-                    heapq.heappush(events, (end, room_number))
+                    heapq.heappop(events)
+                heapq.heappush(events, (end))
 
         return max_rooms
