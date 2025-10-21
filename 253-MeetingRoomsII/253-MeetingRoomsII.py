@@ -1,4 +1,4 @@
-# Last updated: 10/21/2025, 3:17:59 PM
+# Last updated: 10/21/2025, 3:18:03 PM
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         heap = []
