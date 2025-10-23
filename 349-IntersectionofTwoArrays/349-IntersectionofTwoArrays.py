@@ -1,10 +1,9 @@
-# Last updated: 10/23/2025, 10:26:56 AM
+# Last updated: 10/23/2025, 10:34:01 AM
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
         nums1.sort()
         nums2.sort()
-
-        p1, p2 = 0, 0
+        p1 = p2 = 0
         ans = []
 
         while p1 < len(nums1) and p2 < len(nums2):
@@ -20,5 +19,5 @@ class Solution:
                 p1 += 1
             else:
                 p2 += 1
-            
+
         return ans
