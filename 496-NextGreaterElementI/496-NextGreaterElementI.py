@@ -1,4 +1,4 @@
-# Last updated: 9/7/2025, 9:50:56 PM
+# Last updated: 10/24/2025, 10:35:53 PM
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         nxt = {}
