@@ -1,11 +1,12 @@
-# Last updated: 9/25/2025, 10:02:20 AM
+# Last updated: 10/26/2025, 12:34:31 AM
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
         heap = [1]
-        seen = set()
         factors = [2, 3, 5]
+        seen = set()
+        ans = 1
 
-        for _ in range(n):
+        for i in range(n):
             ans = heapq.heappop(heap)
             for factor in factors:
                 if ans * factor not in seen:
