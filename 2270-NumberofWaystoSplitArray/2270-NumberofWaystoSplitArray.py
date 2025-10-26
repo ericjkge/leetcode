@@ -1,4 +1,4 @@
-# Last updated: 10/26/2025, 12:16:24 AM
+# Last updated: 10/26/2025, 12:17:40 AM
 class Solution:
     def waysToSplitArray(self, nums: List[int]) -> int:
         prefix = [nums[0]]
@@ -8,9 +8,4 @@ class Solution:
         
         target = prefix[-1] / 2
 
-        ans = 0
-        for j in range(len(nums) - 1):
-            if prefix[j] >= target:
-                ans += 1
-
-        return ans
+        return sum(1 for i in range(len(nums) - 1) if prefix[i] >= prefix[-1] - prefix[i])
