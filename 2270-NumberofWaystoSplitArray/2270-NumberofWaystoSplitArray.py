@@ -1,4 +1,4 @@
-# Last updated: 10/26/2025, 12:22:34 AM
+# Last updated: 10/26/2025, 10:27:05 AM
 class Solution:
     def waysToSplitArray(self, nums: List[int]) -> int:
         total = sum(nums)
@@ -8,5 +8,5 @@ class Solution:
             prefix += nums[i]
             if prefix * 2 >= total:
                 ans += 1
-
+        
         return ans
