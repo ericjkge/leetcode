@@ -1,11 +1,12 @@
-# Last updated: 10/26/2025, 12:17:40 AM
+# Last updated: 10/26/2025, 12:22:34 AM
 class Solution:
     def waysToSplitArray(self, nums: List[int]) -> int:
-        prefix = [nums[0]]
-        
-        for i in range(1, len(nums)):
-            prefix.append(prefix[-1] + nums[i])
-        
-        target = prefix[-1] / 2
+        total = sum(nums)
+        prefix = ans = 0
 
-        return sum(1 for i in range(len(nums) - 1) if prefix[i] >= prefix[-1] - prefix[i])
+        for i in range(len(nums) - 1):
+            prefix += nums[i]
+            if prefix * 2 >= total:
+                ans += 1
+
+        return ans
