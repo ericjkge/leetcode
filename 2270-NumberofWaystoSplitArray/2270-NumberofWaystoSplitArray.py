@@ -1,4 +1,4 @@
-# Last updated: 10/26/2025, 12:14:37 AM
+# Last updated: 10/26/2025, 12:16:24 AM
 class Solution:
     def waysToSplitArray(self, nums: List[int]) -> int:
         prefix = [nums[0]]
