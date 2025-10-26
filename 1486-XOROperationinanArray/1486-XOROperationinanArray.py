@@ -1,14 +1,7 @@
-# Last updated: 10/25/2025, 11:24:16 PM
+# Last updated: 10/25/2025, 11:30:09 PM
 class Solution:
     def xorOperation(self, n: int, start: int) -> int:
-        nums = []
-
+        ans = 0
         for i in range(n):
-            nums.append(start + 2 * i)
-        
-        ans = nums[0]
-
-        for j in range(1, n):
-            ans ^= nums[j]
-        
+            ans ^= start + 2 * i
         return ans
