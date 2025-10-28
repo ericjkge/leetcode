@@ -1,25 +1,20 @@
-# Last updated: 9/25/2025, 10:39:26 AM
+# Last updated: 10/28/2025, 9:39:53 AM
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        ans = ""
-        min_length = float("inf")
         left = right = 0
-        s_counter = {}
-        t_counter = {}
-
-        for c in t:
-            t_counter[c] = t_counter.get(c, 0) + 1
+        tcounter = Counter(t)
+        scounter = {}
+        min_length = float("inf")
+        ans = ""
 
         while right < len(s):
-            s_counter[s[right]] = s_counter.get(s[right], 0) + 1
-            while all(t_counter[c] <= s_counter.get(c, 0) for c in t_counter):
-                if right - left + 1 < min_length:
-                    ans = s[left:right + 1]
+            scounter[s[right]] = scounter.get(s[right], 0) + 1
+            while all(scounter.get(c, 0) >= tcounter[c] for c in tcounter):
+                if (right - left + 1) < min_length:
                     min_length = right - left + 1
-                s_counter[s[left]] -= 1
-                if s_counter[s[left]] == 0:
-                    del s_counter[s[left]]
+                    ans = s[left:right + 1]
+                scounter[s[left]] = scounter[s[left]] - 1
                 left += 1
             right += 1
-
+        
         return ans
