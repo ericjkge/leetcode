@@ -1,8 +1,8 @@
-# Last updated: 10/24/2025, 10:41:09 PM
+# Last updated: 10/28/2025, 9:55:21 AM
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        nxt = {}
         stack = []
+        nxt = {}
 
         for num in nums2:
             while stack and stack[-1] < num:
