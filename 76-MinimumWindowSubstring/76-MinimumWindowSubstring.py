@@ -1,4 +1,4 @@
-# Last updated: 10/28/2025, 9:45:24 AM
+# Last updated: 10/28/2025, 9:45:27 AM
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         left = right = 0
