@@ -1,13 +1,15 @@
-# Last updated: 10/29/2025, 8:56:46 AM
+# Last updated: 10/29/2025, 9:04:56 AM
 class Solution:
     def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        n = len(nums)
         stack = []
-        nxt = [-1] * len(nums)
+        nxt = [-1] * n
 
-        for _ in range(2):
-            for i, n in enumerate(nums):
-                while stack and nums[stack[-1]] < n:
-                    nxt[stack.pop()] = n
+        for i in range(2 * n):
+            num = nums[i % n]
+            while stack and nums[stack[-1]] < num:
+                nxt[stack.pop()] = num
+            if i < n:
                 stack.append(i)
         
         return nxt
