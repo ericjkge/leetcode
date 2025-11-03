@@ -1,4 +1,4 @@
-# Last updated: 11/2/2025, 9:12:41 PM
+# Last updated: 11/2/2025, 9:21:21 PM
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -8,23 +8,19 @@
 class Solution:
     def tree2str(self, root: Optional[TreeNode]) -> str:
         ans = []
-        def dfs(node):
-            ans.append(str(node.val))
-            if node.left and node.right:
-                ans.append("(")
-                dfs(node.left)
-                ans.append(")(")
-                dfs(node.right)
-                ans.append(")")
-            elif node.left:
-                ans.append("(")
-                dfs(node.left)
-                ans.append(")")
-            elif node.right:
-                ans.append("()")
-                ans.append("(")
-                dfs(node.right)
-                ans.append(")")
 
+        def dfs(node):
+            if not node:
+                return
+            ans.append(str(node.val))
+            if node.left or node.right:
+                ans.append("(")
+                dfs(node.left)
+                ans.append(")")
+            if node.right:
+                ans.append("(")
+                dfs(node.right)
+                ans.append(")")
+            
         dfs(root)
         return "".join(ans)
