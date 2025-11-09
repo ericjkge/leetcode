@@ -1,4 +1,4 @@
-# Last updated: 11/8/2025, 8:49:40 PM
+# Last updated: 11/8/2025, 8:50:12 PM
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         ans = []
@@ -8,15 +8,15 @@ class Solution:
                 ans.append("".join(path))
                 return
             
-            if open > 0:
+            if open < n:
                 path.append("(")
-                backtrack(open - 1, closed, path)
+                backtrack(open + 1, closed, path)
                 path.pop()
 
-            if closed > open:
+            if closed < open:
                 path.append(")")
-                backtrack(open, closed - 1, path)
+                backtrack(open, closed + 1, path)
                 path.pop()
 
-        backtrack(n, n, [])
+        backtrack(0, 0, [])
         return ans
