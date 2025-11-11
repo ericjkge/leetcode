@@ -1,21 +1,25 @@
-# Last updated: 7/20/2025, 11:19:19 AM
+# Last updated: 11/11/2025, 9:36:00 AM
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         candidates.sort()
-        ans = []
-        def backtrack(start, target, path):
-            if target < 0:
-                return
-            if target == 0:
-                ans.append(path[:])
+        self.ans = []
+
+        def backtrack(index, path):
+            if sum(path) > target:
                 return
             
-            for i in range(start, len(candidates)):
-                if i > start and candidates[i] == candidates[i - 1]:
+            if sum(path) == target:
+                self.ans.append(path[:])
+                return
+            
+            for i in range(index, len(candidates)):
+                if i > index and candidates[i] == candidates[i - 1]:
                     continue
                 path.append(candidates[i])
-                backtrack(i + 1, target - candidates[i], path)
+                backtrack(i + 1, path)
                 path.pop()
-        
-        backtrack(0, target, [])
-        return ans
+
+        backtrack(0, [])
+        return self.ans
+
+        [1, 1, 2, 5, 6, 7, 10]
