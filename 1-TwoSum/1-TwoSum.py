@@ -1,4 +1,4 @@
-# Last updated: 11/6/2025, 9:54:55 AM
+# Last updated: 11/13/2025, 10:52:20 PM
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -7,8 +7,8 @@ class Solution(object):
         :rtype: List[int]
         """
         hashmap = {}
-        for i, num in enumerate(nums):
-            complement = target - num
+        for i in range(len(nums)):
+            complement = target - nums[i]
             if complement in hashmap:
                 return [hashmap[complement], i]
-            hashmap[num] = i
+            hashmap[nums[i]] = i
