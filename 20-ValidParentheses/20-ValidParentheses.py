@@ -1,15 +1,15 @@
-# Last updated: 11/7/2025, 7:29:13 PM
+# Last updated: 11/14/2025, 11:13:11 AM
 class Solution:
     def isValid(self, s: str) -> bool:
-        mappings = {")":"(", "}":"{", "]":"["}
-
+        mappings = {"(":")", "{":"}", "[":"]"}
         stack = []
-        for char in s:
-            if char in mappings.values():
-                stack.append(char)
+
+        for c in s:
+            if c in mappings:
+                stack.append(c)
             else:
-                if stack and stack[-1] == mappings[char]:
-                    stack.pop()
+                if stack and mappings[stack.pop()] == c:
+                    continue
                 else:
                     return False
         
