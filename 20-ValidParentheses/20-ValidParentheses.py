@@ -1,4 +1,4 @@
-# Last updated: 11/14/2025, 11:13:11 AM
+# Last updated: 11/14/2025, 11:13:48 AM
 class Solution:
     def isValid(self, s: str) -> bool:
         mappings = {"(":")", "{":"}", "[":"]"}
@@ -8,9 +8,7 @@ class Solution:
             if c in mappings:
                 stack.append(c)
             else:
-                if stack and mappings[stack.pop()] == c:
-                    continue
-                else:
+                if not stack or mappings[stack.pop()] != c:
                     return False
         
         return not stack
