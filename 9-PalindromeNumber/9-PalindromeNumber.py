@@ -1,11 +1,13 @@
-# Last updated: 9/6/2025, 1:47:59 PM
+# Last updated: 11/14/2025, 9:52:29 AM
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        original = x
-        reversed = 0
+        if x < 0:
+            return False
 
-        while x > 0:
-            reversed = reversed * 10 + x % 10
-            x //= 10
+        num = x
+        palindrome = 0
+        while num > 0:
+            palindrome = palindrome * 10 + num % 10
+            num //= 10
         
-        return reversed == original
+        return palindrome == x
