@@ -1,4 +1,4 @@
-# Last updated: 11/17/2025, 10:06:10 AM
+# Last updated: 11/17/2025, 10:08:14 AM
 class Solution:
     def jump(self, nums: List[int]) -> int:
         l=0
