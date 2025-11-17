@@ -1,4 +1,4 @@
-# Last updated: 11/17/2025, 10:04:04 AM
+# Last updated: 11/17/2025, 10:04:54 AM
 class Solution:
     def jump(self, nums: List[int]) -> int:
         n = len(nums)
@@ -14,6 +14,8 @@ class Solution:
             best = float("inf")
 
             for j in range(1, nums[i] + 1):
+                if i + j > n - 1:
+                    continue
                 best = min(best, 1 + dp(i + j))
 
             return best
