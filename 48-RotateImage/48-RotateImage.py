@@ -1,16 +1,14 @@
-# Last updated: 11/3/2025, 9:39:07 AM
+# Last updated: 11/18/2025, 11:23:05 PM
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        rows, cols = len(matrix), len(matrix[0])
+        n = len(matrix)
 
-        for r in range(rows):
-            for c in range(r + 1, cols):
-                matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
+        for i in range(n):
+            for j in range(i, n):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
         
-        for r in range(rows):
-            matrix[r] = matrix[r][::-1]
-
-        return matrix
+        for i in range(n):
+            matrix[i] = matrix[i][::-1]
