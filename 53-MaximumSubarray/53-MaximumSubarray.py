@@ -1,11 +1,12 @@
-# Last updated: 11/19/2025, 11:13:36 AM
+# Last updated: 11/19/2025, 11:19:27 AM
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        best = nums[0]
-        curr = nums[0]
+        prefix = min_prefix = 0
+        best = -float("inf")
 
-        for num in nums[1:]:
-            curr = max(num, curr + num)
-            best = max(best, curr)
+        for i in range(len(nums)):
+            prefix += nums[i]
+            best = max(best, prefix - min_prefix)
+            min_prefix = min(prefix, min_prefix)
         
         return best
