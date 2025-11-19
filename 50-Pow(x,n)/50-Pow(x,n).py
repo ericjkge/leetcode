@@ -1,6 +1,14 @@
-# Last updated: 11/19/2025, 9:21:07 AM
+# Last updated: 11/19/2025, 9:30:13 AM
 class Solution:
     def myPow(self, x: float, n: int) -> float:
-        if n == 0:
-            return 1
-        return x * pow(x, n - 1)
+        def binExp(base, power):
+            if power == 0:
+                return 1
+
+            if power < 0:
+                return 1 / binExp(base, -power)
+            if power % 2 == 1:
+                return base * binExp(base * base, (power - 1) / 2)
+            return binExp(base * base, power / 2)
+
+        return binExp(x, n)
