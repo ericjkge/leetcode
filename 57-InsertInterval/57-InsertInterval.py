@@ -1,4 +1,4 @@
-# Last updated: 11/21/2025, 1:10:18 PM
+# Last updated: 11/21/2025, 2:14:28 PM
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
         i = 0
@@ -14,10 +14,9 @@ class Solution:
             newInterval[1] = max(newInterval[1], intervals[i][1])
             i += 1
         ans.append(newInterval)
-        
+
         while i < n:
             ans.append(intervals[i])
             i += 1
-
-        return ans
         
+        return ans
