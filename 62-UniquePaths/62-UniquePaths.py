@@ -1,4 +1,4 @@
-# Last updated: 11/21/2025, 3:30:37 PM
+# Last updated: 11/21/2025, 3:30:39 PM
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         @cache
