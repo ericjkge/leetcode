@@ -1,4 +1,4 @@
-# Last updated: 11/22/2025, 2:05:12 PM
+# Last updated: 11/22/2025, 2:05:16 PM
 class Solution:
     def climbStairs(self, n: int) -> int:
         @cache
