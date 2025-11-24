@@ -1,4 +1,4 @@
-# Last updated: 11/14/2025, 10:04:03 AM
+# Last updated: 11/24/2025, 9:45:12 AM
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -14,5 +14,5 @@ class Solution:
             curr.next = prev
             prev = curr
             curr = nxt
-        
+
         return prev
