@@ -1,4 +1,4 @@
-# Last updated: 11/24/2025, 12:25:32 AM
+# Last updated: 11/24/2025, 12:25:40 AM
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         rows, cols = len(board), len(board[0])
@@ -6,7 +6,6 @@ class Solution:
         seen = set()
 
         def backtrack(index, r, c):
-            print(board[r][c])
             if index == len(word) - 1:
                 return True
 
