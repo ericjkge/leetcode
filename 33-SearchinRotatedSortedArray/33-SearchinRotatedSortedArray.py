@@ -1,4 +1,4 @@
-# Last updated: 11/9/2025, 9:52:27 PM
+# Last updated: 11/25/2025, 7:20:48 PM
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         left, right = 0, len(nums) - 1
@@ -21,4 +21,3 @@ class Solution:
         elif nums[right] == target:
             return right
         return -1
-    
