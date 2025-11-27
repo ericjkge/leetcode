@@ -1,28 +1,28 @@
-# Last updated: 11/3/2025, 9:20:37 AM
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def flatten(self, root: Optional[TreeNode]) -> None:
-        """
-        Do not return anything, modify root in-place instead.
-        """
-        self.prev = None
-
-        def dfs(node):
-            if not node:
-                return
-            
-            if self.prev:
-                self.prev.left = None
-                self.prev.right = node
-            
-            self.prev = node
-            right = node.right
-            dfs(node.left)
-            dfs(right)
-        
-        dfs(root)
+# Last updated: 11/27/2025, 9:20:58 AM
+1# Definition for a binary tree node.
+2# class TreeNode:
+3#     def __init__(self, val=0, left=None, right=None):
+4#         self.val = val
+5#         self.left = left
+6#         self.right = right
+7class Solution:
+8    def flatten(self, root: Optional[TreeNode]) -> None:
+9        """
+10        Do not return anything, modify root in-place instead.
+11        """
+12        self.prev = None
+13
+14        def dfs(node):
+15            if not node:
+16                return
+17            
+18            if self.prev:
+19                self.prev.left = None
+20                self.prev.right = node
+21            
+22            self.prev = node
+23            right = node.right
+24            dfs(node.left)
+25            dfs(right)
+26        
+27        dfs(root)
