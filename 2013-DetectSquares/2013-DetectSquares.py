@@ -1,32 +1,28 @@
-# Last updated: 11/28/2025, 2:34:37 PM
-1class DetectSquares:
-2
-3    def __init__(self):
-4        self.points = defaultdict(int)
-5
-6    def add(self, point: List[int]) -> None:
-7        x, y = point
-8        self.points[(x, y)] += 1
-9
-10    def count(self, point: List[int]) -> int:
-11        px, py = point
-12        ans = 0
-13
-14        for (x, y), freq in self.points.items():
-15            if y != py or x == px:
-16                continue
-17
-18            side = px - x
-19
-20            # Check above
-21            ans += freq * self.points.get((px, py + side), 0) * self.points.get((x,  py + side), 0)
-22
-23            # Check below
-24            ans += freq * self.points.get((px, py - side), 0) * self.points.get((x,  py - side), 0)
-25
-26        return ans
-27
-28# Your DetectSquares object will be instantiated and called as such:
-29# obj = DetectSquares()
-30# obj.add(point)
-31# param_2 = obj.count(point)
+# Last updated: 11/28/2025, 2:42:18 PM
+class DetectSquares:
+    def __init__(self):
+        self.xPoints = defaultdict(list)
+        self.cnt = defaultdict(int)
+
+    def add(self, point: List[int]) -> None:
+        x, y = point
+        self.xPoints[x].append(y)
+        self.cnt[(x, y)] += 1
+
+    def count(self, point: List[int]) -> int:
+        x1, y1 = point
+        ans = 0
+        for y2 in self.xPoints[x1]:
+            if y2 == y1: continue  # Skip empty square
+            sideLen = abs(y2 - y1)
+
+            # Case: p3, p4 points are in the left side
+            x3, y3 = x1 - sideLen, y2
+            x4, y4 = x1 - sideLen, y1
+            ans += self.cnt[(x3, y3)] * self.cnt[(x4, y4)]
+
+            # Case 2: p3, p4 points are in the left side
+            x3, y3 = x1 + sideLen, y2
+            x4, y4 = x1 + sideLen, y1
+            ans += self.cnt[(x3, y3)] * self.cnt[(x4, y4)]
+        return ans
