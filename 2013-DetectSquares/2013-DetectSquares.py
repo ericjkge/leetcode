@@ -1,4 +1,4 @@
-# Last updated: 11/28/2025, 2:28:15 PM
+# Last updated: 11/28/2025, 2:34:37 PM
 1class DetectSquares:
 2
 3    def __init__(self):
@@ -18,25 +18,15 @@
 17
 18            side = px - x
 19
-20            # Above
-21            p2 = (px, py + side)
-22            p3 = (x,  py + side)
-23
-24            # Below
-25            p4 = (px, py - side)
-26            p5 = (x,  py - side)
+20            # Check above
+21            ans += freq * self.points.get((px, py + side), 0) * self.points.get((x,  py + side), 0)
+22
+23            # Check below
+24            ans += freq * self.points.get((px, py - side), 0) * self.points.get((x,  py - side), 0)
+25
+26        return ans
 27
-28            # Count above
-29            if p2 in self.points and p3 in self.points:
-30                ans += freq * self.points[p2] * self.points[p3]
-31
-32            # Count below
-33            if p4 in self.points and p5 in self.points:
-34                ans += freq * self.points[p4] * self.points[p5]
-35
-36        return ans
-37
-38# Your DetectSquares object will be instantiated and called as such:
-39# obj = DetectSquares()
-40# obj.add(point)
-41# param_2 = obj.count(point)
+28# Your DetectSquares object will be instantiated and called as such:
+29# obj = DetectSquares()
+30# obj.add(point)
+31# param_2 = obj.count(point)
