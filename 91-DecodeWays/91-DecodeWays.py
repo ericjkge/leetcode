@@ -1,4 +1,4 @@
-# Last updated: 11/28/2025, 1:24:09 PM
+# Last updated: 11/28/2025, 1:28:47 PM
 1class Solution:
 2    def numDecodings(self, s: str) -> int:
 3        n = len(s)
