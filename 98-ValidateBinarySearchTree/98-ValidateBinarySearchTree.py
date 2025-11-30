@@ -1,25 +1,24 @@
-# Last updated: 9/11/2025, 12:59:05 PM
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        tree = []
-
-        def dfs(node):
-            if not node:
-                return
-
-            dfs(node.left)
-            tree.append(node.val)
-            dfs(node.right)
-        
-        dfs(root)
-
-        for i in range(len(tree)):
-            if i and tree[i] <= tree[i - 1]:
-                return False
-        return True
+# Last updated: 11/30/2025, 10:15:51 AM
+1# Definition for a binary tree node.
+2# class TreeNode:
+3#     def __init__(self, val=0, left=None, right=None):
+4#         self.val = val
+5#         self.left = left
+6#         self.right = right
+7class Solution:
+8    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+9        arr = []
+10
+11        def dfs(node):
+12            if not node:
+13                return
+14            
+15            dfs(node.left)
+16            arr.append(node.val)
+17            dfs(node.right)
+18        
+19        dfs(root)
+20        for i in range(len(arr)):
+21            if i and arr[i] <= arr[i - 1]:
+22                return False
+23        return True
