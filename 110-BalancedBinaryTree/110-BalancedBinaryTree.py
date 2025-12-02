@@ -1,19 +1,19 @@
-# Last updated: 9/9/2025, 3:41:57 PM
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def isBalanced(self, root: Optional[TreeNode]) -> bool:
-        def dfs(node):
-            if not node:
-                return 0, True
-
-            ldepth, lbalanced = dfs(node.left)            
-            rdepth, rbalanced = dfs(node.right)
-
-            return max(ldepth, rdepth) + 1, (abs(ldepth - rdepth) <= 1 and lbalanced and rbalanced)
-        
-        return dfs(root)[1]
+# Last updated: 12/2/2025, 10:33:57 AM
+1# Definition for a binary tree node.
+2# class TreeNode:
+3#     def __init__(self, val=0, left=None, right=None):
+4#         self.val = val
+5#         self.left = left
+6#         self.right = right
+7class Solution:
+8    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+9        def dfs(node, height):
+10            if not node:
+11                return True, height
+12            
+13            lbalanced, lheight = dfs(node.left, height + 1)
+14            rbalanced, rheight = dfs(node.right, height + 1)
+15
+16            return lbalanced and rbalanced and abs(lheight - rheight) <= 1, max(lheight, rheight)
+17
+18        return dfs(root, 0)[0]
