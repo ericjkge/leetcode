@@ -1,19 +1,17 @@
-# Last updated: 8/16/2025, 9:00:12 PM
-class Solution:
-    def countSubstrings(self, s: str) -> int:
-        n = len(s)
-
-        @cache
-        def dp(i, j):
-            if i >= j:
-                return True
-            if s[i] != s[j]:
-                return False
-            return dp(i + 1, j - 1) # Check smaller palindromic substring
-
-        ans = 0
-        for i in range(n):
-            for j in range(i, n):
-                ans += dp(i, j)
-
-        return ans
+# Last updated: 12/17/2025, 10:08:29 PM
+1class Solution:
+2    def countSubstrings(self, s: str) -> int:
+3        n = len(s)
+4        self.ans = 0
+5
+6        def expand(l, r):
+7            while l >= 0 and r < n and s[l] == s[r]:
+8                self.ans += 1
+9                l -= 1
+10                r += 1
+11        
+12        for i in range(n):
+13            expand(i, i)
+14            expand(i, i + 1)
+15        
+16        return self.ans
