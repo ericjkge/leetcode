@@ -1,18 +1,18 @@
-# Last updated: 8/29/2025, 5:33:29 PM
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution:
-    def hasCycle(self, head: Optional[ListNode]) -> bool:
-        slow = fast = head
-
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-            if slow == fast:
-                return True
-
-        return False
+# Last updated: 12/21/2025, 9:21:50 AM
+1# Definition for singly-linked list.
+2# class ListNode:
+3#     def __init__(self, x):
+4#         self.val = x
+5#         self.next = None
+6
+7class Solution:
+8    def hasCycle(self, head: Optional[ListNode]) -> bool:
+9        slow, fast = head, head
+10
+11        while fast and fast.next:
+12            slow = slow.next
+13            fast = fast.next.next
+14            if slow == fast:
+15                return True
+16        
+17        return False
