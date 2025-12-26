@@ -1,15 +1,13 @@
-# Last updated: 8/14/2025, 3:16:26 PM
-class Solution:
-    def rob(self, nums: List[int]) -> int:
-        if not nums:
-            return 0
-        
-        n = len(nums)
-        if n == 1:
-            return nums[0]
-
-        dp = [nums[0], max(nums[0], nums[1])]
-        for i in range(2, n):
-            dp.append(max(dp[i - 2] + nums[i], dp[i - 1]))
-
-        return dp[n - 1]
+# Last updated: 12/26/2025, 10:57:52 PM
+1class Solution:
+2    def rob(self, nums: List[int]) -> int:
+3        n = len(nums)
+4
+5        @cache
+6        def dp(i):
+7            if i >= n:
+8                return 0
+9            
+10            return max(nums[i] + dp(i + 2), dp(i + 1))
+11        
+12        return dp(0)
