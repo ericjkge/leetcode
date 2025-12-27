@@ -1,43 +1,41 @@
-# Last updated: 12/27/2025, 10:50:51 PM
+# Last updated: 12/27/2025, 10:52:01 PM
 1class TrieNode:
-2    def __init__(self, character, is_end):
-3        self.character = character
-4        self.is_end = is_end
-5        self.children = {}
-6
-7class Trie:
-8
-9    def __init__(self):
-10        self.root = TrieNode("", False)
-11
-12    def insert(self, word: str) -> None:
-13        curr = self.root
-14        for c in word:
-15            if c not in curr.children:
-16                node = TrieNode(c, False)
-17                curr.children[c] = node
-18            curr = curr.children[c]
-19        curr.is_end = True
-20
-21    def search(self, word: str) -> bool:
-22        curr = self.root
-23        for c in word:
-24            if c not in curr.children:
-25                return False
-26            curr = curr.children[c]
-27        return curr.is_end
-28
-29    def startsWith(self, prefix: str) -> bool:
-30        curr = self.root
-31        for c in prefix:
-32            if c not in curr.children:
-33                return False
-34            curr = curr.children[c]
-35        return True
-36
-37
-38# Your Trie object will be instantiated and called as such:
-39# obj = Trie()
-40# obj.insert(word)
-41# param_2 = obj.search(word)
-42# param_3 = obj.startsWith(prefix)
+2    def __init__(self):
+3        self.is_end = False
+4        self.children = {}
+5
+6class Trie:
+7
+8    def __init__(self):
+9        self.root = TrieNode()
+10
+11    def insert(self, word: str) -> None:
+12        curr = self.root
+13        for c in word:
+14            if c not in curr.children:
+15                curr.children[c] = TrieNode()
+16            curr = curr.children[c]
+17        curr.is_end = True
+18
+19    def search(self, word: str) -> bool:
+20        curr = self.root
+21        for c in word:
+22            if c not in curr.children:
+23                return False
+24            curr = curr.children[c]
+25        return curr.is_end
+26
+27    def startsWith(self, prefix: str) -> bool:
+28        curr = self.root
+29        for c in prefix:
+30            if c not in curr.children:
+31                return False
+32            curr = curr.children[c]
+33        return True
+34
+35
+36# Your Trie object will be instantiated and called as such:
+37# obj = Trie()
+38# obj.insert(word)
+39# param_2 = obj.search(word)
+40# param_3 = obj.startsWith(prefix)
