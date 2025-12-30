@@ -1,14 +1,16 @@
-# Last updated: 11/14/2025, 2:09:56 PM
-class Solution:
-    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        heap = []
-        intervals.sort()
-        ans = 0
-
-        for start, end in intervals:
-            while heap and heap[0] <= start:
-                heapq.heappop(heap)
-            heapq.heappush(heap, end)
-            ans = max(ans, len(heap))
-        
-        return ans
+# Last updated: 12/30/2025, 11:58:48 PM
+1class Solution:
+2    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+3        rooms = 0
+4        waiting = []
+5        intervals.sort()
+6
+7        for start, end in intervals:
+8            while waiting and waiting[0] <= start:
+9                heapq.heappop(waiting)
+10
+11            if not waiting or start < waiting[0]:
+12                heapq.heappush(waiting, end)
+13                rooms = max(rooms, len(waiting))
+14        
+15        return rooms
