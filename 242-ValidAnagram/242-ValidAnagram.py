@@ -1,4 +1,4 @@
-# Last updated: 7/2/2025, 1:56:56 PM
-class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        return Counter(s) == Counter(t)
+# Last updated: 12/30/2025, 11:31:12 PM
+1class Solution:
+2    def isAnagram(self, s: str, t: str) -> bool:
+3        return Counter(s) == Counter(t)
