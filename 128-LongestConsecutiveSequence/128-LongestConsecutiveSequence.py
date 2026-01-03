@@ -1,4 +1,4 @@
-# Last updated: 12/10/2025, 10:29:47 AM
+# Last updated: 1/4/2026, 12:40:41 AM
 1class Solution:
 2    def longestConsecutive(self, nums: List[int]) -> int:
 3        seen = set(nums)
@@ -9,7 +9,7 @@
 8            if num - 1 not in seen:
 9                while num + 1 in seen:
 10                    num = num + 1
-11                    streak += 1
+11                    streak += 1 
 12                ans = max(ans, streak)
-13        
+13            
 14        return ans
