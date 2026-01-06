@@ -1,36 +1,36 @@
-# Last updated: 1/6/2026, 11:15:06 AM
+# Last updated: 1/6/2026, 11:21:13 AM
 1class Twitter:
 2
 3    def __init__(self):
-4        self.users = defaultdict(lambda: defaultdict(list)) # user_id: {"following":[], "posts":[(time, tweet_id)]}
-5        self.time = 1
-6
-7    def postTweet(self, userId: int, tweetId: int) -> None:
-8        self.users[userId]["posts"].append((self.time, tweetId))
-9        self.time += 1
-10
-11    def getNewsFeed(self, userId: int) -> List[int]:
-12        following = self.users[userId]["following"]
-13        posts = self.users[userId]["posts"][-10:]
-14        
-15        for account in following:
-16            posts.extend(self.users[account]["posts"][-10:])
-17        posts.sort(reverse=True)
-18        posts = posts[:10]
-19
-20        return [post[1] for post in posts]
-21
-22    def follow(self, followerId: int, followeeId: int) -> None:
-23        if followeeId in self.users[followerId]["following"]:
-24            return
-25            
-26        self.users[followerId]["following"].append(followeeId)
+4        self.following = defaultdict(set)
+5        self.tweets = defaultdict(list)
+6        self.time = 1
+7
+8    def postTweet(self, userId: int, tweetId: int) -> None:
+9        self.tweets[userId].append((self.time, tweetId))
+10        self.time += 1
+11
+12    def getNewsFeed(self, userId: int) -> List[int]:
+13        following = self.following[userId]
+14        following.add(userId)
+15
+16        posts = []
+17        
+18        for account in following:
+19            posts.extend(self.tweets[account][-10:])
+20        posts.sort(reverse=True)
+21        posts = posts[:10]
+22
+23        return [post[1] for post in posts]
+24
+25    def follow(self, followerId: int, followeeId: int) -> None:
+26        self.following[followerId].add(followeeId)
 27
 28    def unfollow(self, followerId: int, followeeId: int) -> None:
-29        if followerId not in self.users or followeeId not in self.users[followerId]["following"]:
+29        if followerId not in self.following or followeeId not in self.following[followerId]:
 30            return
 31
-32        self.users[followerId]["following"].remove(followeeId)
+32        self.following[followerId].remove(followeeId)
 33
 34
 35# Your Twitter object will be instantiated and called as such:
