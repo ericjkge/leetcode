@@ -1,4 +1,4 @@
-# Last updated: 1/6/2026, 10:02:34 AM
+# Last updated: 1/6/2026, 10:02:39 AM
 1class Solution:
 2    def countComponents(self, n: int, edges: List[List[int]]) -> int:
 3        graph = defaultdict(list)
@@ -18,7 +18,7 @@
 17
 18        for i in range(n):
 19            if i not in seen:
-20                # seen.add(i)
+20                seen.add(i)
 21                dfs(i)
 22                counter += 1
 23        
