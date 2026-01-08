@@ -1,4 +1,4 @@
-# Last updated: 1/8/2026, 10:59:11 AM
+# Last updated: 1/8/2026, 10:59:23 AM
 1class Solution:
 2    def characterReplacement(self, s: str, k: int) -> int:
 3        left, right = 0, 0
@@ -7,7 +7,7 @@
 6
 7        while right < len(s):
 8            freqs[s[right]] += 1
-9            while len(freqs) > 1 and sum(freqs.values()) - max(freqs.values()) > k:
+9            while sum(freqs.values()) - max(freqs.values()) > k:
 10                letter = s[left]
 11                freqs[letter] -= 1
 12                if freqs[letter] == 0:
