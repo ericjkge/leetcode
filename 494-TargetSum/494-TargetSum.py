@@ -1,15 +1,16 @@
-# Last updated: 8/19/2025, 10:45:07 PM
-class Solution:
-    def findTargetSumWays(self, nums: List[int], target: int) -> int:
-        n = len(nums)
-
-        @cache
-        def dp(i, j):
-            if i == target and j == n:
-                return 1
-            if j == n:
-                return 0
-
-            return dp(i - nums[j], j + 1) + dp(i + nums[j], j + 1)
-        
-        return dp(0, 0)
+# Last updated: 1/9/2026, 10:27:19 AM
+1class Solution:
+2    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+3        n = len(nums)
+4
+5        @cache
+6        def dp(i, j):
+7            if i == n and j == target:
+8                return 1
+9            
+10            if i == n and j != target:
+11                return 0
+12
+13            return dp(i + 1, j - nums[i]) + dp(i + 1, j + nums[i])
+14
+15        return dp(0, 0)
