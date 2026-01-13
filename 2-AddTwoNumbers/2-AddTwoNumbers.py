@@ -1,4 +1,4 @@
-# Last updated: 1/14/2026, 12:14:12 AM
+# Last updated: 1/14/2026, 12:15:34 AM
 1# Definition for singly-linked list.
 2# class ListNode:
 3#     def __init__(self, val=0, next=None):
@@ -17,12 +17,8 @@
 16            if l2:
 17                total += l2.val
 18                l2 = l2.next
-19            if total >= 10:
-20                carry = 1
-21                total -= 10
-22            else:
-23                carry = 0
-24            curr.next = ListNode(total)
-25            curr = curr.next
-26        
-27        return dummy.next
+19            curr.next = ListNode(total % 10)
+20            curr = curr.next
+21            carry = total // 10
+22        
+23        return dummy.next
