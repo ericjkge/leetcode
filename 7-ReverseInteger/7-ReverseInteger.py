@@ -1,18 +1,19 @@
-# Last updated: 8/13/2025, 12:23:04 AM
-class Solution:
-    def reverse(self, x: int) -> int:
-        MAX = 2 ** 31 - 1
-        ans = 0
-        sign = 1
-        if x < 0:
-            sign = -1
-            x = abs(x)
-
-        while x:
-            d = x % 10
-            x //= 10
-            if ans > MAX // 10 or (ans == MAX // 10 and d > (7 if sign == 1 else 8)):
-                return 0
-            ans = ans * 10 + d
-
-        return sign * ans
+# Last updated: 1/14/2026, 11:25:41 PM
+1class Solution:
+2    def reverse(self, x: int) -> int:
+3        MAX = 2 ** 31 - 1
+4        MIN = -2 ** 31
+5
+6        flag = 1 if x >= 0 else -1
+7        x = abs(x)
+8        reverse = 0
+9
+10        while x:
+11            reverse *= 10
+12            reverse += x % 10
+13            x //= 10
+14            if reverse > MAX or reverse < MIN:
+15                return 0
+16        
+17        return reverse * flag
+18
