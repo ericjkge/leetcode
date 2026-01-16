@@ -1,4 +1,4 @@
-# Last updated: 1/14/2026, 12:15:38 AM
+# Last updated: 1/16/2026, 8:06:21 PM
 1# Definition for singly-linked list.
 2# class ListNode:
 3#     def __init__(self, val=0, next=None):
@@ -7,7 +7,7 @@
 6class Solution:
 7    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
 8        carry = 0
-9        curr = dummy = ListNode()
+9        dummy = curr = ListNode()
 10
 11        while l1 or l2 or carry:
 12            total = carry
