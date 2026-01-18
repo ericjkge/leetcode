@@ -1,25 +1,24 @@
-# Last updated: 1/11/2026, 10:17:13 AM
+# Last updated: 1/18/2026, 10:58:15 AM
 1class Solution:
 2    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
 3        n = len(candidates)
-4        candidates.sort()
-5        print(candidates)
-6        ans = []
-7
-8        def backtrack(i, path):
-9            if sum(path) == target:
-10                ans.append(path[:])
-11                return
-12
-13            if sum(path) > target:
-14                return
-15
-16            for j in range(i, n):
-17                if j > i and candidates[j] == candidates[j - 1]:
-18                    continue
-19                path.append(candidates[j])
-20                backtrack(j + 1, path)
-21                path.pop()
-22        
-23        backtrack(0, [])
-24        return ans
+4        combinations = []
+5        candidates.sort()
+6
+7        def backtrack(index, path):
+8            if sum(path) == target:
+9                combinations.append(path[:])
+10                return
+11            
+12            if sum(path) > target:
+13                return
+14            
+15            for i in range(index, n):
+16                if i > index and candidates[i] == candidates[i - 1]:
+17                    continue
+18                path.append(candidates[i])
+19                backtrack(i + 1, path)
+20                path.pop()
+21        
+22        backtrack(0, [])
+23        return combinations
