@@ -1,27 +1,28 @@
-# Last updated: 1/18/2026, 10:08:43 AM
+# Last updated: 1/18/2026, 10:35:41 AM
 1class Solution:
 2    def isValidSudoku(self, board: List[List[str]]) -> bool:
-3        for row in board:
-4            seen = set()
-5            for num in row:
-6                if num.isalnum() and num in seen:
-7                    return False
-8                seen.add(num)
-9
-10        for i in range(9):
-11            seen = set()
-12            for j in range(9):
-13                if board[j][i].isalnum() and board[j][i] in seen:
-14                    return False
-15                seen.add(board[j][i])
-16
-17        for i in range(0, 9, 3):
-18            for j in range(0, 9, 3):
-19                seen = set()
-20                for k in range(i, i + 3):
-21                    for l in range(j, j + 3):
-22                        if board[k][l].isalnum() and board[k][l] in seen:
-23                            return False
-24                        seen.add(board[k][l])
-25
-26        return True
+3
+4        for row in range(9):
+5            seen = set()
+6            for col in range(9):
+7                if board[row][col].isalnum() and board[row][col] in seen:
+8                    return False
+9                seen.add(board[row][col])
+10    
+11        for col in range(9):
+12            seen = set()
+13            for row in range(9):
+14                if board[row][col].isalnum() and board[row][col] in seen:
+15                    return False
+16                seen.add(board[row][col])
+17
+18        for row in range(0, 9, 3):
+19            for col in range(0, 9, 3):
+20                seen = set()
+21                for r in range(row, row + 3):
+22                    for c in range(col, col + 3):
+23                        if board[r][c].isalnum() and board[r][c] in seen:
+24                            return False
+25                        seen.add(board[r][c])
+26                        
+27        return True
