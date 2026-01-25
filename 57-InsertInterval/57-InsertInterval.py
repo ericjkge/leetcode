@@ -1,4 +1,4 @@
-# Last updated: 1/25/2026, 7:11:47 AM
+# Last updated: 1/25/2026, 7:21:05 AM
 1class Solution:
 2    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
 3        index = 0
@@ -9,20 +9,14 @@
 8            results.append(intervals[index])
 9            index += 1
 10
-11        if index < n and intervals[index][0] <= newInterval[1]:
-12            start, end = min(intervals[index][0], newInterval[0]), max(intervals[index][1], newInterval[1])
-13            index += 1
-14        else:
-15            start, end = newInterval[0], newInterval[1]
-16        results.append([start, end])
-17
-18
-19        while index < n and intervals[index][0] <= end:
-20            results[-1][1] = max(intervals[index][1], end)
-21            index += 1
-22        
-23        while index < n:
-24            results.append(intervals[index])
-25            index += 1
-26        
-27        return results
+11        while index < n and intervals[index][0] <= newInterval[1]:
+12            newInterval[0] = min(newInterval[0], intervals[index][0])
+13            newInterval[1] = max(newInterval[1], intervals[index][1])
+14            index += 1
+15        results.append(newInterval)
+16
+17        while index < n:
+18            results.append(intervals[index])
+19            index += 1
+20        
+21        return results
