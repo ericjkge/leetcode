@@ -1,4 +1,4 @@
-# Last updated: 1/25/2026, 7:50:09 AM
+# Last updated: 1/25/2026, 7:50:20 AM
 1class Solution:
 2    def checkInclusion(self, s1: str, s2: str) -> bool:
 3        n, k = len(s2), len(s1)
@@ -12,8 +12,8 @@
 11            c2[s2[i]] += 1
 12            c2[s2[i - k]] -= 1
 13
-14            if not c2[s2[i - k]]:
-15                del c2[s2[i - k]]
+14            # if not c2[s2[i - k]]:
+15            #     del c2[s2[i - k]]
 16
 17            if c1 == c2:
 18                return True
