@@ -1,24 +1,14 @@
-# Last updated: 11/21/2025, 2:45:30 PM
-class Solution:
-    def checkInclusion(self, s1: str, s2: str) -> bool:
-        k = len(s1)
-        if k > len(s2):
-            return False
-
-        c1 = Counter(s1)
-        c2 = Counter(s2[:k])
-
-        if c1 == c2:
-            return True
-
-        for i in range(k, len(s2)):
-            c2[s2[i]] += 1
-            removed = s2[i - k]
-            c2[removed] -= 1
-            if c2[removed] == 0:
-                del c2[removed]
-
-            if c1 == c2:
-                return True
-                
-        return False
+# Last updated: 1/25/2026, 7:33:32 AM
+1class Solution:
+2    def checkInclusion(self, s1: str, s2: str) -> bool:
+3        n = len(s2)
+4        letters = Counter(s1)
+5        start, end = 0, len(s1)
+6
+7        while end < n + 1:
+8            if letters == Counter(s2[start:end]):
+9                return True
+10            start += 1
+11            end += 1
+12
+13        return False
