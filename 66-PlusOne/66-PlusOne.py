@@ -1,29 +1,16 @@
-# Last updated: 11/22/2025, 2:01:59 PM
-class Solution:
-    def plusOne(self, digits: List[int]) -> List[int]:
-        carry = 0
-        n = len(digits)
-
-        if digits[n - 1] + 1 > 9:
-            carry = 1
-            digits[n - 1] = 0
-        else:
-            digits[n - 1] += 1
-
-        if carry:
-            for i in range(n - 2, -1, -1):
-                if digits[i] + carry > 9:
-                    carry = 1
-                    digits[i] = 0
-                else:
-                    carry = 0
-                    digits[i] += 1
-                    break
-        
-        if carry:
-            digits.insert(0, 1)
-        
-        return digits
-            
-
-            
+# Last updated: 1/25/2026, 8:35:37 AM
+1class Solution:
+2    def plusOne(self, digits: List[int]) -> List[int]:
+3        n = len(digits)
+4        carry = 1
+5
+6        for i in range(n - 1, -1, -1):
+7            total = digits[i] + carry
+8            if total > 9:
+9                carry = 1
+10                digits[i] = total % 10
+11            else:
+12                carry = 0
+13                digits[i] = total
+14        
+15        return [1] + digits if carry else digits 
