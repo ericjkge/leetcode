@@ -1,28 +1,24 @@
-# Last updated: 11/28/2025, 2:44:24 PM
-class DetectSquares:
-    def __init__(self):
-        self.xPoints = defaultdict(list)
-        self.cnt = defaultdict(int)
-
-    def add(self, point: List[int]) -> None:
-        x, y = point
-        self.xPoints[x].append(y)
-        self.cnt[(x, y)] += 1
-
-    def count(self, point: List[int]) -> int:
-        x1, y1 = point
-        ans = 0
-        for y2 in self.xPoints[x1]:
-            if y2 == y1: continue  # Skip empty square
-            sideLen = abs(y2 - y1)
-
-            # Case: p3, p4 points are in the left side
-            x3, y3 = x1 - sideLen, y2
-            x4, y4 = x1 - sideLen, y1
-            ans += self.cnt[(x3, y3)] * self.cnt[(x4, y4)]
-
-            # Case 2: p3, p4 points are in the left side
-            x3, y3 = x1 + sideLen, y2
-            x4, y4 = x1 + sideLen, y1
-            ans += self.cnt[(x3, y3)] * self.cnt[(x4, y4)]
-        return ans
+# Last updated: 1/28/2026, 9:06:35 AM
+1class DetectSquares:
+2
+3    def __init__(self):        
+4        self.points = Counter()
+5
+6    def add(self, point: List[int]) -> None:
+7        self.points[tuple(point)] += 1
+8
+9    def count(self, point: List[int]) -> int:
+10        total = 0
+11        px, py = point
+12
+13        for (x, y), freq in self.points.items():
+14            if abs(x - px) == abs(y - py) and x != px:
+15                total += freq * self.points[(x, py)] * self.points[(px, y)]
+16
+17        return total
+18
+19
+20# Your DetectSquares object will be instantiated and called as such:
+21# obj = DetectSquares()
+22# obj.add(point)
+23# param_2 = obj.count(point)
