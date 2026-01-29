@@ -1,4 +1,4 @@
-# Last updated: 12/2/2025, 10:05:50 AM
+# Last updated: 1/29/2026, 9:55:44 AM
 1# Definition for a binary tree node.
 2# class TreeNode:
 3#     def __init__(self, val=0, left=None, right=None):
@@ -10,10 +10,10 @@
 9        if not preorder:
 10            return None
 11
-12        root = TreeNode(preorder[0])
-13        mid = inorder.index(root.val)
+12        node = TreeNode(preorder[0])
+13        index = inorder.index(preorder[0])
 14
-15        root.left = self.buildTree(preorder[1:mid + 1], inorder[:mid])
-16        root.right = self.buildTree(preorder[mid + 1: ], inorder[mid + 1:])
+15        node.left = self.buildTree(preorder[1:index + 1], inorder[:index])
+16        node.right = self.buildTree(preorder[index + 1:], inorder[index + 1:])
 17
-18        return root
+18        return node
