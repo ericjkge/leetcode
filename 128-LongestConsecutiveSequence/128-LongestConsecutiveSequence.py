@@ -1,4 +1,4 @@
-# Last updated: 1/30/2026, 8:10:58 AM
+# Last updated: 1/30/2026, 8:11:46 AM
 1class Solution:
 2    def longestConsecutive(self, nums: List[int]) -> int:
 3        nset = set(nums)
