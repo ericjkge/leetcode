@@ -1,4 +1,4 @@
-# Last updated: 1/4/2026, 9:54:50 AM
+# Last updated: 1/30/2026, 10:02:17 AM
 1"""
 2# Definition for a Node.
 3class Node:
@@ -13,15 +13,18 @@
 12        if not node:
 13            return None
 14            
-15        hashmap = {node: Node(node.val)}
+15        mapping = {} # original : clone
 16        
 17        def dfs(n):
-18            for neighbor in n.neighbors:
-19                if neighbor not in hashmap:
-20                    clone = Node(neighbor.val)
-21                    hashmap[neighbor] = clone
-22                    dfs(neighbor)
-23                hashmap[n].neighbors.append(hashmap[neighbor])
-24
-25        dfs(node)
-26        return hashmap[node]
+18            if n in mapping:
+19                return mapping[n]
+20            
+21            clone = Node(n.val)
+22            mapping[n] = clone
+23
+24            for neighbor in n.neighbors:
+25                clone.neighbors.append(dfs(neighbor))
+26
+27            return clone
+28
+29        return dfs(node)
