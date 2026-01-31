@@ -1,4 +1,4 @@
-# Last updated: 1/30/2026, 10:02:17 AM
+# Last updated: 1/31/2026, 1:03:16 PM
 1"""
 2# Definition for a Node.
 3class Node:
@@ -12,9 +12,9 @@
 11    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
 12        if not node:
 13            return None
-14            
-15        mapping = {} # original : clone
-16        
+14
+15        mapping = {}
+16
 17        def dfs(n):
 18            if n in mapping:
 19                return mapping[n]
@@ -26,5 +26,6 @@
 25                clone.neighbors.append(dfs(neighbor))
 26
 27            return clone
-28
-29        return dfs(node)
+28        
+29        dfs(node)
+30        return mapping[node]
