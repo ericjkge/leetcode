@@ -1,4 +1,4 @@
-# Last updated: 1/31/2026, 1:30:01 PM
+# Last updated: 1/31/2026, 1:30:51 PM
 1"""
 2# Definition for a Node.
 3class Node:
@@ -10,20 +10,25 @@
 9
 10class Solution:
 11    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-12        mapping = {None:None}
-13        curr = head
-14
-15        while curr:
-16            clone = Node(curr.val)
-17            mapping[curr] = clone
-18            curr = curr.next
-19
-20        curr = head
-21        while curr:
-22            clone = mapping[curr]
-23            clone.next = mapping[curr.next]
-24            clone.random = mapping[curr.random]
-25            curr = curr.next
-26        
-27        return mapping[head]
-28
+12        if not head:
+13            return None
+14            
+15        mapping = {}
+16        curr = head
+17
+18        while curr:
+19            clone = Node(curr.val)
+20            mapping[curr] = clone
+21            curr = curr.next
+22
+23        curr = head
+24        while curr:
+25            clone = mapping[curr]
+26            if curr.next:
+27                clone.next = mapping[curr.next]
+28            if curr.random:
+29                clone.random = mapping[curr.random]
+30            curr = curr.next
+31        
+32        return mapping[head]
+33
