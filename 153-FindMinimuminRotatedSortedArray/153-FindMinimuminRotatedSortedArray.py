@@ -1,4 +1,4 @@
-# Last updated: 12/23/2025, 1:49:10 PM
+# Last updated: 2/1/2026, 3:54:36 PM
 1class Solution:
 2    def findMin(self, nums: List[int]) -> int:
 3        left, right = 0, len(nums) - 1
@@ -10,6 +10,4 @@
 9            else:
 10                left = mid
 11        
-12        if nums[left] < nums[right]:
-13            return nums[left]
-14        return nums[right]
+12        return min(nums[left], nums[right])
