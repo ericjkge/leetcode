@@ -1,4 +1,4 @@
-# Last updated: 12/22/2025, 7:06:55 PM
+# Last updated: 2/1/2026, 3:18:28 PM
 1class Solution:
 2    def evalRPN(self, tokens: List[str]) -> int:
 3        operations = {
@@ -18,3 +18,22 @@
 17                stack.append(int(token))
 18        
 19        return stack[0]
+20
+21class Solution:
+22    def evalRPN(self, tokens: List[str]) -> int:
+23        stack = []
+24        mappings = {
+25            "+": lambda x, y: x + y,
+26            "-": lambda x, y: x - y,
+27            "*": lambda x, y: x * y,
+28            "/": lambda x, y: int(x / y)
+29        }
+30
+31        for token in tokens:
+32            if token in mappings:
+33                y, x = stack.pop(), stack.pop()
+34                stack.append(mappings[token](x, y))
+35            else:
+36                stack.append(int(token))
+37        
+38        return stack[0]
