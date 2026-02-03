@@ -1,4 +1,4 @@
-# Last updated: 12/24/2025, 10:34:26 AM
+# Last updated: 2/3/2026, 10:07:20 AM
 1class Solution:
 2    def minCostConnectPoints(self, points: List[List[int]]) -> int:
 3        n = len(points)
@@ -18,3 +18,22 @@
 17
 18        return cost
 19
+20
+21
+22        # n = len(points)
+23        # seen = set()
+24        # heap = [(0, 0)]
+25        # cost = 0
+26
+27        # while heap:
+28        #     w, u = heapq.heappop(heap)
+29        #     if u in seen:
+30        #         continue
+31        #     seen.add(u)
+32        #     cost += w
+33        #     for v in range(n):
+34        #         if v not in seen:
+35        #             heapq.heappush(heap, (abs(points[u][0] - points[v][0]) + abs(points[u][1] - points[v][1]), v))
+36
+37        # return cost
+38
