@@ -1,4 +1,4 @@
-# Last updated: 2/3/2026, 10:15:32 AM
+# Last updated: 2/3/2026, 10:15:35 AM
 1class Solution:
 2    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
 3        rows, cols = len(grid), len(grid[0])
