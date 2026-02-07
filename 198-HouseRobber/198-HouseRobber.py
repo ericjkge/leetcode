@@ -1,4 +1,4 @@
-# Last updated: 2/5/2026, 8:45:22 AM
+# Last updated: 2/7/2026, 1:33:35 PM
 1class Solution:
 2    def rob(self, nums: List[int]) -> int:
 3        @cache
@@ -8,4 +8,4 @@
 7            
 8            return max(nums[i] + dp(i + 2), dp(i + 1))
 9        
-10        return max(dp(0), dp(1))
+10        return dp(0)
