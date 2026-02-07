@@ -1,15 +1,14 @@
-# Last updated: 12/28/2025, 10:17:13 AM
+# Last updated: 2/7/2026, 1:39:05 PM
 1class Solution:
 2    def rob(self, nums: List[int]) -> int:
-3        n = len(nums)
-4        if n == 1:
-5            return nums[0]
-6
-7        @cache
-8        def dp(i, j):
-9            if i >= j:
-10                return 0
-11            
-12            return max(nums[i] + dp(i + 2, j), dp(i + 1, j))
-13        
-14        return max(dp(0, n - 1), dp(1, n))
+3        if len(nums) == 1:
+4            return nums[0]
+5        
+6        @cache
+7        def dp(i, j):
+8            if i >= j:
+9                return 0
+10            
+11            return max(nums[i] + dp(i + 2, j), dp(i + 1, j))
+12
+13        return max(dp(0, len(nums) - 1), dp(1, len(nums)))
