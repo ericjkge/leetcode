@@ -1,4 +1,4 @@
-# Last updated: 2/7/2026, 1:39:05 PM
+# Last updated: 2/7/2026, 1:39:08 PM
 1class Solution:
 2    def rob(self, nums: List[int]) -> int:
 3        if len(nums) == 1:
