@@ -1,4 +1,4 @@
-# Last updated: 2/9/2026, 5:12:03 PM
+# Last updated: 2/9/2026, 5:12:06 PM
 1class Solution:
 2    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
 3        intervals.sort()
@@ -9,7 +9,6 @@
 8            while heap and start >= heap[0]:
 9                heapq.heappop(heap)
 10            heapq.heappush(heap, end)
-11            # print(heap)
-12            rooms = max(rooms, len(heap))
-13
-14        return rooms
+11            rooms = max(rooms, len(heap))
+12
+13        return rooms
