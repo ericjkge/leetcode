@@ -1,10 +1,10 @@
-# Last updated: 12/31/2025, 11:01:02 AM
+# Last updated: 2/11/2026, 3:20:28 PM
 1class KthLargest:
 2
 3    def __init__(self, k: int, nums: List[int]):
 4        self.heap = nums
-5        self.k = k
-6        heapq.heapify(self.heap)
+5        heapq.heapify(self.heap)
+6        self.k = k
 7        while len(self.heap) > self.k:
 8            heapq.heappop(self.heap)
 9
