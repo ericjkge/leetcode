@@ -1,7 +1,9 @@
-# Last updated: 12/31/2025, 10:20:12 AM
+# Last updated: 2/11/2026, 2:39:23 PM
 1class Solution:
 2    def missingNumber(self, nums: List[int]) -> int:
-3        n = len(nums)
-4        expected = n * (n + 1) // 2
-5        actual = sum(nums)
-6        return expected - actual
+3        nums_set = set(nums)
+4
+5        for i in range(len(nums) + 1):
+6            if i not in nums_set:
+7                return i
+8
