@@ -1,23 +1,23 @@
-# Last updated: 8/11/2025, 3:54:26 PM
-class Solution:
-    def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        graph = defaultdict(list)
-        
-        for a, b in edges:
-            graph[a].append(b)
-            graph[b].append(a)
-        
-        # Condition 1: E = V - 1
-        if len(edges) != n - 1:
-            return False
-        
-        # Condition 2: Connected (any two conditions imply the third)
-        seen = set()
-        def dfs(node):
-            seen.add(node)
-            for nei in graph[node]:
-                if nei not in seen:
-                    dfs(nei)
-        
-        dfs(0)
-        return True if len(seen) == n else False
+# Last updated: 2/11/2026, 2:34:19 PM
+1class Solution:
+2    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+3        if len(edges) != n - 1:
+4            return False
+5
+6        if not edges:
+7            return True
+8
+9        graph = defaultdict(list)
+10        for u, v in edges:
+11            graph[u].append(v)
+12            graph[v].append(u)
+13
+14        seen = set()
+15        def dfs(node):
+16            for neighbor in graph[node]:
+17                if neighbor not in seen:
+18                    seen.add(neighbor)
+19                    dfs(neighbor)
+20        
+21        dfs(0)
+22        return len(seen) == n
