@@ -1,4 +1,4 @@
-# Last updated: 2/12/2026, 1:42:50 PM
+# Last updated: 2/12/2026, 1:42:54 PM
 1class Solution:
 2    def swimInWater(self, grid: List[List[int]]) -> int:
 3        directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
@@ -22,16 +22,15 @@
 21            return False
 22        
 23        left, right = 0, max(max(row) for row in grid)
-24        print(left, right)
-25        while left + 1 < right:
-26            seen = set()
-27            mid = (left + right) // 2
-28            if dfs(0, 0, mid):
-29                right = mid
-30            else:
-31                left = mid
-32        
-33        seen = set()
-34        if dfs(0, 0, left):
-35            return left
-36        return right
+24        while left + 1 < right:
+25            seen = set()
+26            mid = (left + right) // 2
+27            if dfs(0, 0, mid):
+28                right = mid
+29            else:
+30                left = mid
+31        
+32        seen = set()
+33        if dfs(0, 0, left):
+34            return left
+35        return right
