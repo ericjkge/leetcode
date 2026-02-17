@@ -1,4 +1,4 @@
-# Last updated: 2/17/2026, 9:17:44 AM
+# Last updated: 2/17/2026, 9:18:05 AM
 1class Solution:
 2    def canPartition(self, nums: List[int]) -> bool:
 3        if sum(nums) % 2 != 0:
@@ -12,9 +12,9 @@
 11            if j == target:
 12                return True
 13            
-14            if j > target:
-15                return False
-16                
+14            # if j > target:
+15            #     return False
+16
 17            for k in range(i, len(nums)):
 18                if dp(k + 1, j + nums[i]):
 19                    return True
