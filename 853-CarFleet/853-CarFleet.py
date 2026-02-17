@@ -1,4 +1,4 @@
-# Last updated: 2/17/2026, 9:37:43 AM
+# Last updated: 2/17/2026, 9:38:27 AM
 1class Solution:
 2    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
 3        pairs = sorted(zip(position, speed), reverse=True)
