@@ -1,27 +1,18 @@
-# Last updated: 10/28/2025, 9:45:27 AM
-class Solution:
-    def minWindow(self, s: str, t: str) -> str:
-        left = right = 0
-        tcounter = Counter(t)
-        scounter = {}
-        min_length = float("inf")
-        ans = ""
-        have = 0
-        need = len(tcounter)
-
-        while right < len(s):
-            scounter[s[right]] = scounter.get(s[right], 0) + 1
-            if s[right] in tcounter and scounter[s[right]] == tcounter[s[right]]:
-                have += 1
-            
-            while have == need:
-                if (right - left + 1) < min_length:
-                    min_length = right - left + 1
-                    ans = s[left:right + 1]
-                scounter[s[left]] = scounter[s[left]] - 1
-                if s[left] in tcounter and scounter[s[left]] < tcounter[s[left]]:
-                    have -= 1
-                left += 1
-            right += 1
-        
-        return ans
+# Last updated: 2/24/2026, 10:02:42 AM
+1class Solution:
+2    def minWindow(self, s: str, t: str) -> str:
+3        left = right = 0
+4        s_counter = Counter()
+5        t_counter = Counter(t)
+6        ans = None
+7
+8        while right < len(s):
+9            s_counter[s[right]] += 1
+10            while all(s_counter[k] >= t_counter[k] for k in t_counter.keys()):
+11                if not ans or right - left + 1 < len(ans):
+12                    ans = s[left:right + 1]
+13                s_counter[s[left]] -= 1
+14                left += 1
+15            right += 1 
+16
+17        return ans if ans else ""
