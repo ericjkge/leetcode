@@ -1,37 +1,37 @@
-# Last updated: 9/3/2025, 11:03:43 AM
-class Solution:
-    def solveNQueens(self, n: int) -> List[List[str]]:
-        ans = []
-
-        def create_board(state):
-            board = []
-            for row in state:
-                board.append("".join(row))
-            return board
-
-        def backtrack(row, cols, diag, anti_diag, state):
-            if row == n:
-                ans.append(create_board(state))
-                return
-            
-            for col in range(n):
-                curr_diag = row - col
-                curr_anti_diag = row + col
-                if col in cols or curr_diag in diag or curr_anti_diag in anti_diag:
-                    continue
-                cols.add(col)
-                diag.add(curr_diag)
-                anti_diag.add(curr_anti_diag)
-                state[row][col] = "Q"
-                
-                backtrack(row + 1, cols, diag, anti_diag, state)
-
-                cols.remove(col)
-                diag.remove(curr_diag)
-                anti_diag.remove(curr_anti_diag)
-                state[row][col] = "."
-
-        ans = []
-        empty_board = [["."] * n for _ in range(n)]
-        backtrack(0, set(), set(), set(), empty_board)
-        return ans
+# Last updated: 2/25/2026, 3:55:43 PM
+1class Solution:
+2    def solveNQueens(self, n: int) -> List[List[str]]:
+3        def create_board(state):
+4            res = []
+5            for row in state:
+6                res.append("".join(row))
+7            return res
+8    
+9        def backtrack(row, cols, diags, anti_diags, state):
+10            if row == n:
+11                ans.append(create_board(state))
+12                return
+13            
+14            for col in range(n):
+15                diag = row - col
+16                anti_diag = row + col
+17
+18                if col in cols or diag in diags or anti_diag in anti_diags:
+19                    continue
+20
+21                cols.add(col)
+22                diags.add(diag)
+23                anti_diags.add(anti_diag)
+24                state[row][col] = "Q"
+25
+26                backtrack(row + 1, cols, diags, anti_diags, state)
+27
+28                cols.remove(col)
+29                diags.remove(diag)
+30                anti_diags.remove(anti_diag)
+31                state[row][col] = "."
+32            
+33        ans = []
+34        empty = [["."] * n for _ in range(n)]
+35        backtrack(0, set(), set(), set(), empty)
+36        return ans
