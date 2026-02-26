@@ -1,18 +1,17 @@
-# Last updated: 1/14/2026, 10:50:22 PM
+# Last updated: 2/26/2026, 9:24:17 AM
 1class Solution:
 2    def lengthOfLongestSubstring(self, s: str) -> int:
-3        n = len(s)
-4        window = set()
-5        left, right = 0, 0
-6        longest = 0
-7
-8        while right < n:
-9            while s[right] in window:
-10                window.remove(s[left])
-11                left += 1
-12            window.add(s[right])    
-13            longest = max(longest, right - left + 1)
-14            right += 1
-15        
-16        return longest
-17
+3        left = right = 0
+4        seen = set()
+5        ans = 0
+6
+7        while right < len(s):
+8            while left < right and s[right] in seen:
+9                seen.remove(s[left])
+10                left += 1
+11            seen.add(s[right])
+12            ans = max(ans, right - left + 1)
+13            right +=1
+14        
+15        return ans
+16
