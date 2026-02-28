@@ -1,4 +1,4 @@
-# Last updated: 2/28/2026, 9:52:53 AM
+# Last updated: 2/28/2026, 9:53:11 AM
 1# Definition for singly-linked list.
 2# class ListNode:
 3#     def __init__(self, val=0, next=None):
@@ -15,9 +15,5 @@
 14            fast = fast.next
 15            slow = slow.next
 16        
-17        if slow.next:
-18            slow.next = slow.next.next
-19        else:
-20            slow.next = None
-21
-22        return dummy.next
+17        slow.next = slow.next.next
+18        return dummy.next
