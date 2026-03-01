@@ -1,28 +1,35 @@
-# Last updated: 1/18/2026, 10:35:41 AM
+# Last updated: 3/1/2026, 1:53:27 PM
 1class Solution:
 2    def isValidSudoku(self, board: List[List[str]]) -> bool:
-3
-4        for row in range(9):
-5            seen = set()
-6            for col in range(9):
-7                if board[row][col].isalnum() and board[row][col] in seen:
-8                    return False
-9                seen.add(board[row][col])
-10    
-11        for col in range(9):
-12            seen = set()
-13            for row in range(9):
-14                if board[row][col].isalnum() and board[row][col] in seen:
-15                    return False
-16                seen.add(board[row][col])
-17
-18        for row in range(0, 9, 3):
-19            for col in range(0, 9, 3):
-20                seen = set()
-21                for r in range(row, row + 3):
-22                    for c in range(col, col + 3):
-23                        if board[r][c].isalnum() and board[r][c] in seen:
-24                            return False
-25                        seen.add(board[r][c])
-26                        
-27        return True
+3        rows, cols = len(board), len(board[0])
+4
+5        for r in range(rows):
+6            seen = set()
+7            for c in range(cols):
+8                if board[r][c] == ".":
+9                    continue
+10                if board[r][c] in seen:
+11                    return False
+12                seen.add(board[r][c])
+13
+14        for c in range(cols):
+15            seen = set()
+16            for r in range(rows):
+17                if board[r][c] == ".":
+18                    continue
+19                if board[r][c] in seen:
+20                    return False
+21                seen.add(board[r][c])
+22
+23        for r in range(0, rows, 3):
+24            for c in range(0, cols, 3):
+25                seen = set()
+26                for i in range(3):
+27                    for j in range(3):
+28                        if board[r + i][c + j] == ".":
+29                            continue
+30                        if board[r + i][c + j] in seen:
+31                            return False
+32                        seen.add(board[r + i][c + j])
+33        
+34        return True
