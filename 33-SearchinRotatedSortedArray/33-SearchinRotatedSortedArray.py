@@ -1,4 +1,4 @@
-# Last updated: 1/18/2026, 9:44:30 AM
+# Last updated: 3/1/2026, 1:30:14 PM
 1class Solution:
 2    def search(self, nums: List[int], target: int) -> int:
 3        left, right = 0, len(nums) - 1
@@ -15,9 +15,10 @@
 14                    left = mid
 15                else:
 16                    right = mid
-17        
+17            
 18        if nums[left] == target:
 19            return left
 20        if nums[right] == target:
 21            return right
 22        return -1
+23            
