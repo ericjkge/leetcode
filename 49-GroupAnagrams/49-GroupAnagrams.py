@@ -1,11 +1,9 @@
-# Last updated: 1/20/2026, 10:28:02 AM
+# Last updated: 3/3/2026, 8:55:41 AM
 1class Solution:
 2    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
 3        anagrams = defaultdict(list)
 4
 5        for s in strs:
-6            letters = "".join(sorted(s))
-7            anagrams[letters].append(s)
-8        
-9        return [v for v in anagrams.values()]
-10            
+6            anagrams["".join(sorted(s))].append(s)
+7        
+8        return [v for v in anagrams.values()]
