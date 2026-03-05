@@ -1,28 +1,28 @@
-# Last updated: 1/24/2026, 10:18:54 AM
+# Last updated: 3/5/2026, 9:30:05 AM
 1class Solution:
 2    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-3        elements = []
-4        left, right = 0, len(matrix[0]) - 1
-5        top, bottom = 0, len(matrix) - 1
+3        top, bottom = 0, len(matrix)
+4        left, right = 0, len(matrix[0])
+5        res = []
 6
-7        while left <= right and top <= bottom:
-8            for c in range(left, right + 1):
-9                elements.append(matrix[top][c])
+7        while top < bottom and left < right:
+8            for col in range(left, right):
+9                res.append(matrix[top][col])
 10            top += 1
 11
-12            for r in range(top, bottom + 1):
-13                elements.append(matrix[r][right])
+12            for row in range(top, bottom):
+13                res.append(matrix[row][right - 1])
 14            right -= 1
 15
-16            if not (left <= right and top <= bottom):
+16            if top >= bottom or left >= right:
 17                break
 18
-19            for c in range(right, left - 1, -1):
-20                elements.append(matrix[bottom][c])
+19            for col in range(right - 1, left - 1, -1):
+20                res.append(matrix[bottom - 1][col])
 21            bottom -= 1
-22            
-23            for r in range(bottom, top - 1, -1):
-24                elements.append(matrix[r][left])
+22
+23            for row in range(bottom - 1, top - 1, -1):
+24                res.append(matrix[row][left])
 25            left += 1
 26
-27        return elements
+27        return res
