@@ -1,16 +1,13 @@
-# Last updated: 3/5/2026, 9:37:52 AM
+# Last updated: 3/5/2026, 9:38:30 AM
 1class Solution:
 2    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
 3        intervals.sort()
-4        prev = None
-5        res = []
-6
-7        for start, end in intervals:
-8            if prev is not None and start <= prev:
-9                res[-1][1] = max(res[-1][1], end)
-10                prev = res[-1][1]
-11            else:
-12                res.append([start, end])
-13                prev = end
-14        
-15        return res
+4        res = []
+5
+6        for start, end in intervals:
+7            if res and start <= res[-1][1]:
+8                res[-1][1] = max(res[-1][1], end)
+9            else:
+10                res.append([start, end])
+11        
+12        return res
