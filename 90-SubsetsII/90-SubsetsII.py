@@ -1,23 +1,19 @@
-# Last updated: 1/27/2026, 11:33:52 AM
+# Last updated: 3/9/2026, 1:34:50 PM
 1class Solution:
 2    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
 3        nums.sort()
-4        subsets = []
+4        ans = []
 5
 6        def backtrack(index, path):
-7            if index == len(nums) + 1:
-8                return
-9
-10            subsets.append(path[:])
-11
-12            for i in range(index, len(nums)):
-13                if i > index and nums[i] == nums[i - 1]:
-14                    continue
-15                path.append(nums[i])
-16                backtrack(i + 1, path)
-17                path.pop()
-18            
-19        backtrack(0, [])
-20        return subsets
-21
-22
+7            ans.append(path[:])
+8
+9            for i in range(index, len(nums)):
+10                if i > index and nums[i] == nums[i - 1]:
+11                    continue
+12                path.append(nums[i])
+13                backtrack(i + 1, path)
+14                path.pop()
+15            
+16        backtrack(0, [])
+17        return ans
+18
