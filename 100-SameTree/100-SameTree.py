@@ -1,4 +1,4 @@
-# Last updated: 1/27/2026, 12:06:14 PM
+# Last updated: 3/10/2026, 7:36:05 PM
 1# Definition for a binary tree node.
 2# class TreeNode:
 3#     def __init__(self, val=0, left=None, right=None):
@@ -9,7 +9,11 @@
 8    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 9        if not p and not q:
 10            return True
-11        if not p or not q or p.val != q.val:
-12            return False
-13        
-14        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+11        
+12        if not p or not q:
+13            return False
+14        
+15        if p.val == q.val:
+16            return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+17        
+18        return False
