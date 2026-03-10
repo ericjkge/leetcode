@@ -1,4 +1,4 @@
-# Last updated: 1/27/2026, 11:35:58 AM
+# Last updated: 3/10/2026, 7:31:38 PM
 1# Definition for a binary tree node.
 2# class TreeNode:
 3#     def __init__(self, val=0, left=None, right=None):
@@ -13,12 +13,14 @@
 12            if not node:
 13                return
 14
-15            dfs(node.left)            
+15            dfs(node.left)
 16            tree.append(node.val)
 17            dfs(node.right)
 18        
 19        dfs(root)
-20        for i in range(len(tree)):
-21            if i > 0 and tree[i] <= tree[i - 1]:
-22                return False
-23        return True
+20
+21        for i in range(len(tree)):
+22            if i > 0 and tree[i] <= tree[i - 1]:
+23                return False
+24        
+25        return True
