@@ -1,4 +1,4 @@
-# Last updated: 3/10/2026, 8:04:58 PM
+# Last updated: 3/11/2026, 11:26:41 PM
 1class Solution:
 2    def lastStoneWeight(self, stones: List[int]) -> int:
 3        heap = [-stone for stone in stones]
