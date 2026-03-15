@@ -1,23 +1,21 @@
-# Last updated: 1/29/2026, 10:26:57 AM
+# Last updated: 3/15/2026, 11:24:15 AM
 1class Solution:
 2    def leastInterval(self, tasks: List[str], n: int) -> int:
 3        cooldown = deque()
-4        freqs = Counter(tasks)
-5        heap = [-f for f in freqs.values()]
-6        heapq.heapify(heap)
-7        time = 0
-8
-9        while heap or cooldown:
-10            if heap:
-11                freq = heapq.heappop(heap)
-12                freq += 1
-13                
-14                if freq != 0:
-15                    cooldown.append((time + n, freq))
-16
-17            if cooldown and cooldown[0][0] == time:
-18                heapq.heappush(heap, cooldown.popleft()[1])
-19            
-20            time += 1
-21
-22        return time
+4        freqs = [-v for v in Counter(tasks).values()]
+5        heapq.heapify(freqs)
+6        time = 0
+7
+8        while freqs or cooldown:
+9            while cooldown and cooldown[0][0] == time:
+10                _, f = cooldown.popleft()
+11                heapq.heappush(freqs, f)
+12
+13            if freqs:
+14                freq = heapq.heappop(freqs)
+15                freq += 1
+16                if freq < 0:
+17                    cooldown.append((time + n + 1, freq))
+18            time += 1
+19        
+20        return time
