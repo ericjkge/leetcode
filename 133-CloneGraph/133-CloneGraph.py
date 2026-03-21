@@ -1,4 +1,4 @@
-# Last updated: 1/31/2026, 1:03:16 PM
+# Last updated: 3/21/2026, 1:52:37 PM
 1"""
 2# Definition for a Node.
 3class Node:
@@ -12,20 +12,20 @@
 11    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
 12        if not node:
 13            return None
-14
-15        mapping = {}
+14            
+15        hashmap = {} # old:new
 16
-17        def dfs(n):
-18            if n in mapping:
-19                return mapping[n]
-20            
-21            clone = Node(n.val)
-22            mapping[n] = clone
-23
-24            for neighbor in n.neighbors:
+17        def dfs(root):
+18            if root in hashmap:
+19                return hashmap[root]
+20
+21            clone = Node(root.val)
+22            hashmap[root] = clone
+23            
+24            for neighbor in root.neighbors:
 25                clone.neighbors.append(dfs(neighbor))
-26
+26            
 27            return clone
 28        
 29        dfs(node)
-30        return mapping[node]
+30        return hashmap[node]
