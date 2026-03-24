@@ -1,4 +1,4 @@
-# Last updated: 2/1/2026, 4:02:09 PM
+# Last updated: 3/24/2026, 10:46:58 AM
 1class MinStack:
 2
 3    def __init__(self):
@@ -11,8 +11,8 @@
 10            self.min.append(val)
 11
 12    def pop(self) -> None:
-13        popped = self.stack.pop()
-14        if popped == self.min[-1]:
+13        val = self.stack.pop()
+14        if val == self.min[-1]:
 15            self.min.pop()
 16
 17    def top(self) -> int:
