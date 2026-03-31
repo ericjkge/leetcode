@@ -1,4 +1,4 @@
-# Last updated: 2/5/2026, 8:49:53 AM
+# Last updated: 3/31/2026, 9:16:40 AM
 1# Definition for a binary tree node.
 2# class TreeNode:
 3#     def __init__(self, val=0, left=None, right=None):
@@ -10,9 +10,9 @@
 9        if not root:
 10            return []
 11
-12        queue = deque([root])
-13        ans = []
-14
+12        ans = []
+13
+14        queue = deque([root])
 15        while queue:
 16            n = len(queue)
 17            for i in range(n):
@@ -23,5 +23,7 @@
 22                    queue.append(node.right)
 23                if i == n - 1:
 24                    ans.append(node.val)
-25        
+25
 26        return ans
+27
+28
