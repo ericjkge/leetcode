@@ -1,19 +1,21 @@
-# Last updated: 2/5/2026, 9:18:24 AM
+# Last updated: 4/2/2026, 9:41:37 AM
 1class Solution:
 2    def isHappy(self, n: int) -> bool:
-3        seen = set()
-4
-5        while True:
-6            nxt = 0
-7            while n:
-8                digit = n % 10
-9                nxt += digit ** 2
-10                n //= 10
-11            if nxt in seen:
-12                break
-13            seen.add(nxt)
-14            n = nxt
-15        
-16        if 1 in seen:
-17            return True
-18        return False
+3        curr = n
+4        seen = set()
+5
+6        while True:
+7            total = 0
+8            while curr:
+9                digit = curr % 10
+10                total += digit ** 2
+11                curr //= 10
+12
+13            if total == 1:
+14                return True
+15
+16            if total in seen:
+17                return False
+18            
+19            seen.add(total)
+20            curr = total
