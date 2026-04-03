@@ -1,8 +1,8 @@
-# Last updated: 2/6/2026, 10:06:19 AM
+# Last updated: 4/3/2026, 9:02:13 AM
 1class TrieNode:
 2    def __init__(self):
-3        self.children = {}
-4        self.is_end = False
+3        self.is_end = False
+4        self.children = {}
 5
 6class Trie:
 7
