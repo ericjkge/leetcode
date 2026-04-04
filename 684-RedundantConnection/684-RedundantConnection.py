@@ -1,4 +1,4 @@
-# Last updated: 4/4/2026, 10:02:03 AM
+# Last updated: 4/4/2026, 10:02:26 AM
 1class Solution:
 2    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
 3        class UnionFind:
@@ -13,7 +13,7 @@
 12
 13            def union(self, a, b):
 14                x, y = self.find(a), self.find(b)
-15                if self.roots[x] == self.roots[y]:
+15                if x == y:
 16                    return True
 17                
 18                if self.heights[x] < self.heights[y]:
