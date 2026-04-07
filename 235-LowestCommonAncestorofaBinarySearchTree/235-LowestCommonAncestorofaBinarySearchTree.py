@@ -1,4 +1,4 @@
-# Last updated: 2/8/2026, 7:18:50 PM
+# Last updated: 4/6/2026, 11:23:38 PM
 1# Definition for a binary tree node.
 2# class TreeNode:
 3#     def __init__(self, x):
@@ -11,8 +11,12 @@
 10        if not root:
 11            return None
 12            
-13        if root.val > p.val and root.val > q.val:
-14            return self.lowestCommonAncestor(root.left, p, q)
-15        elif root.val < p.val and root.val < q.val:
-16            return self.lowestCommonAncestor(root.right, p, q)
-17        return root
+13        if root == p or root == q:
+14            return root
+15
+16        left, right = self.lowestCommonAncestor(root.left, p, q), self.lowestCommonAncestor(root.right, p, q)
+17        if left and right:
+18            return root
+19        if left:
+20            return left
+21        return right
