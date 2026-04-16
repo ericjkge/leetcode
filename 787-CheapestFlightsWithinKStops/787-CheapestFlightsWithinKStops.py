@@ -1,25 +1,22 @@
-# Last updated: 2/13/2026, 11:50:52 AM
+# Last updated: 4/16/2026, 10:33:41 AM
 1class Solution:
 2    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
-3        graph = defaultdict(list)
-4
-5        for u, v, p in flights:
-6            graph[u].append((v, p))
-7
-8        distances = [float("inf")] * n
-9        distances[src] = 0
+3        distances = [float("inf")] * n
+4        distances[src] = 0
+5        graph = defaultdict(list)
+6
+7        for a, b, price in flights:
+8            graph[a].append((b, price))
+9        
 10        queue = deque([(0, src)])
-11        stops = 0
-12
-13        while stops < k + 1:
-14            for _ in range(len(queue)):
-15                dist, node = queue.popleft()
-16                
-17                for neighbor, weight in graph[node]:
-18                    d = dist + weight
-19                    if d < distances[neighbor]:
-20                        distances[neighbor] = d
-21                        queue.append((d, neighbor))
-22            stops += 1
-23            
-24        return distances[dst] if distances[dst] != float("inf") else -1
+11        counter = 0
+12        while queue and counter <= k:
+13            for _ in range(len(queue)):
+14                dist, node = queue.popleft()
+15                for neighbor, price in graph[node]:
+16                    if dist + price < distances[neighbor]:
+17                        distances[neighbor] = dist + price
+18                        queue.append((dist + price, neighbor))
+19            counter += 1
+20        
+21        return distances[dst] if distances[dst] != float("inf") else -1
