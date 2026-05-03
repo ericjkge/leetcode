@@ -1,14 +1,14 @@
-# Last updated: 2/16/2026, 11:22:03 AM
+# Last updated: 5/3/2026, 10:51:39 AM
 1class Solution:
 2    def countBits(self, n: int) -> List[int]:
-3        ones = []
+3        ans = [0] * (n + 1)
 4
 5        for i in range(n + 1):
-6            count = 0
-7            while i:
-8                if i & 1:
-9                    count += 1
+6            index = i
+7            count = 0
+8            while i:
+9                count += i & 1
 10                i >>= 1
-11            ones.append(count)
-12
-13        return ones
+11            ans[index] = count
+12        
+13        return ans
