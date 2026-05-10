@@ -1,17 +1,15 @@
-# Last updated: 11/24/2025, 9:34:18 AM
-class Solution:
-    def isMatch(self, s: str, p: str) -> bool:
-
-        @cache
-        def dp(i, j):
-            if j == len(p):
-                return i == len(s)
-            
-            first = i < len(s) and (s[i] == p[j] or p[j] == ".")
-
-            if j + 1 < len(p) and p[j + 1] == "*":
-                return dp(i, j + 2) or (first and dp(i + 1, j))
-
-            return first and dp(i + 1, j + 1)
-        
-        return dp(0, 0)
+# Last updated: 5/10/2026, 1:15:08 PM
+1class Solution:
+2    def isMatch(self, s: str, p: str) -> bool:
+3        @cache
+4        def dp(i, j):
+5            if j == len(p):
+6                return i == len(s)
+7
+8            match = i < len(s) and (s[i] == p[j] or p[j] == ".")
+9            if j + 1 < len(p) and p[j + 1] == "*":
+10                return dp(i, j + 2) or (match and dp(i + 1, j))
+11
+12            return match and dp(i + 1, j + 1)
+13        
+14        return dp(0, 0)
