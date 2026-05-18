@@ -1,4 +1,4 @@
-# Last updated: 5/18/2026, 3:36:41 PM
+# Last updated: 5/18/2026, 3:37:18 PM
 1class ListNode:
 2    def __init__(self, key=None, val=None):
 3        self.key = key
@@ -11,7 +11,7 @@
 10    def __init__(self, capacity: int):
 11        self.dict = {}
 12        self.capacity = capacity
-13        self.left, self.right = ListNode(None, 10000), ListNode(None, 99000)
+13        self.left, self.right = ListNode(), ListNode()
 14        self.left.next, self.right.prev = self.right, self.left
 15
 16    def add(self, node):
