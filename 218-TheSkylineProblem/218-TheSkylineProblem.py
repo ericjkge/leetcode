@@ -1,11 +1,11 @@
-# Last updated: 5/20/2026, 10:54:23 AM
+# Last updated: 5/20/2026, 10:59:04 AM
 1class Solution:
 2    def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
 3        events = []
 4
 5        for l, r, h in buildings:
 6            events.append((l, -h, r))
-7            events.append((r, 100, 0))
+7            events.append((r, 0, 0))
 8        
 9        events.sort()
 10
