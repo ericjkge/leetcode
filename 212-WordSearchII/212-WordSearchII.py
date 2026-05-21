@@ -1,4 +1,4 @@
-# Last updated: 5/21/2026, 10:56:19 AM
+# Last updated: 5/21/2026, 10:56:47 AM
 1class Solution:
 2    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
 3        root = {}
@@ -16,7 +16,7 @@
 15
 16        def backtrack(r, c, parent):
 17            if "$" in parent:
-18                res.append(parent["$"])
+18                res.append(parent.pop("$"))
 19            
 20            for dr, dc in directions:
 21                nr, nc = r + dr, c + dc
@@ -34,4 +34,4 @@
 33                    backtrack(r, c, root[letter])
 34                    board[r][c] = letter
 35
-36        return list(set(res))
+36        return res
