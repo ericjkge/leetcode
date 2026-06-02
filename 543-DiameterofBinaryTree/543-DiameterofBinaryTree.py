@@ -1,4 +1,4 @@
-# Last updated: 6/1/2026, 10:58:06 PM
+# Last updated: 6/1/2026, 10:58:11 PM
 1# Definition for a binary tree node.
 2# class TreeNode:
 3#     def __init__(self, val=0, left=None, right=None):
@@ -15,9 +15,8 @@
 14            
 15            left = dfs(node.left)
 16            right = dfs(node.right)
-17            print(node.val, left, right)
-18            self.diameter = max(self.diameter, 2 + left + right)
-19            return 1 + max(left, right)
-20        
-21        dfs(root)
-22        return self.diameter
+17            self.diameter = max(self.diameter, 2 + left + right)
+18            return 1 + max(left, right)
+19        
+20        dfs(root)
+21        return self.diameter
