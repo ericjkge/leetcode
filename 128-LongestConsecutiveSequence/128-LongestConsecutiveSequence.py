@@ -1,23 +1,19 @@
-# Last updated: 5/23/2026, 7:25:48 PM
+# Last updated: 6/4/2026, 9:30:39 PM
 1class Solution:
-2    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
-3        """
-4        Do not return anything, modify nums1 in-place instead.
-5        """
-6        p1 = m - 1
-7        p2 = n - 1
-8        p3 = m + n - 1
-9
-10        while p1 >= 0 and p2 >= 0:
-11            if nums1[p1] > nums2[p2]:
-12                nums1[p3] = nums1[p1]
-13                p1 -= 1
-14            else:
-15                nums1[p3] = nums2[p2]
-16                p2 -= 1
-17            p3 -= 1
-18
-19        while p2 >= 0:
-20            nums1[p3] = nums2[p2]
-21            p2 -= 1
-22            p3 -= 1
+2    def longestConsecutive(self, nums: List[int]) -> int:
+3        num_set = set(nums)
+4        longest = 0
+5
+6        for num in num_set:
+7            count = 1
+8            if num - 1 in num_set:
+9                continue
+10            
+11            while num + 1 in num_set:
+12                count += 1
+13                num = num + 1
+14
+15            longest = max(longest, count)
+16
+17        return longest
+18            
