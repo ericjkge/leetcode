@@ -1,21 +1,20 @@
-# Last updated: 5/20/2026, 9:50:53 AM
+# Last updated: 6/23/2026, 8:40:57 PM
 1class Solution:
 2    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-3        window = deque()
-4        mx = []
-5
-6        for i in range(len(nums)):
-7            if window and window[0] <= i - k:
-8                window.popleft()
-9
-10            while window and nums[i] >= nums[window[-1]]:
-11                window.pop()
-12            
-13            window.append(i)
-14
-15            if i + 1 < k:
-16                continue
-17
-18            mx.append(nums[window[0]])
-19        
-20        return mx
+3        res = []
+4        heap = [(-num, i) for i, num in enumerate(nums[:k])]
+5        heapq.heapify(heap)
+6
+7        for i in range(k, len(nums)):
+8            while heap and heap[0][1] <= i - k - 1:
+9                heapq.heappop(heap)
+10
+11            res.append(-heap[0][0])
+12            heapq.heappush(heap, (-nums[i], i))
+13    
+14        while heap and heap[0][1] <= len(nums) - 1 - k:
+15            heapq.heappop(heap)
+16
+17        res.append(-heap[0][0])
+18        return res
+19
