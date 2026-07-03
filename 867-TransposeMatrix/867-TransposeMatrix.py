@@ -1,12 +1,11 @@
-# Last updated: 11/14/2025, 9:40:23 AM
-class Solution:
-    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
-        rows = len(matrix)
-        cols = len(matrix[0])
-        arr = [[0] * rows for _ in range(cols)]
-
-        for r in range(rows):
-            for c in range(cols):
-                arr[c][r] = matrix[r][c]
-        
-        return arr
+# Last updated: 7/2/2026, 10:58:22 PM
+1class Solution:
+2    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+3        rows, cols = len(matrix), len(matrix[0])
+4        res = [[0] * rows for _ in range(cols)]
+5
+6        for r in range(rows):
+7            for c in range(cols):
+8                res[c][r] = matrix[r][c]
+9        
+10        return res
