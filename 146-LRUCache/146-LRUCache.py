@@ -1,55 +1,51 @@
-# Last updated: 5/18/2026, 3:37:18 PM
+# Last updated: 7/8/2026, 10:55:56 AM
 1class ListNode:
-2    def __init__(self, key=None, val=None):
+2    def __init__(self, key=None, value=None):
 3        self.key = key
-4        self.val = val
-5        self.next = None
-6        self.prev = None
+4        self.value = value
+5
+6class LRUCache:
 7
-8class LRUCache:
-9
-10    def __init__(self, capacity: int):
-11        self.dict = {}
-12        self.capacity = capacity
-13        self.left, self.right = ListNode(), ListNode()
-14        self.left.next, self.right.prev = self.right, self.left
-15
-16    def add(self, node):
-17        nxt = self.left.next
-18        self.left.next = node
-19        node.next, node.prev = nxt, self.left
-20        nxt.prev = node
-21
-22    def remove(self, node):
-23        p, n = node.prev, node.next
-24        p.next, n.prev = n, p
-25        
-26    def get(self, key: int) -> int:
-27        if key not in self.dict:
-28            return -1
-29        
-30        node = self.dict[key]
-31        self.remove(node)
-32        self.add(node)
-33        return node.val
-34
-35    def put(self, key: int, value: int) -> None:
-36        if key in self.dict:
-37            node = self.dict[key]
-38            node.val = value
-39            self.remove(node)
-40            self.add(node)
-41        else:
-42            self.dict[key] = ListNode(key, value)
-43            node = self.dict[key]
-44            self.add(node)
-45
-46            if len(self.dict) > self.capacity:
-47                lru = self.right.prev
-48                self.remove(lru)
-49                del self.dict[lru.key]
-50
-51# Your LRUCache object will be instantiated and called as such:
-52# obj = LRUCache(capacity)
-53# param_1 = obj.get(key)
-54# obj.put(key,value)
+8    def __init__(self, capacity: int):
+9        self.dict = {}
+10        self.capacity = capacity
+11        self.left, self.right = ListNode(), ListNode()
+12        self.left.next, self.right.prev = self.right, self.left
+13
+14    def add(self, node):
+15        nxt = self.left.next
+16        self.left.next, nxt.prev = node, node
+17        node.next, node.prev = nxt, self.left
+18
+19    def remove(self, node):
+20        prv, nxt = node.prev, node.next
+21        prv.next, nxt.prev = nxt, prv
+22
+23    def get(self, key: int) -> int:
+24        if key in self.dict:
+25            node = self.dict[key]
+26            self.remove(node)
+27            self.add(node)
+28            return node.value
+29        return -1
+30
+31    def put(self, key: int, value: int) -> None:
+32        if key in self.dict:
+33            node = self.dict[key]
+34            node.value = value
+35            self.remove(node)
+36            self.add(node)
+37        else:
+38            new = ListNode(key, value)
+39            self.dict[key] = new
+40            self.add(new)
+41
+42            if len(self.dict) > self.capacity:
+43                lru = self.right.prev
+44                del self.dict[lru.key]
+45                self.remove(lru)
+46
+47# Your LRUCache object will be instantiated and called as such:
+48# obj = LRUCache(capacity)
+49# param_1 = obj.get(key)
+50# obj.put(key,value)
