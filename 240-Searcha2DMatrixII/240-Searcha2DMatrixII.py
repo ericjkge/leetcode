@@ -1,22 +1,16 @@
-# Last updated: 7/15/2026, 12:53:19 AM
+# Last updated: 7/15/2026, 12:56:31 AM
 1class Solution:
 2    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
 3        rows, cols = len(matrix), len(matrix[0])
-4        boundary = None
-5        r, c = 0, 0
-6
-7        while 0 <= r < rows and 0 <= c < cols:
-8            if matrix[r][c] == target:
-9                return True
-10            
-11            if matrix[r][c] > target:
-12                boundary = c
-13                c -= 1
-14            else:
-15                if boundary is None and c + 1 < cols:
-16                    c += 1
-17                else:
-18                    r += 1
-19        
-20        return False
-21
+4        r, c = 0, cols - 1
+5
+6        while r < rows and c >= 0:
+7            if matrix[r][c] == target:
+8                return True
+9            
+10            if matrix[r][c] > target:
+11                c -= 1
+12            else:
+13                r += 1
+14        
+15        return False
