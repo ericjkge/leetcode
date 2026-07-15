@@ -1,4 +1,4 @@
-# Last updated: 7/9/2026, 9:11:00 PM
+# Last updated: 7/14/2026, 8:47:50 PM
 1class Solution:
 2    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
 3        mx = max(candies)
