@@ -1,4 +1,4 @@
-# Last updated: 7/15/2026, 12:56:31 AM
+# Last updated: 7/15/2026, 12:56:37 AM
 1class Solution:
 2    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
 3        rows, cols = len(matrix), len(matrix[0])
