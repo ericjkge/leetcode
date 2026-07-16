@@ -1,11 +1,12 @@
-# Last updated: 3/20/2026, 3:19:17 PM
+# Last updated: 7/15/2026, 8:10:26 PM
 1class Solution:
 2    def maxProfit(self, prices: List[int]) -> int:
-3        lowest = float("inf")
-4        profit = 0
+3        mx = 0
+4        lowest = float("inf")
 5
 6        for price in prices:
 7            lowest = min(lowest, price)
-8            profit = max(profit, price - lowest)
+8            mx = max(mx, price - lowest)
 9        
-10        return profit
+10        return mx
+11            
