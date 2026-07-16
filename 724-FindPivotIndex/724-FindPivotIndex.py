@@ -1,25 +1,13 @@
-# Last updated: 7/8/2025, 9:55:38 AM
-class Solution:
-    def pivotIndex(self, nums: List[int]) -> int:
-        prefix = []
-        suffix = [0] * len(nums)
-
-        for i in range(len(nums)):
-            if i > 0:
-                prefix.append(prefix[-1] + nums[i])
-            else:
-                prefix.append(nums[i])
-    
-        for i in range(len(nums) - 1, -1, -1):
-            if i == len(nums) - 1:
-                suffix[i] = nums[i]
-            else:
-                suffix[i] = suffix[i + 1] + nums[i]
-        
-        # handle edges
-        for i in range(len(nums)):
-            left = prefix[i - 1] if i > 0 else 0
-            right = suffix[i + 1] if i < len(nums) - 1 else 0
-            if left == right:
-                return i
-        return -1
+# Last updated: 7/15/2026, 11:46:06 PM
+1class Solution:
+2    def pivotIndex(self, nums: List[int]) -> int:
+3        prefix = 0
+4
+5        for i, num in enumerate(nums):
+6            if prefix == sum(nums[i + 1:]):
+7                return i
+8            
+9            prefix += num
+10
+11        return -1
+1214
