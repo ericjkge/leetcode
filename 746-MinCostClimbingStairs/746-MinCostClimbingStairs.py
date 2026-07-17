@@ -1,4 +1,4 @@
-# Last updated: 4/6/2026, 11:24:24 PM
+# Last updated: 7/17/2026, 9:50:39 AM
 1class Solution:
 2    def minCostClimbingStairs(self, cost: List[int]) -> int:
 3        @cache
