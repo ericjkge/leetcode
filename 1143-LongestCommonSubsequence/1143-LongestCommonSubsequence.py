@@ -1,9 +1,9 @@
-# Last updated: 7/5/2026, 11:10:58 PM
+# Last updated: 7/17/2026, 9:56:53 AM
 1class Solution:
 2    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
 3        @cache
 4        def dp(i, j):
-5            if i >= len(text1) or j >= len(text2):
+5            if i == len(text1) or j == len(text2):
 6                return 0
 7            
 8            if text1[i] == text2[j]:
