@@ -1,20 +1,27 @@
-# Last updated: 7/3/2025, 11:04:32 PM
-class Solution:
-    def maxVowels(self, s: str, k: int) -> int:
-        vowels = set("aeiou")
-        max_vowels = 0
-        left = counter = 0
-
-        for right in range(len(s)):
-            if s[right] in vowels:
-                counter += 1
-            while right - left + 1 > k:
-                if s[left] in vowels:
-                    counter -= 1
-                left += 1
-            max_vowels = max(max_vowels, counter)
-
-        return max_vowels
-
-
-
+# Last updated: 7/19/2026, 10:15:33 AM
+1class Solution:
+2    def maxVowels(self, s: str, k: int) -> int:
+3        vowels = "aeiou"
+4        left = right = 0
+5        window = 0
+6        mx = 0
+7
+8        while right < len(s):
+9            if s[right] in vowels:
+10                window += 1
+11            
+12            if right < k - 1:
+13                right += 1
+14                continue
+15
+16            while right - left + 1 > k:
+17                if s[left] in vowels:
+18                    window -= 1
+19                left += 1
+20            
+21            mx = max(mx, window)
+22            right += 1
+23        
+24        return mx
+25            
+26
