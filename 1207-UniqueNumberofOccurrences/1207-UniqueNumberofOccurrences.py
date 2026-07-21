@@ -1,13 +1,12 @@
-# Last updated: 7/4/2025, 11:04:53 AM
-class Solution:
-    def uniqueOccurrences(self, arr: List[int]) -> bool:
-        counter = Counter(arr)
-        seen = set()
-
-        for num, freq in counter.items():
-            if freq in seen:
-                return False
-            seen.add(freq)
-        
-        return True
-        
+# Last updated: 7/20/2026, 9:37:38 PM
+1class Solution:
+2    def uniqueOccurrences(self, arr: List[int]) -> bool:
+3        counter = Counter(arr)
+4
+5        seen = set()
+6        for value in counter.values():
+7            if value in seen:
+8                return False
+9            seen.add(value)
+10        
+11        return True
