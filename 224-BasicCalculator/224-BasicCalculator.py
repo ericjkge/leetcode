@@ -1,40 +1,31 @@
-# Last updated: 7/19/2026, 10:39:34 AM
+# Last updated: 7/20/2026, 10:12:22 PM
 1class Solution:
 2    def calculate(self, s: str) -> int:
-3        stack = []
-4        num = 0
-5        sign = 1
-6        total = 0
-7
-8        for ch in s:
-9            if ch.isdigit():
-10                num *= 10
-11                num += int(ch)
-12            elif ch == "(":
-13                stack.append(sign)
-14                stack.append("(")
-15                sign = 1
-16            elif ch == ")":
-17                stack.append(sign * num)
-18                num = 0
-19                while stack[-1] != "(":
-20                    num += stack.pop()
-21                stack.pop()
-22                num *= stack.pop()
-23                sign = 1
-24            elif ch == "+":
-25                stack.append(sign * num)
-26                num = 0
-27                sign = 1
-28            elif ch == "-":
-29                stack.append(sign * num)
-30                num = 0
-31                sign = -1
-32            else:
-33                continue
-34
-35        stack.append(sign * num)
-36        while stack:
-37            total += stack.pop()
-38        
-39        return total
+3        res = 0
+4        sign = 1
+5        num = 0
+6        stack = []
+7        i = 0
+8
+9        while i < len(s):
+10            c = s[i]
+11            if c.isdigit():
+12                num = 0
+13                while i < len(s) and s[i].isdigit():
+14                    num = num * 10 + int(s[i])
+15                    i += 1
+16                res += sign * num
+17                continue
+18            elif c == "+":
+19                sign = 1
+20            elif c == "-":
+21                sign = -1
+22            elif c == "(":
+23                stack.append((res, sign))
+24                res, sign = 0, 1
+25            elif c == ")":
+26                prev_res, prev_sign = stack.pop()
+27                res = prev_res + prev_sign * res
+28            i += 1
+29        
+30        return res
