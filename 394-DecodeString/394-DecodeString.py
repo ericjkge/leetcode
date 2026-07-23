@@ -1,21 +1,21 @@
-# Last updated: 5/24/2026, 10:54:05 AM
+# Last updated: 7/22/2026, 8:25:52 PM
 1class Solution:
 2    def decodeString(self, s: str) -> str:
-3        stack = []
-4        curNum = 0
-5        curString = ""
+3        string = ""
+4        stack = []
+5        num = 0
 6
-7        for char in s:
-8            if char.isdigit():
-9                curNum = curNum * 10 + int(char)
-10            elif char == "[":
-11                stack.append((curNum, curString))
-12                curNum = 0
-13                curString = ""
-14            elif char == "]":
-15                repeats, prevString = stack.pop()
-16                curString = prevString + curString * repeats
+7        for c in s:
+8            if c.isdigit():
+9                num = num * 10 + int(c)
+10            elif c == "[":
+11                stack.append((string, num))
+12                num = 0
+13                string = ""
+14            elif c == "]":
+15                prev, repeats = stack.pop()
+16                string = prev + repeats * string
 17            else:
-18                curString += char
+18                string += c
 19        
-20        return curString
+20        return string
