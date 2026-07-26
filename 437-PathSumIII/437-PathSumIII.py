@@ -1,4 +1,4 @@
-# Last updated: 7/26/2026, 3:08:28 PM
+# Last updated: 7/26/2026, 3:17:09 PM
 1# Definition for a binary tree node.
 2# class TreeNode:
 3#     def __init__(self, val=0, left=None, right=None):
@@ -7,16 +7,20 @@
 6#         self.right = right
 7class Solution:
 8    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
-9        if not root:
-10            return 0
-11            
-12        def dfs(node, total):
-13            if not node:
-14                return 0
-15            
-16            if total + node.val == targetSum:
-17                return 1 + dfs(node.left, total + node.val) + dfs(node.right, total + node.val)
-18            
-19            return dfs(node.left, total + node.val) + dfs(node.right, total + node.val)
-20
-21        return dfs(root, 0) + self.pathSum(root.left, targetSum) + self.pathSum(root.right, targetSum)
+9        self.count = 0
+10        freqs = defaultdict(int)
+11        freqs[0] = 1
+12        
+13        def dfs(node, prefix):
+14            if not node:
+15                return
+16
+17            prefix += node.val
+18            self.count += freqs[prefix - targetSum]
+19            freqs[prefix] += 1
+20            dfs(node.left, prefix)
+21            dfs(node.right, prefix)
+22            freqs[prefix] -= 1
+23
+24        dfs(root, 0)
+25        return self.count
