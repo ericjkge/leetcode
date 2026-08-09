@@ -1,4 +1,4 @@
-# Last updated: 7/17/2026, 9:56:53 AM
+# Last updated: 8/9/2026, 12:33:45 PM
 1class Solution:
 2    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
 3        @cache
@@ -9,6 +9,6 @@
 8            if text1[i] == text2[j]:
 9                return 1 + dp(i + 1, j + 1)
 10            
-11            return max(dp(i + 1, j), dp(i, j + 1), dp(i + 1, j + 1))
+11            return max(dp(i + 1, j), dp(i, j + 1))
 12        
 13        return dp(0, 0)
