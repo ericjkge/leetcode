@@ -1,11 +1,11 @@
-# Last updated: 8/8/2026, 4:39:27 PM
+# Last updated: 8/31/2026, 7:34:31 PM
 1class Solution:
 2    def numIslands(self, grid: List[List[str]]) -> int:
-3        rows, cols = len(grid), len(grid[0])
-4        directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+3        directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+4        rows, cols = len(grid), len(grid[0])
 5
 6        def dfs(r, c):
-7            grid[r][c] = "#"
+7            grid[r][c] = "0"
 8            for dr, dc in directions:
 9                nr, nc = r + dr, c + dc
 10                if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == "1":
@@ -19,3 +19,4 @@
 18                    dfs(r, c)
 19        
 20        return count
+21
