@@ -1,4 +1,4 @@
-# Last updated: 9/1/2026, 7:16:44 AM
+# Last updated: 9/1/2026, 7:56:38 AM
 1class Solution:
 2    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
 3        prev = None
