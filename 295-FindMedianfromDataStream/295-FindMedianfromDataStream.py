@@ -1,30 +1,23 @@
-# Last updated: 7/14/2026, 9:53:17 PM
+# Last updated: 9/1/2026, 10:22:25 AM
 1class MedianFinder:
 2
 3    def __init__(self):
-4        self.top = []
-5        self.bottom = []
-6
-7    def addNum(self, num: int) -> None:
-8        heapq.heappush(self.bottom, -num)
-9        
-10        if self.top and -self.bottom[0] > self.top[0]:
-11            x, y = -heapq.heappop(self.bottom), heapq.heappop(self.top)
-12            heapq.heappush(self.top, x)
-13            heapq.heappush(self.bottom, -y)
-14
-15        if len(self.bottom) > len(self.top) + 1:
-16            heapq.heappush(self.top, -heapq.heappop(self.bottom))
+4        self.lower, self.upper = [], []
+5
+6    def addNum(self, num: int) -> None:
+7        heapq.heappush(self.lower, -num)
+8        heapq.heappush(self.upper, -heapq.heappop(self.lower))
+9
+10        if len(self.upper) > len(self.lower) + 1:
+11            heapq.heappush(self.lower, -heapq.heappop(self.upper))
+12
+13    def findMedian(self) -> float:
+14        if len(self.lower) == len(self.upper):
+15            return (-self.lower[0] + self.upper[0]) / 2
+16        return self.upper[0]
 17
-18    def findMedian(self) -> float:
-19        if len(self.bottom) == len(self.top):
-20            return (-self.bottom[0] + self.top[0]) / 2
-21        return -self.bottom[0]
-22        
-23        
-24
-25
-26# Your MedianFinder object will be instantiated and called as such:
-27# obj = MedianFinder()
-28# obj.addNum(num)
-29# param_2 = obj.findMedian()
+18
+19# Your MedianFinder object will be instantiated and called as such:
+20# obj = MedianFinder()
+21# obj.addNum(num)
+22# param_2 = obj.findMedian()
