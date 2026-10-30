@@ -1,9 +1,14 @@
-# Last updated: 7/16/2026, 10:46:43 PM
+# Last updated: 10/30/2026, 10:48:08 AM
 1class Solution:
-2    def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
-3        for i in range(len(flowerbed)):
-4            if (i == 0 or flowerbed[i - 1] == 0) and flowerbed[i] == 0 and (i + 1 == len(flowerbed) or flowerbed[i + 1] == 0):
-5                flowerbed[i] = 1
-6                n -= 1
-7            
-8        return n <= 0
+2    def canPlaceFlowers(self, flowerbed: list[int], n: int) -> bool:
+3        count = 0
+4
+5        for i in range(len(flowerbed)):
+6            if flowerbed[i] == 0:
+7                if (i - 1 >= 0 and flowerbed[i - 1] == 1) or (i + 1 < len(flowerbed) and flowerbed[i + 1] == 1):
+8                    continue
+9                count += 1
+10                flowerbed[i] = 1
+11        
+12        return count >= n
+13
