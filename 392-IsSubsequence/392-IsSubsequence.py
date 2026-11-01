@@ -1,17 +1,14 @@
-# Last updated: 7/17/2026, 8:18:58 PM
+# Last updated: 11/1/2026, 11:26:53 AM
 1class Solution:
 2    def isSubsequence(self, s: str, t: str) -> bool:
-3        p1 = p2 = 0
+3        i = j = 0
 4
-5        while p1 < len(s):
-6            if p2 == len(t):
-7                return False
-8            
-9            if s[p1] == t[p2]:
-10                p1 += 1
-11                p2 += 1
-12            else:
-13                p2 += 1
-14            
-15        return True
-16
+5        while i < len(s) and j < len(t):
+6            if s[i] == t[j]:
+7                i += 1
+8                j += 1
+9            else:
+10                j += 1
+11
+12        return i == len(s)
+13
