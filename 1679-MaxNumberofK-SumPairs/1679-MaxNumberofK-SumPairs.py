@@ -1,9 +1,9 @@
-# Last updated: 7/19/2026, 10:04:22 AM
+# Last updated: 11/1/2026, 11:30:40 AM
 1class Solution:
 2    def maxOperations(self, nums: List[int], k: int) -> int:
-3        nums.sort()
-4        left, right = 0, len(nums) - 1
-5        count = 0
+3        left, right = 0, len(nums) - 1
+4        count = 0
+5        nums.sort()
 6
 7        while left < right:
 8            total = nums[left] + nums[right]
