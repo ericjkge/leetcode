@@ -1,18 +1,21 @@
-# Last updated: 7/21/2026, 7:34:39 PM
+# Last updated: 11/2/2026, 4:28:42 PM
 1class Solution:
-2    def equalPairs(self, grid: List[List[int]]) -> int:
+2    def equalPairs(self, grid: list[list[int]]) -> int:
 3        n = len(grid)
-4        seen = defaultdict(int)
-5        count = 0
+4        rows = defaultdict(int)
+5        cols = defaultdict(int)
 6
-7        for row in grid:
-8            seen[tuple(row)] += 1
-9
+7        for r in range(n):
+8            rows[tuple(grid[r])] += 1
+9        
 10        for c in range(n):
 11            col = []
 12            for r in range(n):
 13                col.append(grid[r][c])
-14            
-15            count += seen[tuple(col)]
-16    
-17        return count
+14            cols[tuple(col)] += 1
+15        
+16        count = 0
+17        for key, val in rows.items():
+18            count += val * cols[key]
+19
+20        return count
