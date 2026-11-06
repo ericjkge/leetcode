@@ -1,6 +1,6 @@
-# Last updated: 8/12/2026, 7:18:33 PM
+# Last updated: 11/6/2026, 6:08:50 PM
 1class Solution:
-2    def findKthLargest(self, nums: List[int], k: int) -> int:
+2    def findKthLargest(self, nums: list[int], k: int) -> int:
 3        heap = [-num for num in nums]
 4        heapq.heapify(heap)
 5
