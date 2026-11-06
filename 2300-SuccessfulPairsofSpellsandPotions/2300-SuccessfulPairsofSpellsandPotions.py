@@ -1,26 +1,24 @@
-# Last updated: 8/18/2026, 10:26:13 AM
+# Last updated: 11/5/2026, 10:50:04 PM
 1class Solution:
-2    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
-3        pairs = []
-4        potions.sort()
-5
-6        def search(spell):
-7            left, right = 0, len(potions) - 1
-8            while left + 1 < right:
-9                mid = (left + right) // 2
-10                if spell * potions[mid] < success:
-11                    left = mid
-12                else:
-13                    right = mid
-14            
-15            if spell * potions[left] >= success:
-16                return left
-17            if spell * potions[right] >= success:
-18                return right
-19            return len(potions)
-20
-21        for spell in spells:
-22            index = search(spell)
-23            pairs.append(len(potions) - index)
-24
-25        return pairs
+2    def successfulPairs(self, spells: list[int], potions: list[int], success: int) -> list[int]:
+3        n, m = len(spells), len(potions)
+4        pairs = [0] * n
+5        potions.sort()
+6
+7        def test(x, y):
+8            return x * y >= success
+9
+10        for i, spell in enumerate(spells):
+11            left, right = 0, m - 1
+12            while left + 1 < right:
+13                mid = (left + right) // 2
+14                if test(spell, potions[mid]):
+15                    right = mid
+16                else:
+17                    left = mid
+18            if test(spell, potions[left]):
+19                pairs[i] = m - left
+20            elif test(spell, potions[right]):
+21                pairs[i] = m - right
+22        
+23        return pairs
