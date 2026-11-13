@@ -1,16 +1,22 @@
-# Last updated: 8/24/2026, 10:35:29 AM
+# Last updated: 11/13/2026, 1:50:07 AM
 1class Solution:
 2    def minDistance(self, word1: str, word2: str) -> int:
-3        @cache
-4        def dp(i, j):
-5            if i == len(word1):
-6                return len(word2) - j
-7            
-8            if j == len(word2):
-9                return len(word1) - i
-10            
-11            if word1[i] == word2[j]:
-12                return dp(i + 1, j + 1)
-13            return 1 + min(dp(i + 1, j), dp(i, j + 1), dp(i + 1, j + 1))
-14        
-15        return dp(0, 0)
+3        m, n = len(word1), len(word2)
+4
+5        @cache
+6        def dp(i, j):
+7            if i == m and j == n:
+8                return 0
+9            
+10            if i == m:
+11                return n - j
+12            
+13            if j == n:
+14                return m - i
+15            
+16            if word1[i] == word2[j]:
+17                return dp(i + 1, j + 1)
+18                
+19            return 1 + min(dp(i + 1, j), dp(i, j + 1), dp(i + 1, j + 1))
+20        
+21        return dp(0, 0)
